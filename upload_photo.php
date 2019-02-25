@@ -1,6 +1,6 @@
 <?php
 function checkUploadedPhoto() {
-    $target_dir = dirname(__FILE__) ."/uploadVideos/";
+    $target_dir = dirname(__FILE__) ."/uploads/";
     echo $target_dir;
     $target_file = $target_dir . basename($_FILES["myphoto"]["name"]);
 
