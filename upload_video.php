@@ -20,8 +20,12 @@ function checkUploadedVideo() {
             // Check if the file has a correct, expected extension
             if(in_array($upload_extension, $allowed_extensions)) {
                 if(move_uploaded_file($_FILES['myvideo']['tmp_name'], $target_file)) {
+			
+		  echo "e24423";	
                     return true;
                 }
+	       echo "dfgdsfg";	    
+		    
             }
             else
                 echo "error3";
