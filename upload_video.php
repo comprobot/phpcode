@@ -36,7 +36,7 @@ function checkUploadedVideo() {
     else
         echo "error1";
 
-    echo "<pre>". print_r($_FILES) ."</pre>";
+    echo "<pre>adfasdf". print_r($_FILES) ."</pre>";
     echo "Error code: " .$_FILES['myvideo']['error'] ."<br/>";
     return false;
 }
