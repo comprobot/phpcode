@@ -10,7 +10,7 @@ function checkUploadedVideo() {
             // Get extension name
             $fileInfo = pathinfo($_FILES['myvideo']['name']);
             $upload_extension = $fileInfo['extension'];
-            $allowed_extensions = array('mp4', 'jpeg', 'gif', 'png','txt');
+            $allowed_extensions = array('mp4', 'mp3', 'gif', 'png','txt');
 
             // Check if the file already exists
             if (file_exists($target_file)) {
