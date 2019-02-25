@@ -6,7 +6,7 @@ function checkUploadedVideo() {
 
     if(isset($_FILES['myvideo']) AND $_FILES['myvideo']['error'] == 0) {
         // Check size
-        if($_FILES['myvideo']['size'] <= 1000000) {
+        if($_FILES['myvideo']['size'] <= 1000000000000) {
             // Get extension name
             $fileInfo = pathinfo($_FILES['myvideo']['name']);
             $upload_extension = $fileInfo['extension'];
