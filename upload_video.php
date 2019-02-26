@@ -1,4 +1,6 @@
 <?php
+header("Pragma:no-cache");
+header("Cache-control:no-cache"); 
 function checkUploadedVideo() {
     $target_dir = dirname(__FILE__) ."/video/";
     echo $target_dir;
