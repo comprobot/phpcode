@@ -21,26 +21,29 @@ function checkUploadedVideo() {
             if(in_array($upload_extension, $allowed_extensions)) {
                 if(move_uploaded_file($_FILES['myvideo']['tmp_name'], $target_file)) {
 			
-		  echo "e24423";	
-                    return true;
+		  //echo "e24423";	
+                    return "very good";
                 }
-	       echo "dfgdsfg";	    
+	       return "very ....";
 		    
             }
             else
-                echo "error3";
+                return "very ....1";
         }
         else
-            echo "error2";
+            return "very ....2";
     }
     else
-        echo "error1";
+        return "very ....3";
 
     echo "<pre>adfasdf". print_r($_FILES) ."</pre>";
     echo "Error code: " .$_FILES['myvideo']['error'] ."<br/>";
-    return false;
+    return "lose ... ";
 }
 
+checkUploadedVideo();
+
+/*
 if(checkUploadedVideo()) {
     //header("Location: index.php");
 	echo "upload success";
@@ -48,4 +51,7 @@ if(checkUploadedVideo()) {
 else {
     echo "upload error";
 }
+*/
+
+
 ?>
