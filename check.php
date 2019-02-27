@@ -18,9 +18,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo '4';    
-    
-    
-$sql = "SELECT * FROM `adb_users` WHERE = '$username1'";
+        
+$sql = "SELECT * FROM adb_users WHERE = '$username1'";
     
 echo '5';        
     
