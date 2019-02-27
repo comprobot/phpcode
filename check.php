@@ -19,7 +19,8 @@ if ($conn->connect_error) {
 }
 echo '4';    
         
-$sql = "SELECT * FROM adb_users WHERE = '".$username1."'";
+ $sql = "SELECT * FROM adv_users WHERE username='$username'";
+
     
 echo '5';        
     
