@@ -25,11 +25,10 @@ echo $sql;
 echo '5';        
     
 $result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    // output data of each row
-    echo " 1 results";
+if ($result->num_rows > 0) {    
+    echo '1 results';
 } else {
-    echo "0 results";
+    echo '0 results';
 }
     
 echo '7';        
