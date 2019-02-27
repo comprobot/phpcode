@@ -6,23 +6,22 @@ $password = '60503176';
 $dbname = 'ops';
 // Create connection
 if(isset($_GET['username'])){
-echo '1';
-$username1 = mysqli_real_escape_string($db, $_GET['username']);
-echo '2';
+
+
+
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-echo '3';    
+$username1 = mysqli_real_escape_string($conn, $_GET['username']);    
     
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo '4';    
         
  $sql = "SELECT * FROM adv_users WHERE username='".$username1."'";
 echo $sql;
     
-echo '5';        
+echo '\n';        
     
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {    
