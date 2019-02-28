@@ -127,6 +127,7 @@ var cpassword = $("#cpassword").val();
 
 var title = $("[name=title]:checked").val();
 
+alert(title);
 
 console.log(username+" "+first_name+" "+last_name+" "+area_code+" "+phone+" "+email+" "+password+" "+cpassword+title);
 
@@ -146,7 +147,7 @@ last_name: last_name,
 area_code: area_code,
 phone: phone,
 title: title,
-cpassword: cpassword
+cpassword: cpassword,
 password: password
 }, function(data) {
 if (data == 'You have Successfully Registered.....') {
