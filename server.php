@@ -83,13 +83,23 @@ if (isset($_POST['register'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
+	
+	array_push($errors, "before sql \n");
 
   	$query = "INSERT INTO adv_users (username, email, password,first_name, last_name,area_code, phone, title) 
   			  VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title')";
   	mysqli_query($db, $query);
+	
+	array_push($errors, "after sql \n");
+	
+	
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: home.php');
+	
+	array_push($errors, "3 login in");
+	
+	
+  	//header('location: home.php');
   }
   
 }
