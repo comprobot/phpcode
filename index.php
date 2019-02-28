@@ -33,7 +33,7 @@
 	<script>
 	$.validator.setDefaults({
 		submitHandler: function() {
-			alert("submitted!");
+			//alert("submitted!");
 		}
 	});
 	
@@ -127,7 +127,7 @@ var cpassword = $("#cpassword").val();
 
 var title = $("[name=title]:checked").val();
 
-alert(title);
+//alert(title);
 
 console.log(username+" "+first_name+" "+last_name+" "+area_code+" "+phone+" "+email+" "+password+" "+cpassword+title);
 
