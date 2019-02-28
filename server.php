@@ -12,7 +12,7 @@ $password="";
 $cpassword="";
 $title="";
 $servername = 'localhost';
-$username = 'ops';
+$dbusername = 'ops';
 $dbpassword = '60503176';
 $dbname = 'ops';
 
@@ -23,7 +23,7 @@ $errors = array();
 // connect to the database
 //$db = mysqli_connect('localhost', 'root', '', 'registration');
 
-$db = new mysqli($servername, $username, $dbpassword, $dbname);
+$db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
 // REGISTER USER
 if (isset($_POST['register'])) {
@@ -70,11 +70,11 @@ if (isset($_POST['register'])) {
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['username'] == $username) {
+    if ($user['username'] === $username) {
       array_push($errors, "Username already exists");
     }
 
-    if ($user['email'] == $email) {
+    if ($user['email'] === $email) {
       array_push($errors, "email already exists");
     }
   }
