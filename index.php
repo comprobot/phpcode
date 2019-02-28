@@ -125,7 +125,7 @@ var email = $("#email").val();
 var password = $("#password").val();
 var cpassword = $("#cpassword").val();
 
-var title = $("#title:checked").val();
+var title = $("[name=title]:checked").val();
 
 
 console.log(username+" "+first_name+" "+last_name+" "+area_code+" "+phone+" "+email+" "+password+" "+cpassword+title);
@@ -162,7 +162,14 @@ if (data == 'You have Successfully Registered.....') {
 });
 </script>	
 	
-	
+<script>
+<?php  if ($title == 'm') : ?>  
+    $("#titlemr").checked =true;
+<?php  endif ?>
+<?php  if ($title == 's') : ?>  
+    $("#titlems").checked =true;
+<?php  endif ?>
+</script>
 	
 	
 	
@@ -303,15 +310,19 @@ if (data == 'You have Successfully Registered.....') {
                             <label class="label label--block">Title:</label>
                             <div class="p-t-15">
                                 <label class="radio-container m-r-55">Mr.
-									<input type="radio" checked="checked" name="title" id='title' value='m'>
+									<input type="radio" checked="checked" name="title" id='titlemr' value='m'>
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container">Ms.
-                                    <input type="radio" name="title" id='title' value='s'>
+                                    <input type="radio" name="title" id='titlems' value='s'>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
+						
+						
+						
+						
                         <div>
                             <!--<button class="btn btn--radius-2 btn--red" name="register" id="register"  type="submit">Register</button>-->
 							<button class="btn btn--radius-2 btn--red" name="register" id="register" >Register</button>
