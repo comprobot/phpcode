@@ -49,7 +49,7 @@ if (isset($_POST['register'])) {
   if (empty($last_name)) { array_push($errors, "Last name is required"); }
   if (empty($area_code)) { array_push($errors, "Area code is required"); }
   if (empty($phone)) { array_push($errors, "Phone is required"); }
-  if (empty($Title)) { array_push($errors, "Title is required"); }
+  if (empty($title)) { array_push($errors, "Title is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }  
   if (empty($cpassword)) { array_push($errors, "Confirm password is required"); }  
   if ($password != $cpassword) {
@@ -79,19 +79,19 @@ if (isset($_POST['register'])) {
     }
   }
 
-  /*
+  
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = md5($password_1);//encrypt the password before saving in the database
+  	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email, password) 
-  			  VALUES('$username', '$email', '$password')";
+  	$query = "INSERT INTO adv_users (username, email, password,first_name, last_name,area_code, phone, title) 
+  			  VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: index.php');
+  	header('location: home.php');
   }
-  */
+  
 }
 
 // ... 
