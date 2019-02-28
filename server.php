@@ -58,7 +58,7 @@ if (isset($_POST['register'])) {
   
   
   
-  
+  array_push($errors, "I dont know ");
   
   
   
@@ -68,6 +68,9 @@ if (isset($_POST['register'])) {
   $user_check_query = "SELECT * FROM adv_users WHERE username='$username' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
+  
+  
+  array_push($errors, "I dont know sql");
   
   if ($user) { // if user exists
     if ($user['username'] == $username) {
