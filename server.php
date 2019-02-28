@@ -49,7 +49,7 @@ if (isset($_POST['register'])) {
   if (empty($last_name)) { array_push($errors, "Last name is required"); }
   if (empty($area_code)) { array_push($errors, "Area code is required"); }
   if (empty($phone)) { array_push($errors, "Phone is required"); }
-  if (empty($title)) { array_push($errors, "Title is required"); }
+  if (empty($title1)) { array_push($errors, "Title is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }  
   if (empty($cpassword)) { array_push($errors, "Confirm password is required"); }  
   if ($password != $cpassword) {
