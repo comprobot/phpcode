@@ -4,14 +4,17 @@ session_start();
 // initializing variables
 $username = "";
 $email    = "";
+$first_name ="";
+$last_name="";
+$area_code="";
+$phone="";
+$password="";
+$cpassword="";
+$title="";
 $servername = 'localhost';
 $username = 'ops';
 $password = '60503176';
 $dbname = 'ops';
-
-
-
-
 
 $errors = array(); 
 
@@ -27,21 +30,41 @@ if (isset($_POST['register'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
-  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $password_1 = mysqli_real_escape_string($db, $_POST['password']);
+  $password_2 = mysqli_real_escape_string($db, $_POST['cpassword']);  
+  $first_name = mysqli_real_escape_string($db, $_POST['first_name']);
+  $last_name = mysqli_real_escape_string($db, $_POST['last_name']);
+  $area_code = mysqli_real_escape_string($db, $_POST['area_code']);
+  $phone = mysqli_real_escape_string($db, $_POST['phone']);
+  $title = mysqli_real_escape_string($db, $_POST['title']);
+  
+  
+  
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "Username is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if (empty($first_name)) { array_push($errors, "First name is required"); }
+  if (empty($last_name)) { array_push($errors, "Last name is required"); }
+  if (empty($area_code)) { array_push($errors, "Area code is required"); }
+  if (empty($phone)) { array_push($errors, "Phone is required"); }
+  if (empty($Title)) { array_push($errors, "Title is required"); }
+  if (empty($password_1)) { array_push($errors, "Password is required"); }  
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
+  
+  
+  
+  
+  
+  
+  
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM adv_users WHERE username='$username' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
@@ -55,6 +78,7 @@ if (isset($_POST['register'])) {
     }
   }
 
+  /*
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
@@ -66,6 +90,7 @@ if (isset($_POST['register'])) {
   	$_SESSION['success'] = "You are now logged in";
   	header('location: index.php');
   }
+  */
 }
 
 // ... 
