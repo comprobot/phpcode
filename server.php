@@ -70,11 +70,11 @@ if (isset($_POST['register'])) {
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['username'] === $username) {
+    if ($user['username'] == $username) {
       array_push($errors, "Username already exists");
     }
 
-    if ($user['email'] === $email) {
+    if ($user['email'] == $email) {
       array_push($errors, "email already exists");
     }
   }
