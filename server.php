@@ -13,7 +13,7 @@ $cpassword="";
 $title="";
 $servername = 'localhost';
 $username = 'ops';
-$password = '60503176';
+$dbpassword = '60503176';
 $dbname = 'ops';
 
 $errors = array(); 
@@ -23,15 +23,15 @@ $errors = array();
 // connect to the database
 //$db = mysqli_connect('localhost', 'root', '', 'registration');
 
-$db = new mysqli($servername, $username, $password, $dbname);
+$db = new mysqli($servername, $username, $dbpassword, $dbname);
 
 // REGISTER USER
 if (isset($_POST['register'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
-  $password_1 = mysqli_real_escape_string($db, $_POST['password']);
-  $password_2 = mysqli_real_escape_string($db, $_POST['cpassword']);  
+  $password = mysqli_real_escape_string($db, $_POST['password']);
+  $cpassword = mysqli_real_escape_string($db, $_POST['cpassword']);  
   $first_name = mysqli_real_escape_string($db, $_POST['first_name']);
   $last_name = mysqli_real_escape_string($db, $_POST['last_name']);
   $area_code = mysqli_real_escape_string($db, $_POST['area_code']);
@@ -50,8 +50,9 @@ if (isset($_POST['register'])) {
   if (empty($area_code)) { array_push($errors, "Area code is required"); }
   if (empty($phone)) { array_push($errors, "Phone is required"); }
   if (empty($Title)) { array_push($errors, "Title is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }  
-  if ($password_1 != $password_2) {
+  if (empty($password)) { array_push($errors, "Password is required"); }  
+  if (empty($cpassword)) { array_push($errors, "Confirm password is required"); }  
+  if ($password != $cpassword) {
 	array_push($errors, "The two passwords do not match");
   }
   
