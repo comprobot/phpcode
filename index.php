@@ -124,7 +124,8 @@ var phone = $("#phone").val();
 var email = $("#email").val();
 var password = $("#password").val();
 var cpassword = $("#cpassword").val();
-var title = $("#title").val();
+
+var title = $("#title:checked").val();
 
 
 console.log(username+" "+first_name+" "+last_name+" "+area_code+" "+phone+" "+email+" "+password+" "+cpassword+title);
@@ -136,21 +137,22 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 } else if (!(password).match(cpassword)) {
 //alert("Your passwords don't match. Try again?");
 } else {
-
-
-
-
 	
-	
-$.post("register.php", {
-name1: name,
-email1: email,
-password1: password
+$.post("index.php", {
+username: username,
+email: email,
+first_name: first_name,
+last_name: last_name,
+area_code: area_code,
+phone: phone,
+title: title,
+cpassword: cpassword
+password: password
 }, function(data) {
 if (data == 'You have Successfully Registered.....') {
-$("form")[0].reset();
+//$("form")[0].reset();
 }
-alert(data);
+//alert(data);
 });
 
 
@@ -180,6 +182,7 @@ alert(data);
                 </div>
                 <div class="card-body">
                     <form method="POST" action="#" id="signupForm" name="signupForm">
+					    <?php include('errors.php'); ?>
 						<div class="form-row">
                             <div class="name">Username</div>
                             <div class="value">
@@ -205,13 +208,13 @@ alert(data);
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="password" name="password" id='password'><label for="password" class="error"></label>
+                                            <input class="input--style-5" type="password" name="password" id='password' value="<?php echo $password; ?>"><label for="password" class="error"></label>
                                             <label class="label--desc">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="password" name="cpassword" id='cpassword'><label for="cpassword" class="error"></label>
+                                            <input class="input--style-5" type="password" name="cpassword" id='cpassword' value="<?php echo $cpassword; ?>" ><label for="cpassword" class="error"></label>
                                             <label class="label--desc">Confirm password`</label>
                                         </div>
                                     </div>
@@ -227,13 +230,13 @@ alert(data);
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="first_name" id='first_name' required> <label for="first_name" class="error"></label>
+                                            <input class="input--style-5" type="text" name="first_name" id='first_name'  value="<?php echo $first_name; ?>" required> <label for="first_name" class="error"></label>
                                             <label class="label--desc">first name</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="last_name" id='last_name' required> <label for="last_name" class="error"></label>
+                                            <input class="input--style-5" type="text" name="last_name" id='last_name' value="<?php echo $last_name; ?>" required> <label for="last_name" class="error"></label>
                                             <label class="label--desc">last name</label>
                                         </div>
                                     </div>
@@ -264,13 +267,13 @@ alert(data);
                                 <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="area_code" id='area_code'> <label for="area_code" class="error"></label>
+                                            <input class="input--style-5" type="text" name="area_code" id='area_code' value="<?php echo $area_code; ?>" > <label for="area_code" class="error"></label>
                                             <label class="label--desc">Area Code</label>
                                         </div>
                                     </div>
                                     <div class="col-9">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone" id='phone'><label for="phone" class="error"></label>
+                                            <input class="input--style-5" type="text" name="phone" id='phone' value="<?php echo $phone; ?>" ><label for="phone" class="error"></label>
                                             <label class="label--desc">Phone Number</label>
                                         </div>
                                     </div>
@@ -300,11 +303,11 @@ alert(data);
                             <label class="label label--block">Title:</label>
                             <div class="p-t-15">
                                 <label class="radio-container m-r-55">Mr.
-                                    <input type="radio" checked="checked" name="title" id='title'>
+									<input type="radio" checked="checked" name="title" id='title' value='m'>
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container">Ms.
-                                    <input type="radio" name="title" id='title'>
+                                    <input type="radio" name="title" id='title' value='s'>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
