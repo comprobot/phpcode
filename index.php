@@ -50,8 +50,8 @@ $(document).ready(function() {
 	
 	
 	
-	
-	$("#register").click(function() {
+	$('#signupForm').submit(function() {
+	//$("#register").click(function() {
 	$("#signupForm").validate({
 	       rules: {				
 				last_name: "required",
@@ -139,10 +139,12 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 } else if ((password.length) < 8) {
 //alert("Password should at least 8 character in length...!!!!!!");
 } else if (!(password).match(cpassword)) {
+	return false;
 //alert("Your passwords don't match. Try again?");
 } else {
-	alert(100);
+	
 	//$("#signupForm").submit();
+	/*
 	$('#signupForm').submit(function() {
   		alert('Handler for .submit() called.');
   		//return false;
@@ -151,7 +153,7 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 	
 	alert(101);
 
-	
+	*/
 	
 	/*
 $.post("index.php, {
