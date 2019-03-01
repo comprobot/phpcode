@@ -141,8 +141,15 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 } else if (!(password).match(cpassword)) {
 //alert("Your passwords don't match. Try again?");
 } else {
+	alert(100);
+	//$("#signupForm").submit();
+	$('#signupForm').submit(function() {
+  		alert('Handler for .submit() called.');
+  		//return false;
+	});
 	
-	$("#signupForm").submit();
+	
+	alert(101);
 
 	
 	
