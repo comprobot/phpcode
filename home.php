@@ -78,6 +78,10 @@
 			  <strong><input type="file" name="myvideo"/></strong></div> 				  
             </div>			    			
 			
+			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Upload Video</button>
+			
+			
+			
 			<div class="form-row">
               <div class="row row-space"><strong>Qr code message:</strong> </div>
                 <div class="value">
@@ -87,8 +91,9 @@
                </div>
             </div>
 			
-			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Upload Video</button>
 			
+			<br/>
+			<br/>
 			
 			
 			
