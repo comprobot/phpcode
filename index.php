@@ -139,7 +139,7 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 //alert("Your passwords don't match. Try again?");
 } else {
 	
-$.post("index.php", {
+$.post("out.php", {
 username: username,
 email: email,
 first_name: first_name,
