@@ -68,17 +68,16 @@
 			
 			
 			<div class="form-row">
-			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>
-				 <div class="value">
-                  <div class="input-group">
-				    <div class="name"><input type="file" name="myvideo"/><br/><br/><input type="submit" value="Upload video"/></div> 				  
+			     <div class="row row-space"><strong>Upload your promote video to the server </strong><br/><br/></div>				 
+				 <div class="row row-space">                  
+				    <div class="name"><input type="file" name="myvideo"/><br/><br/><input type="submit" value="Upload video"/><br/><br/></div> 				  
 				  </div>
                </div>
                 
  			</div>			
 			
 			<div class="form-row">
-              <div class="row row-space">Qr code message: </div>
+              <div class="row row-space"><strong>Qr code message:</strong> </div>
                 <div class="value">
                   <div class="input-group">
                      <input class="input--style-5" name="qrcode_str" id='qrcode_str' value="<?php echo $qrcode_str; ?>" > <label for="qrcode_str" class="error"></label>
