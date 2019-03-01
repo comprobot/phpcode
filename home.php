@@ -140,7 +140,7 @@ if (qrcode_str == '') {
 			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Submit Video</button>
 			
 			<br/>
-			
+			<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
 			<br/>
 			<br/>
 			
