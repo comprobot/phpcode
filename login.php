@@ -106,6 +106,7 @@ if (username == '' ||  password == '') {
                 <div class="card-heading">
                     <h2 class="title">Adverstiser Login page</h2>
                 </div>				
+				<div class="card-body">
 				     <form method="POST" action="login.php" id="loginform" name="loginForm">
 					    <?php include('errors.php'); ?>
 						<div class="form-row">
@@ -132,6 +133,7 @@ if (username == '' ||  password == '') {
 							<button class="btn btn--radius-2 btn--red" name="login_user" id="login_user" type="submit">Login</button>
                         </div>						
 				    </form>
+				</div>	
             </div>
         </div>
     </div>
