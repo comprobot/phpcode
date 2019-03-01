@@ -62,19 +62,23 @@
 			     <div class="name">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></div>
  			</div>			
 			
+			
+			
 			<form method="POST" action="#" id="uploadVideoForm" name="uploadVideoForm">
 			
 			
+			<div class="form-row">
+			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>
+				 <div class="value">
+                  <div class="input-group">
+				    <div class="name"><input type="file" name="myvideo"/><br/><br/><input type="submit" value="Upload video"/></div> 				  
+				  </div>
+               </div>
+                
+ 			</div>			
 			
 			<div class="form-row">
-			     <div class="name"><strong>Upload your promote video to the server </strong></div>
- 			</div>			
-			<div class="form-row">
-			     <div class="name"><input type="file" name="myvideo"/><br/><br/><input type="submit" value="Upload video"/></div>
- 			</div>			
-			
-			<div class="form-row">
-              <div class="name">Qr code message: </div>
+              <div class="row row-space">Qr code message: </div>
                 <div class="value">
                   <div class="input-group">
                      <input class="input--style-5" name="qrcode_str" id='qrcode_str' value="<?php echo $qrcode_str; ?>" > <label for="qrcode_str" class="error"></label>
