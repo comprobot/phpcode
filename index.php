@@ -44,12 +44,15 @@
 <script>
 
 $(document).ready(function() {
-	$("#register").click(function() {
 	
 	
 	
+	
+	
+	$("#signupForm").submit(function(e){
+	
+	//$("#register").click(function() {
 	$("#signupForm").validate({
-	
 	       rules: {				
 				last_name: "required",
 				first_name: "required",
@@ -139,6 +142,7 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 //alert("Your passwords don't match. Try again?");
 } else {
 	
+	/*
 $.post("index.php, {
 username: username,
 email: email,
@@ -156,7 +160,7 @@ $("form")[0].reset();
 alert(data);
 });
 
-
+*/
 
 }
 });
