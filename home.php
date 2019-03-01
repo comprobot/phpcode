@@ -62,7 +62,7 @@
 			     <div class="name">Welcome <strong><?php echo $_SESSION['username']; ?></strong></div>
  			</div>			
 			<div class="form-row">
-				<div class="name"> <a href="index.php?logout='1'" style="color: red;">logout</a></div>
+				<div class="name"> <a href="home.php?logout='1'" style="color: red;">logout</a></div>
 			</div>			
 			<?php endif ?>
                         		
