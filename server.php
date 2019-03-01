@@ -94,6 +94,72 @@ if (isset($_POST['register'])) {
   
 }
 
+
+if (isset($_POST['upload_video'])) {
+	header("Pragma:no-cache");
+    header("Cache-control:no-cache"); 
+	
+	$qrcode_str = mysqli_real_escape_string($db, $_POST['username']);
+	
+	if (empty($username)) { array_push($errors, "Username is required"); }
+	
+	
+	 $target_dir = dirname(__FILE__) ."/video/";
+    echo $target_dir;
+    $target_file = $target_dir . basename($_FILES["myvideo"]["name"]);
+	$filename = $_FILES["myvideo"]["name"]);	
+	
+	$qrcode_str = mysqli_real_escape_string($db, $_POST['qrcode_str']);
+	
+	if (empty($qrcode_str)) { array_push($errors, "qrcode_str is required"); }
+	
+	if(isset($_POST['qrcode_str']) AND !empty($qrcode_str) AND !empty($username)){
+	
+		if(isset($_FILES['myvideo']) AND $_FILES['myvideo']['error'] == 0) {
+        // Check size
+			if($_FILES['myvideo']['size'] <= 1000000000000) {
+            // Get extension name
+				$fileInfo = pathinfo($_FILES['myvideo']['name']);
+				$upload_extension = $fileInfo['extension'];
+				$allowed_extensions = array('mp4', 'mp3', 'gif', 'png','txt');
+				
+				
+				$query = "INSERT INTO adv_videos (username, filename , qrcode )  VALUES('$username', '$filename', '$qrcode_str')";
+				mysqli_query($db, $query);
+				
+				
+				
+            // Check if the file has a correct, expected extension
+				if(in_array($upload_extension, $allowed_extensions)) {
+					if(move_uploaded_file($_FILES['myvideo']['tmp_name'], $target_file)) {
+									
+									
+						header('location: uploadComplete.php');
+					}
+				}
+				else
+					array_push($errors, "The file format is not correct");
+			}
+			else
+				array_push($errors, "Video is over size");
+		}
+		else
+			array_push($errors, "The video dont have size");
+    
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
 // ... 
 
 // LOGIN USER
