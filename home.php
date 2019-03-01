@@ -71,13 +71,12 @@
 			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
 				 
  			</div>			
-			<div class="form-row">
+			
+			<div class="form-row">			
 			
 			<div class="row row-space">                  
-			  <div class="name"><input type="file" name="myvideo"/><input type="submit" value="Upload video"/></div> 				  
-            </div>			    
-			
-			</div>
+			  <strong><input type="file" name="myvideo"/></strong></div> 				  
+            </div>			    			
 			
 			<div class="form-row">
               <div class="row row-space"><strong>Qr code message:</strong> </div>
@@ -87,6 +86,13 @@
                   </div>
                </div>
             </div>
+			
+			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Upload Video</button>
+			
+			
+			
+			
+			
 			
 			
 			</form>
