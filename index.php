@@ -46,11 +46,9 @@
 $(document).ready(function() {
 	
 	
-	
-	
-	
-	
 	$('#signupForm').submit(function() {
+		
+		
 	//$("#register").click(function() {
 	$("#signupForm").validate({
 	       rules: {				
@@ -136,7 +134,9 @@ console.log(username+" "+first_name+" "+last_name+" "+area_code+" "+phone+" "+em
 
 if (username == '' || first_name == '' || password == '' || cpassword == '' ||  last_name == ''  ||  area_code == '' ||  phone == '' ||  email == '' ) {
 //alert("Please fill all fields...!!!!!!");
+	return false;
 } else if ((password.length) < 8) {
+	return false;
 //alert("Password should at least 8 character in length...!!!!!!");
 } else if (!(password).match(cpassword)) {
 	return false;
