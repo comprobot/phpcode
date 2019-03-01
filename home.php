@@ -72,7 +72,6 @@
 				 <div class="row row-space">                  
 				    <div class="name"><input type="file" name="myvideo"/><br/><br/><input type="submit" value="Upload video"/><br/><br/></div> 				  
 				  </div>
-               </div>
                 
  			</div>			
 			
