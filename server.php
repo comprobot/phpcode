@@ -89,7 +89,7 @@ if (isset($_POST['register'])) {
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: check.php?username=ronald');
+  	header('location: home.php');
   }
   
 }
