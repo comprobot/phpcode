@@ -56,13 +56,23 @@
                 <div class="card-heading">
                     <h2 class="title">Adverstiser Home page</h2>
                 </div>
-                <div class="card-body">                    
-						<div class="form-row">
-                        <?php  if (isset($_SESSION['username'])) : ?>
-								<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-								<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-							<?php endif ?>
-                        </div>											
+                <div class="card-body">                    		     
+                       <?php  if (isset($_SESSION['username'])) : ?>
+			<div class="form-row">
+			     <div class="name">Welcome <strong><?php echo $_SESSION['username']; ?></strong></div>
+ 			</div>			
+			<div class="form-row">
+				<div class="name"> <a href="index.php?logout='1'" style="color: red;">logout</a></div>
+			</div>			
+			<?php endif ?>
+                        		
+			
+			
+			
+			
+			
+			
+			
                 </div>
             </div>
         </div>
