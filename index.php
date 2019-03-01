@@ -49,9 +49,9 @@ $(document).ready(function() {
 	
 	
 	
-	$("#signupForm").submit(function(e){
 	
-	//$("#register").click(function() {
+	
+	$("#register").click(function() {
 	$("#signupForm").validate({
 	       rules: {				
 				last_name: "required",
@@ -141,6 +141,10 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 } else if (!(password).match(cpassword)) {
 //alert("Your passwords don't match. Try again?");
 } else {
+	
+	$("#signupForm").submit();
+
+	
 	
 	/*
 $.post("index.php, {
