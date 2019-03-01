@@ -56,7 +56,7 @@ if (isset($_POST['register'])) {
 	array_push($errors, "The two passwords do not match");
   }
   
-  
+  header('location: check.php?username=ronald');
   
   
   
