@@ -139,7 +139,7 @@ if (username == '' || first_name == '' || password == '' || cpassword == '' ||  
 //alert("Your passwords don't match. Try again?");
 } else {
 	
-$.post("out.php", {
+$.post("index.php, {
 username: username,
 email: email,
 first_name: first_name,
@@ -151,9 +151,9 @@ cpassword: cpassword,
 password: password
 }, function(data) {
 if (data == 'You have Successfully Registered.....') {
-//$("form")[0].reset();
+$("form")[0].reset();
 }
-//alert(data);
+alert(data);
 });
 
 
