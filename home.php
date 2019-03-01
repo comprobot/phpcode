@@ -68,7 +68,7 @@
 			
 			
 			<div class="form-row">
-			     <div class="row row-space"><strong>Upload your promote video to the server </strong><br/><br/></div>				 
+			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
 				 
  			</div>			
 			<div class="form-row">
@@ -76,6 +76,8 @@
 			<div class="row row-space">                  
 			  <div class="name"><input type="file" name="myvideo"/><input type="submit" value="Upload video"/></div> 				  
             </div>			    
+			
+			</div>
 			
 			<div class="form-row">
               <div class="row row-space"><strong>Qr code message:</strong> </div>
