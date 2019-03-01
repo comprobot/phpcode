@@ -57,22 +57,40 @@
                     <h2 class="title">Adverstiser Home page</h2>
                 </div>
                 <div class="card-body">         
-                        <?php  if (isset($_SESSION['username'])) : ?>
+            <?php  if (isset($_SESSION['username'])) : ?>
 			<div class="form-row">
 			     <div class="name">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></div>
  			</div>			
+			
+			<form method="POST" action="#" id="uploadVideoForm" name="uploadVideoForm">
+			
+			
+			
+			<div class="form-row">
+			     <div class="name"><strong>Upload your promote video to the server </strong></div>
+ 			</div>			
+			<div class="form-row">
+			     <div class="name"><input type="file" name="myvideo"/><br/><br/><input type="submit" value="Upload video"/></div>
+ 			</div>			
+			
+			<div class="form-row">
+              <div class="name">Qr code message: </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="qrcode_str" id='qrcode_str' value="<?php echo $qrcode_str; ?>" > <label for="qrcode_str" class="error"></label>
+                  </div>
+               </div>
+            </div>
+			
+			
+			</form>
 			<div class="form-row">
 				<div class="name"> <a href="home.php?logout='1'" style="color: red;">logout</a></div>
 			</div>			
+			
+			
 			<?php endif ?>
-                        		
-			
-			
-			
-			
-			
-			
-			
+            
                 </div>
             </div>
         </div>
