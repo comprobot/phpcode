@@ -41,10 +41,60 @@
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/additional-methods.js"></script>
 	<script src="js/messages_zh_TW.js"></script>
+	<script>
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
 	
-
+	
+	</script>
 	
 	<!--<script src="js/registration.js"></script>	-->
+<script>
+
+$(document).ready(function() {
+	$('#uploadVideoForm').submit(function() {
+	
+	  event.preventDefault();
+	
+	$("#uploadVideoForm").validate({
+	 rules: {				
+				qrcode_str: {
+					required: true,
+					minlength: 2
+				}
+			},
+			
+			
+			messages: {
+				qrcode_str: {
+					required: "Please enter a String for qr code",
+					minlength: "Your string for qr code must consist of at least 2 characters"
+				},
+			}
+		});
+	
+	
+	
+	
+	
+
+
+var qrcode_str = $("#qrcode_str").val();
+
+
+
+if (qrcode_str == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+});
+});
+</script>	
+
 
 	
 </head>
@@ -64,8 +114,8 @@
 			
 			
 			
-			<form method="POST" action="#" id="uploadVideoForm" name="uploadVideoForm">
-			
+			<form method="POST" action="home.php" id="uploadVideoForm" name="uploadVideoForm">
+			<?php include('errors.php'); ?>
 			
 			<div class="form-row">
 			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
