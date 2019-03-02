@@ -57,7 +57,7 @@
 $(document).ready(function() {
 	$('#uploadVideoForm').submit(function() {
 	
-	  event.preventDefault();
+	  //event.preventDefault();
 	
 	$("#uploadVideoForm").validate({
 	 rules: {				
