@@ -59,10 +59,13 @@
                 <div class="card-body">         
             <?php  if (isset($_SESSION['username'])) : ?>
 			<div class="form-row">
-			     <div class="name">Your movie is uploaded, thank you.</strong></div>
+			     <div class="row row-space">Your movie is uploaded, thank you.</strong></div>
  			</div>						
 			<div class="form-row">
-				<div class="name"> <a href="home.php?logout='1'" style="color: red;">logout</a></div>
+				<div class="row row-space"> <a href="home.php?logout='1'" style="color: red;">logout</a></div>
+			</div>			
+		    	<div class="form-row">
+				<div class="row row-space"> <a href="home.php" style="color: red;">Back to home </a></div>
 			</div>			
 			<?php endif ?>
             
