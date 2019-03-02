@@ -99,7 +99,8 @@ if (isset($_POST['upload_video'])) {
 	header("Pragma:no-cache");
     header("Cache-control:no-cache"); 
 	
-	$qrcode_str = mysqli_real_escape_string($db, $_POST['username']);
+	$qrcode_str = mysqli_real_escape_string($db, $_POST['qrcode_str']);
+	$username = mysqli_real_escape_string($db, $_POST['username']);
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
 	
@@ -107,7 +108,7 @@ if (isset($_POST['upload_video'])) {
 	 $target_dir = dirname(__FILE__) ."/video/";
     echo $target_dir;
     $target_file = $target_dir . basename($_FILES["myvideo"]["name"]);
-	$filename = $_FILES["myvideo"]["name"]);	
+	$filename = $_FILES["myvideo"]["name"];	
 	
 	$qrcode_str = mysqli_real_escape_string($db, $_POST['qrcode_str']);
 	
