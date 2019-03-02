@@ -116,7 +116,7 @@ if (qrcode_str == '') {
 			
 			
 			
-			<form method="POST" action="home.php" id="uploadVideoForm" name="uploadVideoForm">
+			<form method="POST" action="home.php" id="uploadVideoForm" name="uploadVideoForm" enctype="multipart/form-data">
 			<?php include('errors.php'); ?>
 			
 			<div class="form-row">
