@@ -11,6 +11,8 @@
   	header("location: login.php");
   }
 ?>
+<?php include('server.php') ?>
+
 <html>
 <!DOCTYPE html>
 <head>
