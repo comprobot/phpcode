@@ -131,7 +131,14 @@ if (username == '' ||  password == '') {
                         <div>
                             <!--<button class="btn btn--radius-2 btn--red" name="register" id="register"  type="submit">Register</button>-->
 							<button class="btn btn--radius-2 btn--red" name="login_user" id="login_user" type="submit">Login</button>
+				<br/>
+				<br/>
                         </div>						
+					     
+			<div class="form-row">
+				<div class="name"> <a href="index.php" style="color: red;">Register</a></div>
+			</div>							     
+					     
 				    </form>
 				</div>	
             </div>
