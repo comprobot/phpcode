@@ -125,13 +125,14 @@ if (isset($_POST['upload_video'])) {
 				$allowed_extensions = array('mp4', 'mp3', 'gif', 'png','txt');
 				
 				
-				$query = "INSERT INTO adv_videos (username, filename , qrcode )  VALUES('$username', '$filename', '$qrcode_str')";
+				$query = "INSERT INTO advs_video (username, filename , qrcode )  VALUES('$username', '$filename', '$qrcode_str')";
 				//mysqli_query($db, $query);
 				
 				if ($db->query($query) === TRUE) {
- 				         echo "New record created successfully";
+ 				        
 				} else {
-    					echo "Error: " . $sql . "<br>" . $conn->error;
+				        array_push($errors, "Error: " . $sql . "<br>" . $conn->error);
+    					
 				}
 				
             // Check if the file has a correct, expected extension
