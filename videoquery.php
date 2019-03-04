@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/plain');
 $servername = 'localhost';
 $dbusername = 'ops';
 $dbpassword = '60503176';
