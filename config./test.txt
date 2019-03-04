@@ -1,0 +1,23 @@
+
+vlc --fullscreen out.mp4
+
+
+ convert -size 1028x800 xc:white canvas.jpg
+
+administrator@51ASICIPFS:~$ 
+
+
+
+convert -background -pointsize 72 -size 600x200 -gravity North label:'Scan below QR code' label.jpg
+
+
+qrencode -o ops.png -s 6 -l H 'http://www.ops-tec.com/'
+
+
+convert canvas.jpg label.jpg ops.png -append output.png
+
+ffmpeg -loop 1 -i output.png -c:v libx264 -t 30 -pix_fmt yuv420p out.mp4
+
+
+
+convert canvas.jpg label.jpg ops.png -append output.png
