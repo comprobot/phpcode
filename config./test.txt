@@ -1,3 +1,45 @@
+//new
+
+
+
+//download the list
+
+wget http://157.230.145.40/ops/videoquery.php --no-cache -O record.csv
+
+
+
+//download the files form file
+
+FILENAME=/opt/tomcat/ops/record.csv
+cat $FILENAME | while read LINE
+do
+#echo $LINE
+IFS=',' read -ra RECORDS <<< "$LINE"
+wget --no-cache ${RECORDS[0]} -O  ./video/${RECORDS[1]}
+echo ${RECORDS[2]}
+convert -size 1028x800 xc:white canvas.jpg
+convert -background -pointsize 72 -size 600x200 -gravity North label:'Scan below QR code' label.jpg
+qrencode -o ops.png -s 6 -l H ${RECORDS[2]}
+convert canvas.jpg label.jpg ops.png -append output.png
+export qrfilename=qr-$(date +%Y-%m-%d-%H-%M-%S).mp4
+ffmpeg -loop 1 -i output.png -c:v libx264 -t 30 -pix_fmt yuv420p -y $qrfilename
+export pathname=/opt/tomcat/ops/video 
+echo 'file ' $pathname${RECORDS[1]} $'\n' >> files.txt
+echo 'file ' $pathname$qrfilename $'\n' >> files.txt
+done
+
+// group together
+
+ffmpeg -f concat -i files.txt -c copy final.mp4
+
+//play loop
+
+vlc --loop final.mp4
+
+
+
+
+//old
 
 vlc --fullscreen out.mp4
 
