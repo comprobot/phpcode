@@ -11,7 +11,7 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 $db = "SELECT filename, qrcode FROM advs_video";
-$result = $conn->query($sql);
+$result = $db->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -20,5 +20,5 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-$conn->close();
+$db->close();
 ?>
