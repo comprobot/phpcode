@@ -24,11 +24,12 @@ window.onload = function() {
  
 window.tronWeb.setDefaultBlock('latest');
  
-
+var balance1 = tronWeb.trx.getBalance(tronWeb.defaultAddress.base58);
  
  
 var tronWeb = window.tronWeb; 
  
+alert(balance1); 
  
 console.log(tronWeb.defaultAddress.base58);
 console.log(tronWeb.defaultPrivateKey);
