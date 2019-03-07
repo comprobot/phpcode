@@ -22,14 +22,15 @@ window.onload = function() {
   }
 };
  
+window.tronWeb.setDefaultBlock('latest');
+ 
+ 
  
  
 var tronWeb = window.tronWeb; 
  
  
-alert(tronWeb.address);
-console.log(this.state.address);
- console.log(this.state.balance);
+alert(tronWeb.defaultAddress.base58);
  
  
 </script>
