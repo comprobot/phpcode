@@ -31,12 +31,18 @@ var tronWeb = window.tronWeb;
  
 //alert(balance1); 
  
- tronWeb.trx.sendTransaction("TE78VvizmVVzUrbVTHUPUnKmGmqv9Yd7nT", 1000);
+ //tronWeb.trx.sendTransaction("TE78VvizmVVzUrbVTHUPUnKmGmqv9Yd7nT", 1000);
  
  
 console.log(tronWeb.defaultAddress.base58);
 console.log(tronWeb.defaultPrivateKey);
 console.log(balance1);
+console.log(tronWeb.trx.getAccount(tronWeb.defaultAddress.base58));
+console.log(tronWeb.trx.getBandwidth(tronWeb.defaultAddress.base58));
+console.log(tronWeb.trx.getAccountResources(tronWeb.defaultAddress.base58)); 
+ 
+ 
+ 
  
 console.log(tronWeb);
  
