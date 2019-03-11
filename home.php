@@ -128,7 +128,8 @@ if (qrcode_str == '') {
 			<div class="form-row">
 			
 			<?php 
-			$query = "SELECT approved FROM  advs_video WHERE username = '$_SESSION['username']' and approved = 'T'";
+			$videouser = $_SESSION['username'];
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
 			$resultsofyou = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
@@ -140,7 +141,8 @@ if (qrcode_str == '') {
 			?>
 			
 			<?php 
-			$query = "SELECT approved FROM  advs_video WHERE username = '$_SESSION['username']' and approved = 'F'";
+			$videouser = $_SESSION['username'];
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'F'";
 			$resultsofyou = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
