@@ -69,6 +69,8 @@ $(document).ready(function() {
 					equalTo: "#password"
 				},
 				
+				industry: "required",
+				
 				area_code: "required",
 				
 				phone: "required",
@@ -102,8 +104,10 @@ $(document).ready(function() {
 					equalTo: "Please enter the same password as left"
 				},
 				area_code: "Please enter area code",
-				
+								
 				phone: "Please your phone number",
+				
+				industry: "Please your industry",
 				
 				email: "Please enter a valid email address"
 				
@@ -125,14 +129,19 @@ var phone = $("#phone").val();
 var email = $("#email").val();
 var password = $("#password").val();
 var cpassword = $("#cpassword").val();
+var industry = $("#industry").val();
 
 var title = $("[name=title]:checked").val();
+var package1 = $("[name=package]:checked").val();
+
+
+
 
 //alert(title);
 
 console.log(username+" "+first_name+" "+last_name+" "+area_code+" "+phone+" "+email+" "+password+" "+cpassword+title);
 
-if (username == '' || first_name == '' || password == '' || cpassword == '' ||  last_name == ''  ||  area_code == '' ||  phone == '' ||  email == '' ) {
+if (username == '' || first_name == '' || password == '' || cpassword == '' ||  last_name == ''  ||  area_code == '' ||  phone == '' ||  email == '' ||  industry == '' ) {
 //alert("Please fill all fields...!!!!!!");
 	return false;
 } else if ((password.length) < 8) {
@@ -187,6 +196,23 @@ alert(data);
 <?php  if ($title == 's') : ?>  
     $("#titlems").checked =true;
 <?php  endif ?>
+
+
+<?php  if ($package1 == 'a') : ?>  
+    $("#packagea").checked =true;
+<?php  endif ?>
+<?php  if ($package1 == 'b') : ?>  
+    $("#packageb").checked =true;
+<?php  endif ?>
+<?php  if ($package1 == 'c') : ?>  
+    $("#packagec").checked =true;
+<?php  endif ?>
+
+
+
+
+
+
 </script>
 	
 	
@@ -305,6 +331,15 @@ alert(data);
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="name">Industry</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="industry" name="industry" id='industry' value="<?php echo $industry; ?>" > <label for="industry" class="error"></label>
+                                </div>
+                            </div>
+                        </div>						
 						
 						<!--
                         <div class="form-row">
@@ -324,6 +359,29 @@ alert(data);
                             </div>
                         </div>
 						-->
+                        <div class="form-row p-t-20">
+                            <label class="label label--block">Package:</label>
+                            <div class="p-t-15">
+                                <label class="radio-container m-r-55">A:morning period
+									<input type="radio" checked="checked" name="package" id='packagea' value='a'>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container">B:afternoon period
+                                    <input type="radio" name="package" id='packageb' value='b'>
+                                    <span class="checkmark"></span>
+                                </label>
+								
+								<label class="radio-container">C:night period
+                                    <input type="radio" name="package" id='packagec' value='c'>
+                                    <span class="checkmark"></span>
+                                </label>
+								
+								
+                            </div>
+                        </div>
+
+
+						
                         <div class="form-row p-t-20">
                             <label class="label label--block">Title:</label>
                             <div class="p-t-15">
