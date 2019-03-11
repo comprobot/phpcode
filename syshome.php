@@ -81,7 +81,7 @@
  			</div>			
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  advs_video"); ?>
-			<table>
+			<table border='1'>
 			<thead>
 				<tr>
 					<th>Username</th>
