@@ -128,18 +128,32 @@ if (isset($_POST['upload_video'])) {
             // Get extension name
 				$fileInfo = pathinfo($_FILES['myvideo']['name']);
 				$upload_extension = $fileInfo['extension'];
-				$allowed_extensions = array('mp4', 'mp3', 'gif', 'png','txt');
+				$allowed_extensions = array('mp4','avi');
 				
-				
-				$query = "INSERT INTO advs_video (username, filename , qrcode )  VALUES('$username', '$filename', '$qrcode_str')";
-				//mysqli_query($db, $query);
-				
-				if ($db->query($query) === TRUE) {
+				$query2 = "SELECT * FROM advs_video WHERE username='$username'";
+				$results = mysqli_query($db, $query2);
+				if (mysqli_num_rows($results) == 1) {
+					$query = "UPDATE advs_video SET filename= '$filename' , qrcode ='$qrcode_str' WHERE username='$username'";
+					if ($db->query($query) === TRUE) {
  				        
-				} else {
-				        array_push($errors, "Error: " . $sql . "<br>" . $conn->error);
-    					
+					} else {
+				        array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+					}
+					
+				}else {
+					$query = "INSERT INTO advs_video (username, filename , qrcode )  VALUES('$username', '$filename', '$qrcode_str')";
+					if ($db->query($query) === TRUE) {
+ 				        
+					} else {
+				        array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+					}
+					
 				}
+				
+				
+				
+				
+				
 				
             // Check if the file has a correct, expected extension
 				if(in_array($upload_extension, $allowed_extensions)) {
@@ -150,7 +164,7 @@ if (isset($_POST['upload_video'])) {
 					}
 				}
 				else
-					array_push($errors, "The file format is not correct");
+					array_push($errors, "The file format is not correct, only allow mp4 and avi");
 			}
 			else
 				array_push($errors, "Video is over size");
