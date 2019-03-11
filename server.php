@@ -208,9 +208,9 @@ if (isset($_GET['approvel'])) {
   	if (mysqli_num_rows($results) == 1) {
 		
 		$query2 = "UPDATE advs_video SET approved = '$approvel' WHERE id='$videoid'";
-		if ($db->query($query2 === TRUE) {
-			header('location: syshome.php');
- 				        
+		if ($db->query($query2) === TRUE) 
+		{
+	  	  header('location: syshome.php');
 		} else {
 		  header('location: adminlogin.php');
 		}
