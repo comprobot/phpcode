@@ -78,8 +78,35 @@
 			
 			<div class="form-row">
 			     <div class="row row-space"><strong>View and approve the promote video </strong></div>				 
-				 
  			</div>			
+			
+			<?php $results = mysqli_query($db, "SELECT * FROM  advs_video"); ?>
+			<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Videolink</th>
+					<th>QRcode</th>
+					<th colspan="2">Action</th>
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['usrename']; ?></td>
+					<td><?php echo $row['filename']; ?></td>
+					<td><?php echo $row['qrcode']; ?></td>
+					
+				<td>
+					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Edit</a>
+				</td>
+				<td>
+					<a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
+				</td>
+			</tr>
+			<?php } ?>
+			</table>
+			
 			
 			
 			<!--
