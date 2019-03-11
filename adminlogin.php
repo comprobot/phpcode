@@ -134,10 +134,11 @@ if (username == '' ||  password == '') {
 				<br/>
 				<br/>
                         </div>						
-					     
+			<!--		     
 			<div class="form-row">
 				<div class="name"> <a href="index.php" style="color: red;">Register</a></div>
 			</div>							     
+-->
 					     
 				    </form>
 				</div>	
