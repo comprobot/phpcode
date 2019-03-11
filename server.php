@@ -184,6 +184,57 @@ if (isset($_POST['upload_video'])) {
 }
 
 
+if (isset($_GET['approvel'])) {
+  $username = mysqli_real_escape_string($db, $_POST['adminuser']);
+  $videoid = mysqli_real_escape_string($db, $_POST['videoid']);
+  $approvel = mysqli_real_escape_string($db, $_POST['approvel']);
+
+  if (empty($username)) {
+  	header('location: adminlogin.php');
+  }
+  
+  if (empty($videoid)) {
+  	header('location: adminlogin.php');
+  }
+  
+  if (empty($approvel)) {
+  	header('location: adminlogin.php');
+  }
+  
+  
+  if (count($errors) == 0) {  	
+  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE advs_video SET approved = '$approvel' WHERE id='$videoid'";
+		if ($db->query($query2 === TRUE) {
+			header('location: syshome.php');
+ 				        
+		} else {
+		  header('location: adminlogin.php');
+		}
+		
+		
+		
+		
+		
+  	  
+  	}else {
+  		header('location: adminlogin.php');
+  	}
+  }
+}
+
+
+
+
+
+
+
+
+
+
 // ... 
 
 // SYSTEM LOGIN USER
