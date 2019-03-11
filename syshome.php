@@ -81,7 +81,7 @@
  			</div>			
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  advs_video"); ?>
-			<table border='1'>
+			<table border="1">
 			<thead>
 				<tr>
 					<th>Username</th>
@@ -94,11 +94,10 @@
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
 					<td><?php echo $row['username']; ?></td>
-					<td><?php echo $row['filename']; ?></td>
-					<td><?php echo $row['qrcode']; ?></td>
-					
+					<td><a href="http://157.230.145.40/ops/video/<?php echo $row['filename'];?>"<?php echo $row['filename'];?></a></td>
+					<td><?php echo $row['qrcode']; ?></td>					
 				<td>
-					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Edit</a>
+					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Click to approve</a>
 				</td>
 				<td>
 					<a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
