@@ -94,7 +94,7 @@
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
 					<td><?php echo $row['username']; ?></td>
-					<td><a href="http://157.230.145.40/ops/video/<?php echo $row['filename'];?>"<?php echo $row['filename'];?></a></td>
+					<td><a href="http://157.230.145.40/ops/video/<?php echo $row['filename'];?>"><?php echo $row['filename'];?></a></td>
 					<td><?php echo $row['qrcode']; ?></td>					
 				<td>
 					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Click to approve</a>
