@@ -93,7 +93,7 @@
 	
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
-					<td><?php echo $row['usrename']; ?></td>
+					<td><?php echo $row['username']; ?></td>
 					<td><?php echo $row['filename']; ?></td>
 					<td><?php echo $row['qrcode']; ?></td>
 					
