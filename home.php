@@ -124,6 +124,39 @@ if (qrcode_str == '') {
 				 
  			</div>			
 			
+			
+			<div class="form-row">
+			
+			<?php 
+			$query = "SELECT approved FROM  advs_video WHERE username = '$_SESSION['username']' and approved = 'T'";
+			$resultsofyou = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($resultsofyou) == 1) {
+			?>
+			
+				<div class="row row-space"><strong>Your video is approved </strong></div>				 
+				
+			<?php
+			}
+			?>
+			
+			<?php 
+			$query = "SELECT approved FROM  advs_video WHERE username = '$_SESSION['username']' and approved = 'F'";
+			$resultsofyou = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($resultsofyou) == 1) {
+			?>
+			
+				<div class="row row-space"><strong>Your video is rejected </strong></div>				 
+				
+			<?php
+			}
+			?>
+			
+			
+			</div>			
+			
+			
+			
+			
 			<div class="form-row">			
 			
 			<div class="row row-space">                  
@@ -145,6 +178,9 @@ if (qrcode_str == '') {
 			<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
 			<br/>
 			<br/>
+			
+			
+			
 			
 			
 			
