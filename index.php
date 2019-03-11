@@ -198,13 +198,13 @@ alert(data);
 <?php  endif ?>
 
 
-<?php  if ($package1 == 'a') : ?>  
+<?php  if ($package == 'a') : ?>  
     $("#packagea").checked =true;
 <?php  endif ?>
-<?php  if ($package1 == 'b') : ?>  
+<?php  if ($package == 'b') : ?>  
     $("#packageb").checked =true;
 <?php  endif ?>
-<?php  if ($package1 == 'c') : ?>  
+<?php  if ($package == 'c') : ?>  
     $("#packagec").checked =true;
 <?php  endif ?>
 
@@ -363,15 +363,15 @@ alert(data);
                             <label class="label label--block">Package:</label>
                             <div class="p-t-15">
                                 <label class="radio-container m-r-55">A:morning period
-									<input type="radio" checked="checked" name="package" id='packagea' value='a'>
+					<input type="radio" checked="checked" name="package" id='packagea' value='a'>
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio-container">B:afternoon period
+                                <label class="radio-container m-r-55">B:afternoon period
                                     <input type="radio" name="package" id='packageb' value='b'>
                                     <span class="checkmark"></span>
                                 </label>
 								
-								<label class="radio-container">C:night period
+				    <label class="radio-container  m-r-55">C:night period
                                     <input type="radio" name="package" id='packagec' value='c'>
                                     <span class="checkmark"></span>
                                 </label>
