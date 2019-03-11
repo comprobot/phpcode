@@ -97,11 +97,11 @@
 					<td><a href="http://157.230.145.40/ops/video/<?php echo $row['filename'];?>"><?php echo $row['filename'];?></a></td>
 					<td><?php echo $row['qrcode']; ?></td>					
 				<td>
-					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Click to approve</a>
+					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Approve</a>
 				</td>
 				<td>
-					<a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
-				</td>
+					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Reject</a>
+				</td>				
 			</tr>
 			<?php } ?>
 			</table>
