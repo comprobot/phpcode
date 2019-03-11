@@ -87,6 +87,8 @@
 					<th>Username</th>
 					<th>Videolink</th>
 					<th>QRcode</th>
+					<th>Time</th>
+					<th>Status</th>
 					<th colspan="2">Action</th>
 				</tr>
 			</thead>
@@ -96,12 +98,26 @@
 					<td><?php echo $row['username']; ?></td>
 					<td><a href="http://157.230.145.40/ops/video/<?php echo $row['filename'];?>"><?php echo $row['filename'];?></a></td>
 					<td><?php echo $row['qrcode']; ?></td>					
+					<td><?php echo $row['tm']; ?></td>					
+					<td><?php 
+					if ($row['approved']=='T')
+					{						
+				       echo "Approved"; 
+					}else if ($row['approved']=='F')
+					{
+						echo "Not Approved"; 
+					}else{
+					}
+					
+					?></td>					
+					
+					
 				<td>
-					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Approve</a>
+					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=T" class="edit_btn" >Approve</a>
 				</td>
 				<td>
-					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Reject</a>
-				</td>				
+					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=F" class="del_btn">Reject</a>
+				</td>
 			</tr>
 			<?php } ?>
 			</table>
