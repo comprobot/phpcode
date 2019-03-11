@@ -11,6 +11,8 @@ $phone="";
 $password="";
 $cpassword="";
 $title="";
+$industry="";
+$package="";
 $servername = 'localhost';
 $dbusername = 'ops';
 $dbpassword = '60503176';
@@ -36,7 +38,9 @@ if (isset($_POST['register'])) {
   $last_name = mysqli_real_escape_string($db, $_POST['last_name']);
   $area_code = mysqli_real_escape_string($db, $_POST['area_code']);
   $phone = mysqli_real_escape_string($db, $_POST['phone']);
+  $industry = mysqli_real_escape_string($db, $_POST['industry']);
   $title = mysqli_real_escape_string($db, $_POST['title']);
+  $package = mysqli_real_escape_string($db, $_POST['package']);
   
   
   
@@ -50,7 +54,9 @@ if (isset($_POST['register'])) {
   if (empty($area_code)) { array_push($errors, "Area code is required"); }
   if (empty($phone)) { array_push($errors, "Phone is required"); }
   if (empty($title)) { array_push($errors, "Title is required"); }
+  if (empty($package)) { array_push($errors, "Title is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }  
+  if (empty($industry)) { array_push($errors, "Industry is required"); }  
   if (empty($cpassword)) { array_push($errors, "Confirm password is required"); }  
   if ($password != $cpassword) {
 	array_push($errors, "The two passwords do not match");
@@ -84,8 +90,8 @@ if (isset($_POST['register'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO adv_users (username, email, password,first_name, last_name,area_code, phone, title) 
-  			  VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title')";
+  	$query = "INSERT INTO adv_users (username, email, password,first_name, last_name,area_code, phone, title,package,industry) 
+  			  VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title', '$package'', '$industry')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
