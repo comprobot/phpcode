@@ -113,10 +113,10 @@
 					
 					
 				<td>
-					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=T&adminuser=<?php $_SESSION['username']?>" class="edit_btn" >Approve</a>
+					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=T&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Approve</a>
 				</td>
 				<td>
-					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=F&adminuser=<?php $_SESSION['username']?>" class="del_btn">Reject</a>
+					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
 				</td>
 			</tr>
 			<?php } ?>
