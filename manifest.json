@@ -1,15 +1,25 @@
 {
 	"initial": [
-		"js/egret.min_acd30022.js",
-		"js/egret.web.min_3e311c0e.js",
-		"js/eui.min_22447123.js",
-		"js/assetsmanager.min_49f5417f.js",
-		"js/tween.min_6c5a88f9.js",
-		"js/game.min_45aa06f6.js",
-		"js/promise.min_83a6a5d.js"
+		"libs/modules/egret/egret.js",
+		"libs/modules/egret/egret.web.js",
+		"libs/modules/eui/eui.js",
+		"libs/modules/assetsmanager/assetsmanager.js",
+		"libs/modules/tween/tween.js",
+		"libs/modules/game/game.js",
+		"libs/modules/promise/promise.js"
 	],
 	"game": [
-		"js/default.thm_8a14a0a3.js",
-		"js/main.min_cdda2d2e.js"
+		"bin-debug/AssetAdapter.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/Main.js",
+		"bin-debug/Platform.js",
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/baccarat/Alert.js",
+		"bin-debug/baccarat/DIYLoadingUI.js",
+		"bin-debug/baccarat/InfoPanelTs.js",
+		"bin-debug/baccarat/MenuTs.js",
+		"bin-debug/baccarat/PasswordTs.js",
+		"bin-debug/baccarat/PublicData.js",
+		"bin-debug/baccarat/Table.js"
 	]
 }
