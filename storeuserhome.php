@@ -100,7 +100,7 @@
 			
 			</form>
 			<div class="form-row">
-				<div class="name"> <a href="syshome.php?logout='1'" style="color: red;">logout</a></div>
+				<div class="name"> <a href="storeuesrhome.php?logout='1'" style="color: red;">logout</a></div>
 			</div>			
 			
 			
