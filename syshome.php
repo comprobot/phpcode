@@ -106,7 +106,9 @@
 					}else if ($row['approved']=='F')
 					{
 						echo "Not Approved"; 
-					}else{
+					}else if ($row['approved']=='P')
+					{
+						echo "Pending"; 
 					}
 					
 					?></td>					
