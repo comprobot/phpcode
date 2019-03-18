@@ -137,7 +137,7 @@ if (serial_number == '') {
                  <div class="name">Serial Number</div>
                     <div class="value">
                        <div class="input-group">
-                         <input class="input--style-5" type="text" name="username" id='username' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
+                         <input class="input--style-5" type="text" name="serial_number" id='serial_number' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
                        </div>
                  </div>
             </div>			
@@ -145,12 +145,15 @@ if (serial_number == '') {
                  <div class="name">Information</div>
                     <div class="value">
                        <div class="input-group">
-                         <input class="input--style-5" type="text" name="username" id='username' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
+                         <input class="input--style-5" type="text" name="info" id='info' value="<?php echo $info; ?>" required> <label for="info" class="error"></label>
                        </div>
                  </div>
             </div>			
 						
-			
+			<div>
+            
+				<button class="btn btn--radius-2 btn--red" name="add_media_player" id="add_media_player" >Add</button>
+            </div>
 			
 			
 			</form>
@@ -159,7 +162,7 @@ if (serial_number == '') {
 			<?php include('errors.php'); ?>
 			
 			<div class="form-row">
-			     <div class="row row-space"><strong>Edit the media player items</strong></div>				 
+			     <div class="row row-space"><strong>List the media player items</strong></div>				 
  			</div>			
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  store_display"); ?>
