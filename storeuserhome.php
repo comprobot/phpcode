@@ -158,6 +158,11 @@ if (serial_number == '') {
 			
 			</form>
 			
+			<div class="form-row">
+				<div class="name"> <br/></div>
+			</div>			
+						
+			
 			
 			<?php include('errors.php'); ?>
 			
@@ -171,6 +176,7 @@ if (serial_number == '') {
 				<tr>
 					<th>Serial Number</th>
 					<th>Info</th>					
+					<th>Action</th>					
 				</tr>
 			</thead>
 	
@@ -178,6 +184,9 @@ if (serial_number == '') {
 				<tr>
 					<td><?php echo $row['serial_number']; ?></td>					
 					<td><?php echo $row['info']; ?></td>									
+					<td>
+						<a href="server.php?storeid=<?php echo $row['id']; ?>&action=delete_media_player&user=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete item </a>
+					</td>					
 			</tr>
 			<?php } ?>
 			</table>
@@ -187,6 +196,11 @@ if (serial_number == '') {
 			<div class="form-row">
 				<div class="name"> <a href="storeuserhome.php?logout='1'" style="color: red;">logout</a></div>
 			</div>			
+			
+			<div class="form-row">
+				<div class="name"> <br/></div>
+			</div>			
+						
 			
 			
 			<?php endif ?>
