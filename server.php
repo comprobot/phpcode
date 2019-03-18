@@ -18,6 +18,7 @@ $store_address="";
 $target_user="";
 $serial_number="";
 $info="";
+$id="";
 
 $servername = 'localhost';
 $dbusername = 'ops';
@@ -135,7 +136,7 @@ if (isset($_GET['delete_media_player'])) {
 	$username = mysqli_real_escape_string($db, $_GET['user'] );
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
-	if (empty($serial_number)) { array_push($errors, "Serial number is required"); }
+	if (empty($id)) { array_push($errors, "Serial number is required"); }
 	
 	
 	$query = "DELETE FROM store_display  WHERE ( username='$username' AND  id='$id')";
