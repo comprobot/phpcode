@@ -16,6 +16,9 @@ $package="";
 $store_name="";
 $store_address="";
 $target_user="";
+$serial_number="";
+$info="";
+
 $servername = 'localhost';
 $dbusername = 'ops';
 $dbpassword = '60503176';
@@ -102,6 +105,31 @@ if (isset($_POST['register'])) {
   }
   
 }
+
+
+
+if (isset($_POST['add_media_player'])) {
+	
+	$serial_number = mysqli_real_escape_string($db, $_POST['serial_number']);
+	$info = mysqli_real_escape_string($db, $_POST['info']);
+	$username = mysqli_real_escape_string($db, $_SESSION['username'] );
+	
+	if (empty($username)) { array_push($errors, "Username is required"); }
+	if (empty($serial_number)) { array_push($errors, "Serial number is required"); }
+	if (empty($info)) { array_push($errors, "Information is required"); }
+	
+	$query = "INSERT INTO store_display (username, serial_number , info)  VALUES('$username', '$serial_number', '$info')";
+	if ($db->query($query) === TRUE) {
+		
+		
+ 	} else {
+	   array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+	}
+	
+}
+
+
+
 
 
 if (isset($_POST['upload_video'])) {
