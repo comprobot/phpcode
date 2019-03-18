@@ -53,6 +53,61 @@
 	
 	</script>
 	
+	<script>
+$(document).ready(function() {
+	$('#adddisplay').submit(function() {
+	
+	  //event.preventDefault();
+	
+	$("#adddisplay").validate({
+		rules: {
+			
+				serial_number: {
+					required: true,
+					minlength: 2
+				},
+				info: {
+					required: true,
+					minlength: 2
+				}
+				
+			},
+			
+			
+			messages: {
+				serial_number: {
+					required: "Please enter a serial number",
+					minlength: "Your string for serial number must consist of at least 2 characters"
+				},
+				info: {
+					required: "Please enter information for media player",
+					minlength: "Your string for information must consist of at least 2 characters"
+				}
+				
+				
+				
+			}
+		});
+	
+	
+	
+	
+	
+var serial_number = $("#serial_number").val();
+
+
+
+if (serial_number == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+});
+});
+</script>	
+
+	
+	
 	<!--<script src="js/registration.js"></script>	-->
 
 	
@@ -74,6 +129,33 @@
 			
 			
 			<form method="POST" action="storeuserhome.php" id="adddisplay" name="adddisplay" ">
+			
+			<div class="form-row">
+			     <div class="row row-space"><strong>Add the media player items</strong></div>				 
+ 			</div>						
+			<div class="form-row">
+                 <div class="name">Serial Number</div>
+                    <div class="value">
+                       <div class="input-group">
+                         <input class="input--style-5" type="text" name="username" id='username' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
+                       </div>
+                 </div>
+            </div>			
+			<div class="form-row">
+                 <div class="name">Information</div>
+                    <div class="value">
+                       <div class="input-group">
+                         <input class="input--style-5" type="text" name="username" id='username' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
+                       </div>
+                 </div>
+            </div>			
+						
+			
+			
+			
+			</form>
+			
+			
 			<?php include('errors.php'); ?>
 			
 			<div class="form-row">
@@ -98,9 +180,9 @@
 			</table>
 			
 			
-			</form>
+			
 			<div class="form-row">
-				<div class="name"> <a href="storeuesrhome.php?logout='1'" style="color: red;">logout</a></div>
+				<div class="name"> <a href="storeuserhome.php?logout='1'" style="color: red;">logout</a></div>
 			</div>			
 			
 			
