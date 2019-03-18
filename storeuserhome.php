@@ -185,7 +185,7 @@ if (serial_number == '') {
 					<td><?php echo $row['serial_number']; ?></td>					
 					<td><?php echo $row['info']; ?></td>									
 					<td>
-						<a href="server.php?storeid=<?php echo $row['id']; ?>&action=delete_media_player&user=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete item </a>
+						<a href="server.php?storeid=<?php echo $row['id']; ?>&delete_media_player=T&user=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete item </a>
 					</td>					
 			</tr>
 			<?php } ?>
