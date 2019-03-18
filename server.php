@@ -232,8 +232,7 @@ $target_user="";
   if (empty($last_name)) { array_push($errors, "Last name is required"); }
   if (empty($area_code)) { array_push($errors, "Area code is required"); }
   if (empty($phone)) { array_push($errors, "Phone is required"); }
-  if (empty($title)) { array_push($errors, "Title is required"); }
-  if (empty($package)) { array_push($errors, "Title is required"); }
+  if (empty($title)) { array_push($errors, "Title is required"); }  
   if (empty($password)) { array_push($errors, "Password is required"); }  
   if (empty($industry)) { array_push($errors, "Industry is required"); }  
   if (empty($store_name)) { array_push($errors, "Store name is required"); }  
