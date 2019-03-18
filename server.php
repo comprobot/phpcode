@@ -132,7 +132,7 @@ if (isset($_POST['add_media_player'])) {
 if (isset($_GET['delete_media_player'])) {
 	
 	$serial_number = mysqli_real_escape_string($db, $_GET['serial_number']);	
-	$username = mysqli_real_escape_string($db, $_SESSION['username'] );
+	$username = mysqli_real_escape_string($db, $_GET['user'] );
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
 	if (empty($serial_number)) { array_push($errors, "Serial number is required"); }
