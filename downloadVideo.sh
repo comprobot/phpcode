@@ -1,4 +1,4 @@
-FILENAME=/opt/tomcat/ops/record.csv
+FILENAME=/var/www/html/batch/record.csv
 cat $FILENAME | while read LINE
 do
 #echo $LINE
