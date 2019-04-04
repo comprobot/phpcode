@@ -1,4 +1,4 @@
-FILENAME=/var/www/html/batch/record.csv
+FILENAME=/home/user/batch/record.csv
 cat $FILENAME | while read LINE
 do
 #echo $LINE
@@ -9,9 +9,10 @@ convert -size 1024x602 xc:white canvas.jpg
 convert canvas.jpg -pointsize 34 -fill black -annotate +266+235 "Scan below QR code " canvas.jpg
 qrencode -o ops.png -s 6 -l H ${RECORDS[2]}
 convert canvas.jpg ops.png -append output.png
+export pathname=/home/user/batch/video 
 export qrfilename=qr-$(date +%Y-%m-%d-%H-%M-%S).mp4
-ffmpeg -loop 1 -i output.png -c:v libx264 -t 30 -pix_fmt yuv420p -y $qrfilename
-export pathname=/var/www/html/batch/video 
+ffmpeg -loop 1 -i output.png -c:v libx264 -t 30 -pix_fmt yuv420p -y $pathname$qrfilename &
+export pathname=/home/user/batch/video 
 echo 'file ' $pathname${RECORDS[1]} $'\n' >> files.txt
 echo 'file ' $pathname$qrfilename $'\n' >> files.txt
 done
