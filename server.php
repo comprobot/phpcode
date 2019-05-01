@@ -442,12 +442,19 @@ if (isset($_POST['register_customer'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO customers (username, password,area_code, phone, point) 
+  	$query = "INSERT INTO customers (username, password,area_code, telephone, point) 
   			  VALUES('$username','$password', '$area_code', '$phone', 0 )";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: customerhome.php');
+	
+	if ($db->query($query) === TRUE) {
+		header('location: customerhome.php');
+ 		        
+	} else {
+	       array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+	}
+	
   }
   
 }
