@@ -74,7 +74,10 @@
  			</div>			
 			
 			<?php include('errors.php'); ?>
-			
+			<?php $results = mysqli_query($db, "SELECT point FROM  customers WHERE username = $_SESSION['username']"); ?>			
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<p>You have <?php echo $row['point']; ?> points</p>
+			<?php } ?>
 			
 			
 			
