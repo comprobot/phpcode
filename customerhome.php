@@ -74,12 +74,14 @@
  			</div>			
 			
 			<?php include('errors.php'); ?>
-			<?php $row1 = $db->getRow("SELECT point FROM  customers WHERE username = $_SESSION['username']"); ?>
+			<?php 
+			
+			$username = $_SESSION['username'];
+			
+			$row1 = $db->getRow("SELECT point FROM  customers WHERE username='$username'"); 
+			
+			?>
 			<p>You have <?php echo $row1; ?> points</p>
-			
-			
-			
-			
 			
 			
 			
