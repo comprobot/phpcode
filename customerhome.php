@@ -8,7 +8,7 @@
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
-  	header("location: storeuserlogin.php");
+  	header("location: customerlogin.php");
   }
 ?>
 <?php include('server.php') ?>
@@ -53,59 +53,6 @@
 	
 	</script>
 	
-	<script>
-$(document).ready(function() {
-	$('#adddisplay').submit(function() {
-	
-	  //event.preventDefault();
-	
-	$("#adddisplay").validate({
-		rules: {
-			
-				serial_number: {
-					required: true,
-					minlength: 2
-				},
-				info: {
-					required: true,
-					minlength: 2
-				}
-				
-			},
-			
-			
-			messages: {
-				serial_number: {
-					required: "Please enter a serial number",
-					minlength: "Your string for serial number must consist of at least 2 characters"
-				},
-				info: {
-					required: "Please enter information for media player",
-					minlength: "Your string for information must consist of at least 2 characters"
-				}
-				
-				
-				
-			}
-		});
-	
-	
-	
-	
-	
-var serial_number = $("#serial_number").val();
-
-
-
-if (serial_number == '') {
-//alert("Please fill all fields...!!!!!!");
-} else {
-	
-}
-});
-});
-</script>	
-
 	
 	
 	<!--<script src="js/registration.js"></script>	-->
@@ -127,6 +74,11 @@ if (serial_number == '') {
  			</div>			
 			
 			<?php include('errors.php'); ?>
+			
+			
+			
+			
+			
 			
 			
 			<div class="form-row">
