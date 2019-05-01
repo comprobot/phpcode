@@ -76,12 +76,27 @@
 			<?php include('errors.php'); ?>
 			<?php 
 			
-			$username = $_SESSION['username'];
-			
-			$row1 = $db->getRow("SELECT point FROM  customers WHERE username='$username'"); 
+			$username = $_SESSION['username'];			
+			$results = mysqli_query($db, "SELECT point FROM  customers WHERE username='$username'"); 
 			
 			?>
-			<p>You have <?php echo $row1; ?> points</p>
+			
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Point</th>					
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['point']; ?></td>										
+			</tr>
+			<?php } ?>
+			</table>
+
+
+			
 			
 			
 			
