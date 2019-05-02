@@ -75,7 +75,7 @@ if (isset($_GET['register_customer'])) {
   	mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
-		echo "SUCCESS";
+		echo "<p>SUCCESS</p>";
  		        
 	} else {
 		
@@ -85,10 +85,12 @@ if (isset($_GET['register_customer'])) {
 		   
 	}
 	
-  }else{
+  }else{	  
 	  
-	  echo $errors;
-	  
+	  foreach ($errors as $error) {
+		echo "<p>".$error ."</p>";  
+	  } 
+  	    
   }
   
 }
