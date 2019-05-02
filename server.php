@@ -444,12 +444,14 @@ if (isset($_POST['register_customer'])) {
 
   	$query = "INSERT INTO customers (username, password,area_code, telephone, point) 
   			  VALUES('$username','$password', '$area_code', '$phone', 0 )";
-  	mysqli_query($db, $query);
-  	$_SESSION['username'] = $username;
-  	$_SESSION['success'] = "You are now logged in";
-	
+  //	mysqli_query($db, $query);
+  	
 	if ($db->query($query) === TRUE) {
+		$_SESSION['username'] = $username;
+  		$_SESSION['success'] = "You are now logged in";
+	
 		header('location: customerhome.php');
+		
  		        
 	} else {
 	       array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
