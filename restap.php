@@ -98,13 +98,14 @@ if (isset($_GET['register_customer'])) {
 
 if (isset($_GET['qrcode_customer'])) {
   $customer_username = mysqli_real_escape_string($db, $_GET['customer_name']);
-  $password1 = mysqli_real_escape_string($db, $_GET['pass']);
+  $password1 = mysqli_real_escape_string($db, $_GET['password']);
   $store_username = mysqli_real_escape_string($db, $_GET['store_username']);
   $serial_number = mysqli_real_escape_string($db, $_GET['serial_number']);
   $adv_user = mysqli_real_escape_string($db, $_GET['adv_user']);
   
 // http://157.230.145.40/ops/restap.php?qrcode_customer=qrcode_customer&store_username=storeusr&serial_number=sr-156&adv_user=linux&customer_name=ronald&password=60503176
- 
+
+   echo "test"; 
 
   if (empty($customer_username)) {
   	array_push($errors, "Username is required");
@@ -123,7 +124,7 @@ if (isset($_GET['qrcode_customer'])) {
   	array_push($errors, "adv_user is required");
   }  
   
-  
+  echo "test2222"; 
   if (count($errors) == 0) {
   	//$password = md5($password);
 	
