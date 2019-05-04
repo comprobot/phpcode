@@ -96,17 +96,34 @@ if (isset($_GET['register_customer'])) {
 }
 
 
-if (isset($_GET['customer_earn_point'])) {
-  $username = mysqli_real_escape_string($db, $_GET['username']);
+if (isset($_GET['qrcode_customer'])) {
+  $customer_username = mysqli_real_escape_string($db, $_GET['customer_name']);
   $password = mysqli_real_escape_string($db, $_GET['password']);
+  $store_username = mysqli_real_escape_string($db, $_GET['store_username']);
+  $serial_number = mysqli_real_escape_string($db, $_GET['serial_number']);
+  $adv_user = mysqli_real_escape_string($db, $_GET['adv_user']);
+  
+// http://157.230.145.40/ops/restap.php?qrcode_customer=qrcode_customer&store_username=storeusr&serial_number=sr-156&adv_user=linux&customer_name=ronald&password=60503176
+ 
 
-  if (empty($username)) {
+  if (empty($customer_username)) {
   	array_push($errors, "Username is required");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
   }
 
+  if (empty($store_username)) {
+  	array_push($errors, "store_username is required");
+  }
+  if (empty($serial_number)) {
+  	array_push($errors, "serial_number is required");
+  }
+  if (empty($adv_user)) {
+  	array_push($errors, "adv_user is required");
+  }  
+  
+  
   if (count($errors) == 0) {
   	//$password = md5($password);
 	
@@ -117,9 +134,30 @@ if (isset($_GET['customer_earn_point'])) {
   	if (mysqli_num_rows($results) == 1) {
   	  
 	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
+	
 	if ($db->query($earnpoint) === TRUE) {		
 	   
- 		echo "<p>SUCCESS</p>";        
+		$query2 = "SELECT * FROM customer_access WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
+		$results2 = mysqli_query($db, $query2);
+		if (mysqli_num_rows($results2) > 0) {	
+			$updateCount = "UPDATE customer_access  SET count = count + 1  WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
+			
+			if ($db->query($updateCount) === TRUE) 
+			{
+			   echo "<p>SUCCESS</p>";        
+			}			
+		   
+		}else{
+			$insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
+			
+			if ($db->query($insertCustomerAccess) === TRUE) 
+			{
+				echo "<p>SUCCESS</p>";        
+			}
+			
+		}
+		
+ 
 	} else {
 		
 	    
