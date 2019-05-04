@@ -98,7 +98,7 @@ if (isset($_GET['register_customer'])) {
 
 if (isset($_GET['qrcode_customer'])) {
   $customer_username = mysqli_real_escape_string($db, $_GET['customer_name']);
-  $password1 = mysqli_real_escape_string($db, $_GET['password']);
+  $password1 = mysqli_real_escape_string($db, $_GET['pass']);
   $store_username = mysqli_real_escape_string($db, $_GET['store_username']);
   $serial_number = mysqli_real_escape_string($db, $_GET['serial_number']);
   $adv_user = mysqli_real_escape_string($db, $_GET['adv_user']);
