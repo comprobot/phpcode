@@ -203,22 +203,4 @@ if (isset($_GET['qrcode_customer'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
