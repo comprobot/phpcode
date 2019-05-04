@@ -145,6 +145,13 @@ if (isset($_GET['qrcode_customer'])) {
 			if ($db->query($updateCount) === TRUE) 
 			{
 			   echo "<p>SUCCESS</p>";        
+			}else{
+				
+		foreach ($errors as $error) {
+		echo "<p>".$error ."</p>";  
+	  } 
+  	  		
+				
 			}			
 		   
 		}else{
@@ -153,6 +160,13 @@ if (isset($_GET['qrcode_customer'])) {
 			if ($db->query($insertCustomerAccess) === TRUE) 
 			{
 				echo "<p>SUCCESS</p>";        
+			}else{
+				foreach ($errors as $error) {
+		echo "<p>".$error ."</p>";  
+	  } 
+  	  
+				
+				
 			}
 			
 		}
@@ -160,13 +174,41 @@ if (isset($_GET['qrcode_customer'])) {
  
 	} else {
 		
-	    
+	    foreach ($errors as $error) {
+		echo "<p>".$error ."</p>";  
+	  } 
+  	  
 	}	  
 	  
   	}else {
-  		array_push($errors, "Wrong username/password combination");
+  		foreach ($errors as $error) {
+		echo "<p>".$error ."</p>";  
+	  } 
+  	  
   	}
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
