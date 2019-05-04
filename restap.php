@@ -133,18 +133,21 @@ if (isset($_GET['qrcode_customer'])) {
   	$query = "SELECT POINT FROM customers WHERE username='$username' AND password='$password1'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
-  	  
+  	echo "1111111111111";   
 	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
-	
+	echo "22222222222222222";   
 	if ($db->query($earnpoint) === TRUE) {		
-	   
+	echo "3333333";      
 		$query2 = "SELECT * FROM customer_access WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
+		
 		$results2 = mysqli_query($db, $query2);
 		if (mysqli_num_rows($results2) > 0) {	
+		echo "44444444444444444444";      
 			$updateCount = "UPDATE customer_access  SET count = count + 1  WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
 			
 			if ($db->query($updateCount) === TRUE) 
 			{
+				
 			   echo "<p>SUCCESS</p>";        
 			}else{
 				
@@ -156,6 +159,8 @@ if (isset($_GET['qrcode_customer'])) {
 			}			
 		   
 		}else{
+			echo "5555555555555555555555555555";      
+			
 			$insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
 			
 			if ($db->query($insertCustomerAccess) === TRUE) 
@@ -164,6 +169,8 @@ if (isset($_GET['qrcode_customer'])) {
 			}else{
 				foreach ($errors as $error) {
 		echo "<p>".$error ."</p>";  
+		
+		echo "6666666666666";      
 	  } 
   	  
 				
@@ -174,7 +181,7 @@ if (isset($_GET['qrcode_customer'])) {
 		
  
 	} else {
-		
+		echo "7777777777777";
 	    foreach ($errors as $error) {
 		echo "<p>".$error ."</p>";  
 	  } 
@@ -182,6 +189,8 @@ if (isset($_GET['qrcode_customer'])) {
 	}	  
 	  
   	}else {
+		
+		echo "8888888";
   		foreach ($errors as $error) {
 		echo "<p>".$error ."</p>";  
 	  } 
