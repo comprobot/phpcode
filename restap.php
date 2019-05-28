@@ -102,13 +102,8 @@ if (isset($_GET['reg_customer'])) {
 	  } 
   	    
   }
-
-
-
-
-
-
 }
+
 
 
 
@@ -129,7 +124,7 @@ if (isset($_GET['reg_phone'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "UPDATE customers set telephone ='$phone' and area_code = '852' WHERE username = '$username' ";
+  	$query = "UPDATE customers set telephone ='$phone' , area_code = '852' WHERE username = '$username' ";
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
@@ -151,6 +146,9 @@ if (isset($_GET['reg_phone'])) {
   	    
   }
 }
+
+
+
 
 
 if (isset($_GET['register_customer'])) {
