@@ -112,6 +112,47 @@ if (isset($_GET['reg_customer'])) {
 
 
 
+
+if (isset($_GET['reg_phone'])) {
+  // receive all input values from the form
+  $username = mysqli_real_escape_string($db, $_GET['username']);    
+  $phone = mysqli_real_escape_string($db, $_GET['phone']);  
+  
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($username)) { array_push($errors, "Username is required"); }  
+  if (empty($phone)) { array_push($errors, "Phone is required"); }
+  
+  
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	//$password = md5($password_1);//encrypt the password before saving in the database
+
+  	$query = "UPDATE customers set telephone ='$phone' and area_code = '852' WHERE username = '$username' ";
+  	//mysqli_query($db, $query);
+	
+	if ($db->query($query) === TRUE) {
+		echo "<p>SUCCESS</p>";
+ 		        
+	} else {
+		
+	       array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+		   
+		   
+		   
+	}
+	
+  }else{	  
+	  
+	  foreach ($errors as $error) {
+		echo "<p>".$error ."</p>";  
+	  } 
+  	    
+  }
+}
+
+
 if (isset($_GET['register_customer'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_GET['username']);  
