@@ -317,6 +317,44 @@ if (isset($_GET['qrcode_customer'])) {
   }
 }
 
+if (isset($_GET['customer_check_point'])) {
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $password = mysqli_real_escape_string($db, $_GET['password']);
+
+  if (empty($username)) {
+  	array_push($errors, "Username is required");
+  }
+  if (empty($password)) {
+  	array_push($errors, "Password is required");
+  }
+
+  if (count($errors) == 0) {
+  	//$password = md5($password);
+	
+	
+	
+  	$query = "SELECT POINT FROM customers WHERE username='$username' AND password='$password'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+	echo "<p>SUCCESS</p>"; 	
+		
+		
+  	  
+	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
+	if ($db->query($earnpoint) === TRUE) {		
+	   
+ 		echo "<p>SUCCESS</p>";        
+	} else {
+		
+	    
+	}	  
+	  
+  	}else {
+  		array_push($errors, "Wrong username/password combination");
+  	}
+  }
+}
 
 
 if (isset($_GET['customer_earn_point'])) {
@@ -338,7 +376,8 @@ if (isset($_GET['customer_earn_point'])) {
   	$query = "SELECT POINT FROM customers WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
-  	  
+           echo $results;
+  	 /*
 	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
 	if ($db->query($earnpoint) === TRUE) {		
 	   
@@ -347,7 +386,7 @@ if (isset($_GET['customer_earn_point'])) {
 		
 	    
 	}	  
-	  
+	*/  
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
