@@ -337,10 +337,9 @@ if (isset($_GET['customer_check_point'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-	echo "<p>SUCCESS</p>"; 	
-		
-		
-  	  
+	 echo $results;
+  	 	
+  	 /* 
 	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
 	if ($db->query($earnpoint) === TRUE) {		
 	   
@@ -349,7 +348,7 @@ if (isset($_GET['customer_check_point'])) {
 		
 	    
 	}	  
-	  
+	  */
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
@@ -376,8 +375,7 @@ if (isset($_GET['customer_earn_point'])) {
   	$query = "SELECT POINT FROM customers WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
-           echo $results;
-  	 /*
+          
 	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
 	if ($db->query($earnpoint) === TRUE) {		
 	   
@@ -386,7 +384,7 @@ if (isset($_GET['customer_earn_point'])) {
 		
 	    
 	}	  
-	*/  
+	 
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
