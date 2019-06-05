@@ -189,7 +189,7 @@ if (isset($_GET['register_customer'])) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO customers (username, password,area_code, telephone, point) 
-  			  VALUES('$username','$password', '$area_code', '$phone', 0 )";
+  			  VALUES('$username','$password', '$area_code', '$phone', 200 )";
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
@@ -242,7 +242,7 @@ if (isset($_GET['qrcode_customer'])) {
   	array_push($errors, "adv_user is required");
   }  
   
-  echo "test2222"; 
+  
   if (count($errors) == 0) {
   	//$password = md5($password);
 	
