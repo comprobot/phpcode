@@ -61,6 +61,9 @@
 	</script>
 
 <script>
+
+alert('11111ggg');	
+
 $(function () {
   
   $('#tab_list').horizontalmenu({
@@ -84,6 +87,7 @@ $(function () {
   
   
   });
+alert('11ffff111');	
 
 	(function ($) {
   $.UrlParam = function (name) {
@@ -100,7 +104,8 @@ $(function () {
   }
 })(jQuery);
 	
-	
+	alert('ssss');	
+
 	
 	
 $(document).ready(function() {
