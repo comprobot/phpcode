@@ -1,10 +1,6 @@
 <?php 
   session_start(); 
 
-
-
-
-
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: sadminlogin.php');
@@ -85,6 +81,23 @@ $(function () {
   
   //$('#sp1').attr('data-ah-tab-active', 'true');
 
+  
+  var param = $.UrlParam("tag");
+
+if (param=="advuser")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#advuser').attr('data-ah-tab-active', 'true');
+}
+
+if (param=="storeuser")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#storeuser').attr('data-ah-tab-active', 'true');
+	
+}
+
+
 	
 	
   
@@ -162,23 +175,6 @@ if (qrcode_str == '') {
 
 });
 
-var param = $.UrlParam("tag");
-
-if (param=="advuser")
-{
-	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#advuser').attr('data-ah-tab-active', 'true');
-}
-
-if (param=="storeuser")
-{
-	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#storeuser').attr('data-ah-tab-active', 'true');
-	
-}
-
-
-alert(param);
 
 </script>	
   
