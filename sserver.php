@@ -426,7 +426,7 @@ if (isset($_GET['delete_adv_users'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "DELETE adv_user  WHERE username='$username'";
+		$query2 = "DELETE adv_users  WHERE username='$username'";
 		if ($db->query($query2) === TRUE) {
 			header('location: all_function.php?tag=advuser');
  				        
