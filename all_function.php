@@ -105,9 +105,23 @@ $(function () {
 			     <div class="name">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></div>
  			</div>			
 
+ <div id="tab_list" class="ah-tab-wrapper">
+                <div class="ah-tab">
+                    <a class="ah-tab-item" data-ah-tab-active="true" href="">Adv user function</a>
+                    <a class="ah-tab-item" href="">Contacts</a>
+                    <a class="ah-tab-item" href="">Tab item zzz</a>
+                    <a class="ah-tab-item" href="">Password change</a>
+                    <a class="ah-tab-item" href="">Tab item</a>
+                    <a class="ah-tab-item" href="">Other information tab</a>
+                    <a class="ah-tab-item" href="">About company</a>
+                </div>
+            </div>						
+			
 
 <div id="tab_list_content" class="ah-tab-content-wrapper">
 <div class="ah-tab-content" data-ah-tab-active="true">
+	
+	
 <div class="form-row">
 
 <div class="row row-space">
