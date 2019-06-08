@@ -82,6 +82,60 @@ $(function () {
   
   
   });
+  
+$(document).ready(function() {
+	$('#uploadVideoFormSadmin').submit(function() {
+	
+	  //event.preventDefault();
+	
+	$("#uploadVideoFormSadmin").validate({
+	 rules: {
+
+				adv_username_str: {
+					required: true,
+					minlength: 2
+				},
+				qrcode_str: {
+					required: true,
+					minlength: 2
+				}
+			},
+			
+			
+			messages: {
+				
+				adv_username_str: {
+					required: "Please enter a String for advusername",
+					minlength: "Your string for adv username must consist of at least 2 characters"
+				},
+				
+				qrcode_str: {
+					required: "Please enter a String for qr code",
+					minlength: "Your string for qr code must consist of at least 2 characters"
+				}
+			}
+		});
+	
+	
+	
+	
+	
+
+
+var qrcode_str = $("#qrcode_str").val();
+
+
+
+if (qrcode_str == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+});
+});
+</script>	
+  
+  
 
 </script>
 
@@ -97,7 +151,7 @@ $(function () {
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Admin user Home page</h2>
+                    <h2 class="title">All function Home page</h2>
                 </div>
                 <div class="card-body">         
             <?php  if (isset($_SESSION['username'])) : ?>
@@ -105,12 +159,12 @@ $(function () {
 			     <div class="name">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></div>
  			</div>			
 
- <div id="tab_list" class="ah-tab-wrapper">
+			<div id="tab_list" class="ah-tab-wrapper">
                 <div class="ah-tab">
-                    <a class="ah-tab-item" data-ah-tab-active="true" href="">Adv user function</a>
-                    <a class="ah-tab-item" href="">Contacts</a>
-                    <a class="ah-tab-item" href="">Tab item zzz</a>
-                    <a class="ah-tab-item" href="">Password change</a>
+                    <a class="ah-tab-item" data-ah-tab-active="true" href="">Upload Adv video</a>
+                    <a class="ah-tab-item" href="">Approve Adv video</a>
+                    <a class="ah-tab-item" href="">View/Edit Adv user</a>
+                    <a class="ah-tab-item" href="">View/Edit Store user</a>					
                     <a class="ah-tab-item" href="">Tab item</a>
                     <a class="ah-tab-item" href="">Other information tab</a>
                     <a class="ah-tab-item" href="">About company</a>
@@ -118,69 +172,49 @@ $(function () {
             </div>						
 			
 
-<div id="tab_list_content" class="ah-tab-content-wrapper">
-<div class="ah-tab-content" data-ah-tab-active="true">
+		<div id="tab_list_content" class="ah-tab-content-wrapper">	
+			<div class="ah-tab-content" data-ah-tab-active="true">
 	
 	
-<div class="form-row">
-
-<div class="row row-space">
-<strong><input type="file" name="myvideo"/></strong></div>
-</div>
-
-<div class="form-row">
-<div class="row row-space"><strong>Qr code message:</strong> </div>
-<div class="value">
-<div class="input-group">
-<input class="input--style-5" name="qrcode_str" id='qrcode_str' value="<?php echo $qrcode_str; ?>" > <label for="qrcode_str" class="error"></label>
-</div>
-</div>
-</div>
-
-<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Submit Video</button>
-
-<br/>
-<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
-<br/>
-<br/>
-
-
-
-
-</div>
-<div class="ah-tab-content">
-<h3>Contacts</h3>
-
-
-
-
-</div>
-<div class="ah-tab-content">
-<h3>Tab item with a long name</h3>
-</div>
-<div id="sp1" class="ah-tab-content">
-<h3>Password change</h3>
-</div>
-<div class="ah-tab-content">
-<h3>Tab item</h3>
-</div>
-<div class="ah-tab-content">
-<h3>Other information tab</h3>
-</div>
-</div>
-
-
-
-
-
-			
-			
-			<form method="POST" action="home.php" id="uploadVideoForm" name="uploadVideoForm" enctype="multipart/form-data">
+			<div class="form-row">
+			<form method="POST" action="all_function.php" id="uploadVideoFormSadmin" name="uploadVideoFormSadmin" enctype="multipart/form-data">
 			<?php include('errors.php'); ?>
 			
+			<div class="row row-space">
+			 <strong><input type="file" name="myvideo"/></strong></div>
+			</div>
+
 			<div class="form-row">
-			     <div class="row row-space"><strong>View and approve the promote video </strong></div>				 
- 			</div>			
+			<div class="row row-space"><strong>Qr code message:</strong> </div>
+			<div class="value">
+			<div class="input-group">
+			<input class="input--style-5" name="qrcode_str" id='qrcode_str' value="<?php echo $qrcode_str; ?>" > <label for="qrcode_str" class="error"></label>
+			</div>
+			</div>
+			</div>
+
+			<div class="form-row">
+			<div class="row row-space"><strong>Adv username:</strong> </div>
+			<div class="value">
+			<div class="input-group">
+			<input class="input--style-5" name="adv_username" id='adv_username' value="<?php echo $adv_username; ?>" > <label for="qrcode_str" class="error"></label>
+			</div>
+			</div>
+			</div>
+			
+			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Submit Video</button>
+
+			<br/>
+			<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
+			<br/>
+			<br/>
+			</form>
+
+			</div>
+			
+			
+			
+			<div class="ah-tab-content">
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  advs_video"); ?>
 			<table border="1">
@@ -225,6 +259,64 @@ $(function () {
 			</tr>
 			<?php } ?>
 			</table>
+			</div>
+			
+			
+			<div class="ah-tab-content">			
+			<div class="form-row">
+			     <div class="row row-space"><strong>View and approve the promote video </strong></div>				 
+ 			</div>			
+			
+			<?php $results = mysqli_query($db, "SELECT * FROM  adv_users"); ?>
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>industry</th>
+					<th>package</th>
+					<th>email</th>
+					<th>phone</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['industry']; ?></td>
+					<td><?php echo $row['package']; ?></td>					
+					<td><?php echo $row['email']; ?></td>					
+					<td><?php echo $row['phone']; ?></td>		
+				<td>
+					<a href="sserver.php?username=<?php echo $row['username']; ?>&action=delete_adv_usersT&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
+				</td>				
+			</tr>
+			<?php } ?>
+			</table>
+			
+			
+			</div>
+						
+			
+			
+			<div id="sp1" class="ah-tab-content">
+			  <h3>Password change</h3>
+			</div>
+			<div class="ah-tab-content">
+			 <h3>Tab item</h3>
+			</div>
+			<div class="ah-tab-content">
+			 <h3>Other information tab</h3>
+			</div>
+
+			
+			</div>
+
+
+
+
+
+			
 			
 			
 			
