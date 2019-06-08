@@ -19,7 +19,8 @@ $target_user="";
 $serial_number="";
 $info="";
 $id="";
-
+$adminuser="";
+$action="";
 $servername = 'localhost';
 $dbusername = 'ops';
 $dbpassword = '60503176';
@@ -354,13 +355,6 @@ if (isset($_POST['store_login_user'])) {
 }
 
 
-
-
-
-
-
-
-
 if (isset($_GET['approvel'])) {
   $username = mysqli_real_escape_string($db, $_GET['adminuser']);
   $videoid = mysqli_real_escape_string($db, $_GET['videoid']);
@@ -402,6 +396,91 @@ if (isset($_GET['approvel'])) {
   	}
   
 }
+
+
+
+
+
+
+
+if (isset($_GET['delete_adv_users'])) {
+  $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $action = mysqli_real_escape_string($db, $_GET['action']);
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adminuser)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($action)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$adminuser'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "DELETE adv_user  WHERE username='$username'";
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=advuser');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
+
+
+if (isset($_GET['delete_store_users'])) {
+  $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $action = mysqli_real_escape_string($db, $_GET['action']);
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adminuser)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($action)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$adminuser'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "DELETE store_users  WHERE username='$username'";
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=storeuser');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
+
+
 
 
 
