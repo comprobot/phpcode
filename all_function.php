@@ -79,33 +79,21 @@ $(function () {
   
   //$('#sp1').attr('data-ah-tab-active', 'true');
   
+   $.UrlParam = function (name) {
+    //宣告正規表達式
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    //如果取出的參數存在則取出參數的值否則回穿null
+    if (r != null) return unescape(r[2]); return null;
+  }
+	
+	
   
   
   });
   
 $(document).ready(function() {
-	
-	$.urlParam = function(name){
-		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-		if (results==null) {
-			return null;
-		}else{
-			var tagname = "#"+results;
-		
-			$(tagname).attr('data-ah-tab-active', 'true');
-			
-			
-		}
-		
-		
-		
-		//alert(results[1]);
-		
-		//return decodeURI(results[1]) || 0;
-	}
 
-	
-	
 	$('#uploadVideoFormSadmin').submit(function() {
 	
 	  //event.preventDefault();
@@ -145,7 +133,8 @@ $(document).ready(function() {
 
 
 var qrcode_str = $("#qrcode_str").val();
-
+var param = $.UrlParam("tag");
+alert(param);
 
 
 if (qrcode_str == '') {
