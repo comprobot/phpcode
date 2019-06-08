@@ -164,8 +164,7 @@ if (qrcode_str == '') {
 var param = $.UrlParam("tag");
 
 alert(param);
-
-</script>	
+	
   
   
 
