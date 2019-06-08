@@ -84,6 +84,28 @@ $(function () {
   });
   
 $(document).ready(function() {
+	
+	$.urlParam = function(name){
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		if (results==null) {
+			return null;
+		}else{
+			var tagname = "#"+results;
+		
+			$(tagname).attr('data-ah-tab-active', 'true');
+			
+			
+		}
+		
+		
+		
+		//alert(results[1]);
+		
+		//return decodeURI(results[1]) || 0;
+	}
+
+	
+	
 	$('#uploadVideoFormSadmin').submit(function() {
 	
 	  //event.preventDefault();
@@ -262,7 +284,7 @@ if (qrcode_str == '') {
 			</div>
 			
 			
-			<div class="ah-tab-content">			
+			<div class="ah-tab-content" id="advuser">			
 			<div class="form-row">
 			     <div class="row row-space"><strong>View and Edit adv users </strong></div>				 
  			</div>			
@@ -299,7 +321,7 @@ if (qrcode_str == '') {
 						
 			
 			
-			<div id="sp1" class="ah-tab-content">
+			<div id="storeuser" class="ah-tab-content">
   			<?php $results = mysqli_query($db, "SELECT * FROM  store_users"); ?>
 			<table border="1">
 			<thead>
@@ -325,7 +347,7 @@ if (qrcode_str == '') {
 					<td><?php echo $row['target_user']; ?></td>					
 					<td><?php echo $row['industry']; ?></td>		
 				<td>
-					<a href="sserver.php?username=<?php echo $row['username']; ?>&action=delete_adv_usersT&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
+					<a href="sserver.php?username=<?php echo $row['username']; ?>&action=delete_store_usersT&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
 				</td>				
 			</tr>
 			<?php } ?>
