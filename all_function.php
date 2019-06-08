@@ -310,7 +310,7 @@ if (qrcode_str == '') {
 					<td><?php echo $row['email']; ?></td>					
 					<td><?php echo $row['phone']; ?></td>		
 				<td>
-					<a href="sserver.php?username=<?php echo $row['username']; ?>&action=delete_adv_users&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
+					<a href="sserver.php?username=<?php echo $row['username']; ?>&delete_adv_users=delete_adv_users&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
 				</td>				
 			</tr>
 			<?php } ?>
@@ -347,7 +347,7 @@ if (qrcode_str == '') {
 					<td><?php echo $row['target_user']; ?></td>					
 					<td><?php echo $row['industry']; ?></td>		
 				<td>
-					<a href="sserver.php?username=<?php echo $row['username']; ?>&action=delete_store_users&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
+					<a href="sserver.php?username=<?php echo $row['username']; ?>&delete_store_users=delete_store_users&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
 				</td>				
 			</tr>
 			<?php } ?>
