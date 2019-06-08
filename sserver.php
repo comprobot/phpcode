@@ -406,7 +406,7 @@ if (isset($_GET['approvel'])) {
 if (isset($_GET['delete_adv_users'])) {
   $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
   $username = mysqli_real_escape_string($db, $_GET['username']);
-  $action = mysqli_real_escape_string($db, $_GET['action']);
+  $action = mysqli_real_escape_string($db, $_GET['delete_adv_users']);
 
   if (empty($username)) {
   	header('location: sadminlogin.php');
@@ -445,7 +445,7 @@ if (isset($_GET['delete_adv_users'])) {
 if (isset($_GET['delete_store_users'])) {
   $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
   $username = mysqli_real_escape_string($db, $_GET['username']);
-  $action = mysqli_real_escape_string($db, $_GET['action']);
+  $action = mysqli_real_escape_string($db, $_GET['delete_store_users']);
 
   if (empty($username)) {
   	header('location: sadminlogin.php');
