@@ -264,7 +264,7 @@ if (qrcode_str == '') {
 			
 			<div class="ah-tab-content">			
 			<div class="form-row">
-			     <div class="row row-space"><strong>View and approve the promote video </strong></div>				 
+			     <div class="row row-space"><strong>View and Edit adv users </strong></div>				 
  			</div>			
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  adv_users"); ?>
@@ -300,7 +300,36 @@ if (qrcode_str == '') {
 			
 			
 			<div id="sp1" class="ah-tab-content">
-			  <h3>Password change</h3>
+  			<?php $results = mysqli_query($db, "SELECT * FROM  store_users"); ?>
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>email</th>
+					<th>phone</th>
+					<th>store name</th>
+					<th>store address</th>
+					<th>target user</th>
+					<th>industry</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['email']; ?></td>
+					<td><?php echo $row['phone']; ?></td>					
+					<td><?php echo $row['store_name']; ?></td>					
+					<td><?php echo $row['store_address']; ?></td>		
+					<td><?php echo $row['target_user']; ?></td>					
+					<td><?php echo $row['industry']; ?></td>		
+				<td>
+					<a href="sserver.php?username=<?php echo $row['username']; ?>&action=delete_adv_usersT&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
+				</td>				
+			</tr>
+			<?php } ?>
+			</table>
 			</div>
 			<div class="ah-tab-content">
 			 <h3>Tab item</h3>
