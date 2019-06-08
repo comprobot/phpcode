@@ -158,18 +158,27 @@ if (qrcode_str == '') {
 
 });
 
-
-
-
 var param = $.UrlParam("tag");
 
-alert(param);
+if (param=="advuser")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#advuser').attr('data-ah-tab-active', 'true');
+}
+
+if (param=="storeuser")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#storeuser').attr('data-ah-tab-active', 'true');
 	
+}
+
+
+alert(param);
+
+</script>	
   
   
-
-</script>
-
 
 
 	<!--<script src="js/registration.js"></script>	-->
