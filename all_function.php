@@ -140,11 +140,12 @@ $(document).ready(function() {
 	
 	
 	
-	
+alert('11111');	
 
 
 var qrcode_str = $("#qrcode_str").val();
 var param = $.UrlParam("tag");
+		alert('111131');	
 alert(param);
 
 
