@@ -62,7 +62,6 @@
 
 <script>
 
-alert('11111ggg');	
 
 $(function () {
   
@@ -87,7 +86,7 @@ $(function () {
   
   
   });
-alert('11ffff111');	
+
 
 	(function ($) {
   $.UrlParam = function (name) {
@@ -104,7 +103,6 @@ alert('11ffff111');
   }
 })(jQuery);
 	
-	alert('ssss');	
 
 	
 	
@@ -145,22 +143,28 @@ $(document).ready(function() {
 	
 	
 	
-alert('11111');	
+
 
 
 var qrcode_str = $("#qrcode_str").val();
-var param = $.UrlParam("tag");
-		alert('111131');	
-alert(param);
-
-
 if (qrcode_str == '') {
 //alert("Please fill all fields...!!!!!!");
 } else {
 	
 }
 });
+
+
+
 });
+
+
+
+
+var param = $.UrlParam("tag");
+
+alert(param);
+
 </script>	
   
   
