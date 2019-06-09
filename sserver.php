@@ -160,8 +160,12 @@ if (isset($_POST['upload_video'])) {
 	
 	$qrcode_str = mysqli_real_escape_string($db, $_POST['qrcode_str']);
 	$username = mysqli_real_escape_string($db, $_POST['username']);
+	$username = mysqli_real_escape_string($db, $_POST['username']);
+	
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
+	
+	
 	
 	
 	 $target_dir = dirname(__FILE__) ."/video/";
@@ -361,15 +365,15 @@ if (isset($_GET['approvel'])) {
   $approvel = mysqli_real_escape_string($db, $_GET['approvel']);
 
   if (empty($username)) {
-  	header('location: adminlogin.php');
+  	header('location: sadminlogin.php');
   }
   
   if (empty($videoid)) {
-  	header('location: adminlogin.php');
+  	header('location: sadminlogin.php');
   }
   
   if (empty($approvel)) {
-  	header('location: adminlogin.php');
+  	header('location: sadminlogin.php');
   }
   
   
@@ -380,10 +384,10 @@ if (isset($_GET['approvel'])) {
 		
 		$query2 = "UPDATE advs_video SET approved = '$approvel' WHERE id='$videoid'";
 		if ($db->query($query2) === TRUE) {
-			header('location: syshome.php');
+			header('location: all_function.php');
  				        
 		} else {
-		  header('location: adminlogin.php');
+		  header('location: sadminlogin.php');
 		}
 		
 		
@@ -392,7 +396,7 @@ if (isset($_GET['approvel'])) {
 		
   	  
   	}else {
-  		header('location: adminlogin.php');
+  		header('location: sadminlogin.php');
   	}
   
 }
