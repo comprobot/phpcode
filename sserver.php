@@ -25,7 +25,7 @@ $servername = 'localhost';
 $dbusername = 'ops';
 $dbpassword = '60503176';
 $dbname = 'ops';
-
+$adv_username="";
 $errors = array(); 
 
 
@@ -160,11 +160,11 @@ if (isset($_POST['upload_video'])) {
 	
 	$qrcode_str = mysqli_real_escape_string($db, $_POST['qrcode_str']);
 	$username = mysqli_real_escape_string($db, $_POST['username']);
-	$username = mysqli_real_escape_string($db, $_POST['username']);
+	$adv_username = mysqli_real_escape_string($db, $_POST['adv_username']);
 	
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
-	
+	if (empty($adv_username)) { array_push($errors, "adv username is required"); }
 	
 	
 	
@@ -177,7 +177,7 @@ if (isset($_POST['upload_video'])) {
 	
 	if (empty($qrcode_str)) { array_push($errors, "qrcode_str is required"); }
 	
-	if(isset($_POST['qrcode_str']) AND !empty($qrcode_str) AND !empty($username)){
+	if(isset($_POST['qrcode_str']) AND !empty($qrcode_str) AND !empty($adv_username) AND !empty($username)){
 	
 		if(isset($_FILES['myvideo']) AND $_FILES['myvideo']['error'] == 0) {
         // Check size
@@ -187,10 +187,10 @@ if (isset($_POST['upload_video'])) {
 				$upload_extension = $fileInfo['extension'];
 				$allowed_extensions = array('mp4','avi');
 				
-				$query2 = "SELECT * FROM advs_video WHERE username='$username'";
+				$query2 = "SELECT * FROM advs_video WHERE username='$adv_username'";
 				$results = mysqli_query($db, $query2);
 				if (mysqli_num_rows($results) == 1) {
-					$query = "UPDATE advs_video SET filename= '$filename' , qrcode ='$qrcode_str', approved ='P' WHERE username='$username'";
+					$query = "UPDATE advs_video SET filename= '$filename' , qrcode ='$qrcode_str', approved ='P' WHERE username='$adv_username'";
 					if ($db->query($query) === TRUE) {
  				        
 					} else {
@@ -198,7 +198,7 @@ if (isset($_POST['upload_video'])) {
 					}
 					
 				}else {
-					$query = "INSERT INTO advs_video (username, filename , qrcode, approved )  VALUES('$username', '$filename', '$qrcode_str','P')";
+					$query = "INSERT INTO advs_video (username, filename , qrcode, approved )  VALUES('$adv_username', '$filename', '$qrcode_str','P')";
 					if ($db->query($query) === TRUE) {
  				        
 					} else {
