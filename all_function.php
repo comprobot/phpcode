@@ -138,7 +138,7 @@ $(document).ready(function() {
 	$("#uploadVideoFormSadmin").validate({
 	 rules: {
 
-				adv_username_str: {
+				adv_username: {
 					required: true,
 					minlength: 2
 				},
@@ -151,7 +151,7 @@ $(document).ready(function() {
 			
 			messages: {
 				
-				adv_username_str: {
+				adv_username: {
 					required: "Please enter a String for advusername",
 					minlength: "Your string for adv username must consist of at least 2 characters"
 				},
@@ -170,12 +170,19 @@ $(document).ready(function() {
 
 
 var qrcode_str = $("#qrcode_str").val();
+var adv_username =$("adv_username").val();		
+		
+		
+		
 if (qrcode_str == '') {
 //alert("Please fill all fields...!!!!!!");
 } else {
 	
 }
-});
+}
+					  
+					  
+);
 
 
 
