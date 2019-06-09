@@ -97,7 +97,13 @@ if (param=="storeuser")
 	
 }
 
-
+if (param=="advvideo")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#advvideo').attr('data-ah-tab-active', 'true');
+	
+}
+//id="advvideo"
 	
 	
   
@@ -254,7 +260,7 @@ if (qrcode_str == '') {
 			
 			
 			
-			<div class="ah-tab-content">
+			<div class="ah-tab-content" id="advvideo">
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  advs_video"); ?>
 			<table border="1">
@@ -291,10 +297,10 @@ if (qrcode_str == '') {
 					
 					
 				<td>
-					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=T&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Approve</a>
+					<a href="sserver.php?videoid=<?php echo $row['id']; ?>&approvel=T&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Approve</a>
 				</td>
 				<td>
-					<a href="server.php?videoid=<?php echo $row['id']; ?>&approvel=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
+					<a href="sserver.php?videoid=<?php echo $row['id']; ?>&approvel=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
 				</td>
 			</tr>
 			<?php } ?>
