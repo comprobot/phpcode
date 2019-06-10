@@ -362,7 +362,7 @@ if (isset($_POST['store_login_user'])) {
 
 if (isset($_GET['delete_adv_video'])) {
   $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
-  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $videoid = mysqli_real_escape_string($db, $_GET['videoid']);
   $action = mysqli_real_escape_string($db, $_GET['delete_adv_video']);
 
   if (empty($username)) {
@@ -383,7 +383,7 @@ if (isset($_GET['delete_adv_video'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "DELETE FROM advs_video  WHERE username='$username'";
+		$query2 = "DELETE FROM advs_video  WHERE id='$videoid'";
 		if ($db->query($query2) === TRUE) {
 			header('location: all_function.php?tag=advvideo');
  				        
