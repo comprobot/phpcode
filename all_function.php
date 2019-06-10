@@ -278,7 +278,7 @@ if (qrcode_str == '') {
 					<th>QRcode</th>
 					<th>Time</th>
 					<th>Status</th>
-					<th colspan="2">Action</th>
+					<th colspan="3">Action</th>
 				</tr>
 			</thead>
 	
@@ -309,6 +309,11 @@ if (qrcode_str == '') {
 				<td>
 					<a href="sserver.php?videoid=<?php echo $row['id']; ?>&approvel=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
 				</td>
+				<td>
+					<a href="sserver.php?videoid=<?php echo $row['id']; ?>&delete_adv_video=delete_adv_video&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Delete</a>
+				</td>					
+					
+					
 			</tr>
 			<?php } ?>
 			</table>
