@@ -384,7 +384,7 @@ if (isset($_GET['approvel'])) {
 		
 		$query2 = "UPDATE advs_video SET approved = '$approvel' WHERE id='$videoid'";
 		if ($db->query($query2) === TRUE) {
-			header('location: all_function.php');
+			header('location: all_function.php?tag=advvideo');
  				        
 		} else {
 		  header('location: sadminlogin.php');
