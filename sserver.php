@@ -217,7 +217,7 @@ if (isset($_POST['upload_video'])) {
 					if(move_uploaded_file($_FILES['myvideo']['tmp_name'], $target_file)) {
 									
 									
-						header('location: uploadComplete.php');
+						header('location: all_function.php?tag=advvideo');
 					}
 				}
 				else
