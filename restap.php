@@ -254,7 +254,22 @@ if (isset($_GET['qrcode_customer'])) {
   	
 	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$customer_username' AND password='$password'";  
 	
-	if ($db->query($earnpoint) === TRUE) {		
+	if ($db->query($earnpoint) === TRUE) {
+		
+		      $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
+			
+			if ($db->query($insertCustomerAccess) === TRUE) 
+			{
+				echo "<p>SUCCESS</p>";        
+			}else{
+				foreach ($errors as $error) {
+					echo "<p>".$error ."</p>";  
+			
+	
+	  			} 
+			}	
+		
+		/*
 	
 		$query2 = "SELECT * FROM customer_access WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
 		
@@ -296,6 +311,8 @@ if (isset($_GET['qrcode_customer'])) {
 			}
 			
 		}
+		
+		*/
 		
  
 	} else {
