@@ -259,7 +259,7 @@ if (qrcode_str == '') {
 			<div class="ah-tab-content">
 			 			<?php 
 			$videouser = $_SESSION['username'];
-			$query = "SELECT * FROM  customer_access ca, customers cc   WHERE ca.advid = '$videouser' and ca.customerid = cc.username" ;
+			$query = "SELECT cc.title as title, cc.age as age,ca.tm as tm  FROM  customer_access ca, customers cc   WHERE ca.advid = '$videouser' and ca.customerid = cc.username" ;
 			$results = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($results) >= 1) {
 			?>
