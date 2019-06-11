@@ -1,3 +1,4 @@
+<?php include('aserver.php') ?>
 <?php 
 			$videouser = 'bblinux';
 			$query = "SELECT * FROM  customer_access ca, customers cc   WHERE ca.advid = '$videouser' and ca.customerid = cc.username" ;
