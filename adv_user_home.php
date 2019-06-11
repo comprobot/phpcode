@@ -260,7 +260,7 @@ if (qrcode_str == '') {
 			 			<?php 
 			$videouser = $_SESSION['username'];
 			$query = "SELECT * FROM  customer_access ca, customers cc   WHERE ca.advid = '$videouser' and ca.customerid = cc.username" ;
-			$resultsofyou = mysqli_query($db, $query); 			
+			$results = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($results) == 1) {
 			?>
 			 
