@@ -252,7 +252,7 @@ if (isset($_GET['qrcode_customer'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
   	
-	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$username' AND password='$password'";  
+	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$customer_username' AND password='$password'";  
 	
 	if ($db->query($earnpoint) === TRUE) {		
 	
