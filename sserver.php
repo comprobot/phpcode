@@ -27,6 +27,7 @@ $dbpassword = '60503176';
 $dbname = 'ops';
 $adv_username="";
 $errors = array(); 
+$checkpayment="";
 
 
 
@@ -446,6 +447,87 @@ if (isset($_GET['approvel'])) {
 }
 
 
+if (isset($_GET['delete_customer_payment'])) {
+  $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $username = mysqli_real_escape_string($db, $_GET['customerid']);
+  $action = mysqli_real_escape_string($db, $_GET['delete_customer_payment']);
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adminuser)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($action)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$adminuser'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "DELETE FROM customer_payment  WHERE customerid='$username'";
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=customerpayment');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
+
+
+if (isset($_GET['veify_customer_payment'])) {
+  $username = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $videoid = mysqli_real_escape_string($db, $_GET['customerid']);
+  $approvel = mysqli_real_escape_string($db, $_GET['veify_customer_payment']);
+  $checkpayment = mysqli_real_escape_string($db, $_GET['check']);
+  
+  
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($videoid)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($approvel)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($checkpayment)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE customer_payment SET verified = '$approvel' WHERE id='$videoid'";
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=customerpayment');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
 
 
 
