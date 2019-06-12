@@ -429,7 +429,7 @@ if (qrcode_str == '') {
 					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&delete_customer_payment=delete_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
 				</td>				
 				<td>
-					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&veify_customer_payment=veify_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Verify</a>
+					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&check=T&veify_customer_payment=veify_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Verify</a>
 				</td>				
 				
 			</tr>
