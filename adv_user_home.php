@@ -62,7 +62,7 @@
 	
 	</script>
 	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>-->
 <!-- Include SmartCart -->
 <script src="http://157.230.145.40/ops/dist/js/jquery.smartCart.min.js" type="text/javascript"></script>
         
