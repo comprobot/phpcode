@@ -305,7 +305,7 @@ if (qrcode_str == '') {
 			</div>
 			<div class="ah-tab-content" id="customerpayment">
 
-			 <iframe src="paypal.html" width="100%" height="600" frameborder="0" scrolling="yes"></iframe>
+			 <iframe src="paypal.html?username=<?php echo $_SESSION['username']; ?>" width="100%" height="600" frameborder="0" scrolling="yes"></iframe>
 			 
 			 
 			 
