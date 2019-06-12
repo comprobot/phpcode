@@ -181,7 +181,8 @@ if (qrcode_str == '') {
                 <div class="ah-tab">
                     <a class="ah-tab-item" data-ah-tab-active="true" href="">Upload Adv video</a>
                     <a class="ah-tab-item" href="">View Customer access </a>
-                    <a class="ah-tab-item" href="">Package payment</a>                    
+                    <a class="ah-tab-item" href="">Package payment</a> 
+	            <a class="ah-tab-item" href="">Payment history</a> 
                 </div>
             </div>		
 			
