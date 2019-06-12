@@ -424,7 +424,7 @@ if (qrcode_str == '') {
 				<tr>
 					<td><?php echo $row['customerid']; ?></td>
 					<td><?php echo $row['paid']; ?></td>
-					<td><?php echo $row['verfied']; ?></td>
+					<td><?php echo $row['verified']; ?></td>
 					<td><?php echo $row['tm']; ?></td>					
 					
 				<td>
