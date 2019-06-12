@@ -515,7 +515,7 @@ if (isset($_GET['veify_customer_payment'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "UPDATE customer_payment SET verified = '$approvel' WHERE id='$videoid'";
+		$query2 = "UPDATE customer_payment SET verified = '$approvel' WHERE customerid='$videoid'";
 		if ($db->query($query2) === TRUE) {
 			header('location: all_function.php?tag=customerpayment');
  				        
