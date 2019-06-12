@@ -527,7 +527,7 @@ if (isset($_GET['veify_customer_payment'])) {
   	}else {
   		header('location: sadminlogin.php');
   	}
-  */
+  
 }
 
 
