@@ -46,7 +46,11 @@
 	<link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="src/jquery.horizontalmenu.css">
     <script src="src/jquery.horizontalmenu.js"></script>
-	
+	                <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+                    
+    <!-- Include SmartCart CSS -->
+    <link href="http://157.230.145.40/ops/dist/css/smart_cart.min.css" rel="stylesheet" type="text/css" />
 	
 	<script>
 	$.validator.setDefaults({
@@ -81,15 +85,15 @@ $(function () {
   //$('#sp1').attr('data-ah-tab-active', 'true');
   
   var param = $.UrlParam("tag");
-if (param=="advuser")
+if (param=="customeraccess")
 {
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#advuser').attr('data-ah-tab-active', 'true');
+	$('#customeraccess').attr('data-ah-tab-active', 'true');
 }
-if (param=="storeuser")
+if (param=="customerpayment")
 {
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#storeuser').attr('data-ah-tab-active', 'true');
+	$('#customerpayment').attr('data-ah-tab-active', 'true');
 	
 }
 if (param=="advvideo")
@@ -182,7 +186,10 @@ if (qrcode_str == '') {
 			
 			
    		   <div id="tab_list_content" class="ah-tab-content-wrapper">	
-			<div class="ah-tab-content" data-ah-tab-active="true">
+		   
+		   
+		   
+			<div class="ah-tab-content" data-ah-tab-active="true" id="advvideo">
 
 
 
@@ -256,7 +263,7 @@ if (qrcode_str == '') {
 			</form>
 			</div>
 			
-			<div class="ah-tab-content">
+			<div class="ah-tab-content" id="customeraccess" >
 			 			<?php 
 			$videouser = $_SESSION['username'];
 			$query = "SELECT cc.title as title, cc.age as age,ca.tm as tm  FROM  customer_access ca, customers cc   WHERE ca.advid = '$videouser' and ca.customerid = cc.username" ;
@@ -294,8 +301,98 @@ if (qrcode_str == '') {
 			 
 			 
 			</div>
-			<div class="ah-tab-content">
+			<div class="ah-tab-content" id="customerpayment">
 			 <h3>Package payment </h3>
+			 
+			         <section class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Products
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <!-- BEGIN PRODUCTS -->
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="sc-product-item thumbnail">
+                                        <img data-name="product_image" src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+1" alt="...">
+                                            <div class="caption">
+                                                <h4 data-name="product_name">Advertisement payment</h4>
+                                                <p data-name="product_desc">Advertisement payment</p>
+                                                <hr class="line">
+                                                
+                                                <div>
+                                                    <div class="form-group2">
+                                                        <!--
+                                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1"  type="number">
+                                                         -->
+                                                            </div>
+                                                    <strong class="price pull-left">$100</strong>
+                                                    
+                                                    <input name="product_price" value="1" type="hidden" />
+                                                    <input name="product_id" value="12" type="hidden" />
+                                                    <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            </div>
+                                </div>
+                                
+                                <!-- END PRODUCTS -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <aside class="col-md-4">
+                    <!-- Paypal Submit URL : https://www.paypal.com/cgi-bin/webscr -->
+                    <!-- Paypal Sandbox Submit URL: https://www.sandbox.paypal.com/cgi-bin/webscr -->
+                    
+                    <!-- Paypal Cart submit form -->
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="POST">
+                        <!-- SmartCart element -->
+                        <div id="smartcart"></div>
+                        
+                        <!-- Paypal required info, Please update based on your details -->
+                        <input name="business" value="wailunglo@gmail.com" type="hidden">
+                            <input name="currency_code" value="HKD" type="hidden">
+                                <input name="return" value="http://157.230.145.40/ops/success.html" type="hidden">
+                                    <input name="cancel_return" value="http://157.230.145.40/ops/cancel.html" type="hidden">
+                                        
+                                        <input name="cmd" value="_cart" type="hidden">
+                                            <input name="upload" value="1" type="hidden">
+                                                </form>
+                </aside>
+                
+            </div>¯
+        </section>
+        
+        <!-- Include jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>
+        <!-- Include SmartCart -->
+        <script src="http://157.230.145.40/ops/dist/js/jquery.smartCart.min.js" type="text/javascript"></script>
+        <!-- Initialize -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                              // Initialize Smart Cart
+                              $('#smartcart').smartCart({
+                                                        submitSettings: {
+                                                        submitType: 'paypal' // form, paypal, ajax
+                                                        },
+                                                        toolbarSettings: {
+                                                        checkoutButtonStyle: 'paypal' // default, paypal, image
+                                                        }
+                                                        });
+                              });
+            </script>
+			 
+			 
+			 
+			 
+			 
+			 
 			</div>
 
 			
