@@ -300,11 +300,7 @@ if (qrcode_str == '') {
 			}
 			?>
 			 
-			 
-			 
-			 
-			 
-			 
+	
 			 
 			</div>
 			<div class="ah-tab-content" id="customerpayment">
