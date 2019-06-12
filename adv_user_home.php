@@ -299,7 +299,7 @@ if (qrcode_str == '') {
 			</div>
 			<div class="ah-tab-content" id="customerpayment">
 			 
-			 <iframe src="paypal.html" frameborder="0" scrolling="yes"></iframe>
+			 <iframe src="paypal.html" frameborder="0" width="100%" height="600" scrolling="yes"></iframe>
 			 
 			 
 			</div>
