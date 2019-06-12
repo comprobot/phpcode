@@ -98,6 +98,15 @@ if (param=="advvideo")
 	$('#advvideo').attr('data-ah-tab-active', 'true');
 	
 }
+
+if (param=="paymenthistory")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#paymenthistory').attr('data-ah-tab-active', 'true');
+	
+}
+
+
 //id="advvideo"
 	
 	
@@ -298,13 +307,49 @@ if (qrcode_str == '') {
 			 
 			</div>
 			<div class="ah-tab-content" id="customerpayment">
+			 <h3>Package payment </h3>
 			 
-			 <iframe src="paypal.html" frameborder="0" width="100%" height="600" scrolling="yes"></iframe>
+			 
+			 <iframe src="paypal.html" frameborder="0" scrolling="yes"></iframe>
+			 
+			 
+			 
 			 
 			 
 			</div>
 
-			
+			<div class="ah-tab-content" id="paymenthistory" >
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT * FROM  customer_payment  WHERE customerid = '$videouser'" ;
+			$results = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($results) >= 1) {
+			?>
+			 
+ 			
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Purchased</th>					
+					<th>Verified</th>			
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['tm']; ?></td>					
+					<td><?php echo $row['paid']; ?></td>	
+					<td><?php echo $row['verified']; ?></td>						
+			</tr>
+			<?php } ?>
+			</table>
+			 
+			<?php
+			}
+			?>
+			 
+			</div>
 			
 			
 			
