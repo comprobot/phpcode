@@ -103,6 +103,14 @@ if (param=="advvideo")
 	$('#advvideo').attr('data-ah-tab-active', 'true');
 	
 }
+
+
+if (param=="customerpayment")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#customerpayment').attr('data-ah-tab-active', 'true');
+	
+}
 //id="advvideo"
 	
 	
@@ -218,7 +226,7 @@ if (qrcode_str == '') {
                     <a class="ah-tab-item" href="">Approve Adv video</a>
                     <a class="ah-tab-item" href="">View/Edit Adv user</a>
                     <a class="ah-tab-item" href="">View/Edit Store user</a>					
-                    <a class="ah-tab-item" href="">Tab item</a>
+                    <a class="ah-tab-item" href="">Edit and Veify payments </a>
                     <a class="ah-tab-item" href="">Other information tab</a>
                     <a class="ah-tab-item" href="">About company</a>
                 </div>
@@ -389,9 +397,51 @@ if (qrcode_str == '') {
 			<?php } ?>
 			</table>
 			</div>
-			<div class="ah-tab-content">
-			 <h3>Tab item</h3>
+			
+			
+			
+			
+			
+			<div class="ah-tab-content" id="customerpayment">
+			 <div class="form-row">
+			     <div class="row row-space"><strong>Edit and Veify payments </strong></div>				 
+ 			</div>			
+			
+			<?php $results = mysqli_query($db, "SELECT * FROM  customer_payment"); ?>
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Paid</th>
+					<th>Time</th>
+					<th>Delete</th>
+					<th>Veify</th>
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['customerid']; ?></td>
+					<td><?php echo $row['paid']; ?></td>
+					<td><?php echo $row['tm']; ?></td>					
+					
+				<td>
+					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&delete_customer_payment=delete_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
+				</td>				
+				<td>
+					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&veify_customer_payment=veify_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Verify</a>
+				</td>				
+				
+			</tr>
+			<?php } ?>
+			</table>
+			
 			</div>
+			
+			
+			
+			
+			
 			<div class="ah-tab-content">
 			 <h3>Other information tab</h3>
 			</div>
@@ -436,7 +486,7 @@ if (qrcode_str == '') {
 			
 			</form>
 			<div class="form-row">
-				<div class="name"> <a href="syshome.php?logout='1'" style="color: red;">logout</a></div>
+				<div class="name"> <a href="all_function.php?logout='1'" style="color: red;">logout</a></div>
 			</div>			
 			
 			
