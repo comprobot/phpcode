@@ -487,18 +487,19 @@ if (isset($_GET['delete_customer_payment'])) {
 
 
 if (isset($_GET['veify_customer_payment'])) {
-  $username = mysqli_real_escape_string($db, $_GET['adminuser']);
-  $videoid = mysqli_real_escape_string($db, $_GET['customerid']);
+  $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $username = mysqli_real_escape_string($db, $_GET['customerid']);
   $approvel = mysqli_real_escape_string($db, $_GET['veify_customer_payment']);
   $checkpayment = mysqli_real_escape_string($db, $_GET['check']);
   
-  
+  echo  $adminuser.$username.$approvel.$checkpayment;
+  /*
 
   if (empty($username)) {
   	header('location: sadminlogin.php');
   }
   
-  if (empty($videoid)) {
+  if (empty($adminuser)) {
   	header('location: sadminlogin.php');
   }
   
@@ -511,11 +512,11 @@ if (isset($_GET['veify_customer_payment'])) {
   }
   
   
-  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$query = "SELECT * FROM admin_users WHERE username='$adminuser'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "UPDATE customer_payment SET verified = '$approvel' WHERE customerid='$videoid'";
+		$query2 = "UPDATE customer_payment SET verified = '$approvel' WHERE customerid='$username'";
 		if ($db->query($query2) === TRUE) {
 			header('location: all_function.php?tag=customerpayment');
  				        
@@ -526,7 +527,7 @@ if (isset($_GET['veify_customer_payment'])) {
   	}else {
   		header('location: sadminlogin.php');
   	}
-  
+  */
 }
 
 
