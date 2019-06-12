@@ -307,7 +307,7 @@ if (qrcode_str == '') {
 			 <h3>Package payment </h3>
 			 
 			 
-			 <iframe src="paypal.html" frameborder="0" scrolling="yes"></iframe>
+			 <iframe src="paypal.html" width="100%" height="600" frameborder="0" scrolling="yes"></iframe>
 			 
 			 
 			 
