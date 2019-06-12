@@ -36,7 +36,7 @@ $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if (isset($_GET['add_payment'])) {
 	
 
-	$username = mysqli_real_escape_string($db, $_SESSION['username'] );
+	$username = mysqli_real_escape_string($db, $_GET['username'] );
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
 
@@ -44,7 +44,7 @@ if (isset($_GET['add_payment'])) {
 	if ($db->query($query) === TRUE) {
 		
 		echo "<h1>The advertisement plan you have sccessfully purcharsed. </h1>";
-		
+		header('location: adv_user_home.php');
  	} else {
 	   //array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
 	}
