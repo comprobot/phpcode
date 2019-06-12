@@ -44,7 +44,7 @@ if (isset($_GET['add_payment'])) {
 	if ($db->query($query) === TRUE) {
 		
 		echo "<h1>The advertisement plan you have sccessfully purcharsed. </h1>";
-		header('location: adv_user_home.php');
+		header('location: adv_user_home.php?tag=paymenthistory');
  	} else {
 	   //array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
 	}
