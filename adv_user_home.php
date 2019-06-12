@@ -62,6 +62,11 @@
 	
 	</script>
 	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>
+<!-- Include SmartCart -->
+<script src="http://157.230.145.40/ops/dist/js/jquery.smartCart.min.js" type="text/javascript"></script>
+        
+	
 	<!--<script src="js/registration.js"></script>	-->
 <script>
 
@@ -111,6 +116,21 @@ if (param=="advvideo")
 
 
 $(document).ready(function() {
+	
+	
+         $('#smartcart').smartCart({
+                                                        submitSettings: {
+                                                        submitType: 'paypal' // form, paypal, ajax
+                                                        },
+                                                        toolbarSettings: {
+                                                        checkoutButtonStyle: 'paypal' // default, paypal, image
+                                                        }
+                                                        });
+                              });
+
+							  
+	
+	
 	$('#uploadVideoForm').submit(function() {
 	
 	  //event.preventDefault();
@@ -304,8 +324,37 @@ if (qrcode_str == '') {
 			<div class="ah-tab-content" id="customerpayment">
 			 <h3>Package payment </h3>
 			 
+			 <h4 data-name="product_name">Advertisement payment</h4>
+                                                <p data-name="product_desc">Advertisement payment</p>
+                                                <hr class="line">
+                                                
+                                                <div>
+                                                    <div class="form-group2">
+                                                        <!--
+                                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1"  type="number">
+                                                         -->
+                                                            </div>
+                                                    <strong class="price pull-left">$100</strong>
+                                                    
+                                                    <input name="product_price" value="1" type="hidden" />
+                                                    <input name="product_id" value="12" type="hidden" />
+                                                    <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                                </div>
+                                                <div class="clearfix"></div>
 			 
-			 
+			  <form action="https://www.paypal.com/cgi-bin/webscr" method="POST">
+                        <!-- SmartCart element -->
+                        <div id="smartcart"></div>
+                        
+                        <!-- Paypal required info, Please update based on your details -->
+                        <input name="business" value="wailunglo@gmail.com" type="hidden">
+                            <input name="currency_code" value="HKD" type="hidden">
+                                <input name="return" value="http://157.230.145.40/ops/success.html" type="hidden">
+                                    <input name="cancel_return" value="http://157.230.145.40/ops/cancel.html" type="hidden">
+                                        
+                                        <input name="cmd" value="_cart" type="hidden">
+                                            <input name="upload" value="1" type="hidden">
+                                                </form>
 			 
 			 
 			 
