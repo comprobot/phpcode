@@ -413,9 +413,10 @@ if (qrcode_str == '') {
 				<tr>
 					<th>Username</th>
 					<th>Paid</th>
-					<th>Time</th>
+					<th>Verfied</th>
+					<th>Time</th>					
 					<th>Delete</th>
-					<th>Veify</th>
+					<th>Veify payment</th>
 				</tr>
 			</thead>
 	
@@ -423,6 +424,7 @@ if (qrcode_str == '') {
 				<tr>
 					<td><?php echo $row['customerid']; ?></td>
 					<td><?php echo $row['paid']; ?></td>
+					<td><?php echo $row['verfied']; ?></td>
 					<td><?php echo $row['tm']; ?></td>					
 					
 				<td>
