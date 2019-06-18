@@ -202,8 +202,6 @@ if (serial_number == '') {
                 <div class="ah-tab">
                     <a class="ah-tab-item" data-ah-tab-active="true" href="">Add media player items</a>
                     <a class="ah-tab-item" href="">View Customer access </a>
-                    <a class="ah-tab-item" href="">Package payment</a> 
-	            <a class="ah-tab-item" href="">Payment history</a> 
                 </div>
             </div>		
 						
@@ -221,31 +219,31 @@ if (serial_number == '') {
 			
 			<form method="POST" action="storeuserhome.php" id="adddisplay" name="adddisplay" ">
 			
-			<div class="form-row">
-			     <div class="row row-space"><strong>Add the media player items</strong></div>				 
- 			</div>						
-			<div class="form-row">
+                 <div class="form-row">
+			        <div class="row row-space"><strong>Add the media player items</strong></div>				 
+ 			    </div>						
+			   <div class="form-row">
                  <div class="name">Serial Number</div>
                     <div class="value">
                        <div class="input-group">
                          <input class="input--style-5" type="text" name="serial_number" id='serial_number' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
                        </div>
                  </div>
-            </div>			
-			<div class="form-row">
+               </div>			
+			  <div class="form-row">
                  <div class="name">Information</div>
                     <div class="value">
                        <div class="input-group">
                          <input class="input--style-5" type="text" name="info" id='info' value="<?php echo $info; ?>" required> <label for="info" class="error"></label>
                        </div>
                  </div>
-            </div>			
+              </div>			
 						
-			<div>
+			  <div>
             
 				<button class="btn btn--radius-2 btn--red" name="add_media_player" id="add_media_player" >Add</button>
-            </div>
-			
+              </div>
+			 
 			
 			</form>
 			
@@ -290,12 +288,56 @@ if (serial_number == '') {
 			
 			<div class="form-row">
 				<div class="name"> <br/></div>
-			</div>			
+			</div>
+			
+
+
+
+			
+			
+			
+			
+			
+			
+     		<div class="ah-tab-content" id="customerpayment">
+
+	
+			 
+			 
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+
+
+
+
+
+
+			
 						
+		</div>
+			
+			
 			
 			
 			<?php endif ?>
-                   </div>
+			
+			
+			
+			
+			
+                   
 				 </div>
                 </div>
             </div>
