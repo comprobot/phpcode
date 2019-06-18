@@ -43,6 +43,12 @@
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/additional-methods.js"></script>
 	<script src="js/messages_zh_TW.js"></script>
+	<link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/jquery.horizontalmenu.css">
+    <script src="src/jquery.horizontalmenu.js"></script>
+	
+
+	
 	<script>
 	$.validator.setDefaults({
 		submitHandler: function() {
@@ -54,6 +60,72 @@
 	</script>
 	
 	<script>
+	
+(function ($) {
+  $.UrlParam = function (name) {
+    //宣告正規表達式
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    /*
+     * window.location.search 獲取URL ?之後的參數(包含問號)
+     * substr(1) 獲取第一個字以後的字串(就是去除掉?號)
+     * match(reg) 用正規表達式檢查是否符合要查詢的參數
+    */
+    var r = window.location.search.substr(1).match(reg);
+    //如果取出的參數存在則取出參數的值否則回穿null
+    if (r != null) return unescape(r[2]); return null;
+  }
+})(jQuery);
+
+$(function () {
+  
+  $('#tab_list').horizontalmenu({
+                                itemClick: function (item) {
+                                $('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');
+                                
+                                
+                                $('#tab_list_content .ah-tab-content:eq(' + $(item).index() + ')').attr('data-ah-tab-active', 'true');
+                                
+                                
+                                
+                                return false; //if this finction return true then will be executed http request
+                                }
+                                });
+  
+  
+  //$('#sp1').attr('data-ah-tab-active', 'true');
+  
+  var param = $.UrlParam("tag");
+if (param=="customeraccess")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#customeraccess').attr('data-ah-tab-active', 'true');
+}
+if (param=="customerpayment")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#customerpayment').attr('data-ah-tab-active', 'true');
+	
+}
+if (param=="advvideo")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#advvideo').attr('data-ah-tab-active', 'true');
+	
+}
+
+if (param=="paymenthistory")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#paymenthistory').attr('data-ah-tab-active', 'true');
+	
+}
+
+
+//id="advvideo"
+  
+  });
+	
+	
 $(document).ready(function() {
 	$('#adddisplay').submit(function() {
 	
@@ -125,6 +197,25 @@ if (serial_number == '') {
 			<div class="form-row">
 			     <div class="name">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></div>
  			</div>			
+			
+			<div id="tab_list" class="ah-tab-wrapper">
+                <div class="ah-tab">
+                    <a class="ah-tab-item" data-ah-tab-active="true" href="">Add media player items</a>
+                    <a class="ah-tab-item" href="">View Customer access </a>
+                    <a class="ah-tab-item" href="">Package payment</a> 
+	            <a class="ah-tab-item" href="">Payment history</a> 
+                </div>
+            </div>		
+						
+			
+
+
+			<div id="tab_list_content" class="ah-tab-content-wrapper">	
+		   
+		   
+		   
+			<div class="ah-tab-content" data-ah-tab-active="true" id="advvideo">
+
 			
 			
 			
@@ -204,11 +295,12 @@ if (serial_number == '') {
 			
 			
 			<?php endif ?>
-            
+                   </div>
+				 </div>
                 </div>
             </div>
         </div>
-    </div>
+    <!--</div>-->
 
     <!-- Jquery JS-->
     <!--<script src="vendor/jquery/jquery.min.js"></script>-->
