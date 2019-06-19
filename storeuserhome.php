@@ -279,26 +279,10 @@ if (serial_number == '') {
 			</tr>
 			<?php } ?>
 			</table>
-			
-			
-			
-			<div class="form-row">
-				<div class="name"> <a href="storeuserhome.php?logout='1'" style="color: red;">logout</a></div>
-			</div>			
-			
-			<div class="form-row">
-				<div class="name"> <br/></div>
 			</div>
 			
-
-
-
 			
-			
-			
-			
-			
-			
+						
 			<div class="ah-tab-content" id="customeraccess" >
 			<?php 
 			$videouser = $_SESSION['username'];
@@ -334,6 +318,26 @@ if (serial_number == '') {
 			 
 			</div>
 			
+			
+			
+			
+			<div class="form-row">
+				<div class="name"> <a href="storeuserhome.php?logout='1'" style="color: red;">logout</a></div>
+			</div>			
+			
+			<div class="form-row">
+				<div class="name"> <br/></div>
+			</div>
+			
+
+
+
+			
+			
+			
+			
+			
+
 	
 
 
