@@ -299,27 +299,42 @@ if (serial_number == '') {
 			
 			
 			
-     		<div class="ah-tab-content" id="customerpayment">
-
-	
+			<div class="ah-tab-content" id="customeraccess" >
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT cc.title as title, cc.age as age,ca.tm as tm,ca.displayid as display_device  FROM  customer_access ca, customers cc   WHERE ca.storeid = '$videouser' and ca.customerid = cc.username" ;
+			$results = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($results) >= 1) {
+			?>
 			 
+ 			
+			<table border="1">
+			<thead>
+				<tr>
+					<th>title</th>
+					<th>age</th>					
+					<th>time</th>			
+					<th>device</th>
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['title']; ?></td>					
+					<td><?php echo $row['age']; ?></td>	
+					<td><?php echo $row['tm']; ?></td>						
+					<td><?php echo $row['display_device']; ?></td>						
+			</tr>
+			<?php } ?>
+			</table>
+			 
+			<?php
+			}
+			?>
 			 
 			</div>
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-
-
-
+	
 
 
 
@@ -328,16 +343,8 @@ if (serial_number == '') {
 						
 		</div>
 			
-			
-			
-			
 			<?php endif ?>
-			
-			
-			
-			
-			
-                   
+	               
 				 </div>
                 </div>
             </div>
