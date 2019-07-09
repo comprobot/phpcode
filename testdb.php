@@ -33,8 +33,10 @@ $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 $query2 = "SELECT * FROM  system_settings";
 $results = mysqli_query($db, $query2);
 $row = mysqli_fetch_array($results) ;
- echo $row[0]['adv_pool_radio'];
-echo  $row[0]['adv_access_point'];
+
+echo  intval($row[0]['adv_pool_radio']);
+echo '<br/>';
+echo   intval($row[0]['adv_access_point']);
 
 
 
