@@ -444,8 +444,43 @@ if (qrcode_str == '') {
 			
 			
 			
-			<div class="ah-tab-content">
-			 <h3>Other information tab</h3>
+			<div class="ah-tab-content" id="systemsetting">	
+			               <?php $results = mysqli_query($db, "SELECT * FROM  system_settings"); ?>
+			  
+			    <div class="form-row">
+			     <form method="POST" action="all_function.php" id="updateSystemSetting" name="updateSystemSetting">
+			     <?php include('errors.php'); ?>
+			        <?php $row = mysqli_fetch_array($results) ?>
+					<div class="form-row">
+					<div class="row row-space"><strong>Adv user pool radio :</strong> </div>
+					<div class="value">
+					<div class="input-group">
+					<input class="input--style-5" name="adv_pool_radio" id='adv_pool_radio' value="<?php echo $row[0]['adv_pool_radio']; ?>" > <label for="adv_pool_radio" class="error"></label>
+					</div>
+					</div>
+					</div>
+
+					<div class="form-row">
+					<div class="row row-space"><strong>Adv access point:</strong> </div>
+					<div class="value">
+					<div class="input-group">
+					<input class="input--style-5" name="adv_access_point" id='adv_access_point' value="<?php echo $row[0]['adv_access_point'] ?>" > <label for="adv_access_point" class="error"></label>
+					</div>
+					</div>
+					</div>
+			
+					<button class="btn btn--radius-2 btn--red" name="update_system_info" id="update_system_info" type="submit">Submit Video</button>
+
+					<br/>
+					<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
+					<br/>
+					<br/>
+				  </form>
+			  
+			  
+			  
+			  
+ 			  <?php } ?>
 			</div>
 
 			
