@@ -38,7 +38,42 @@ echo  intval($row[0]['adv_pool_radio']);
 echo '<br/>';
 echo   intval($row[0]['adv_access_point']);
 
-
+while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+    print_r( $row);
+}
+/*
+Array
+(
+    [0] => A123456789
+    [1] => 1234
+    [2] => 李小美
+)
+*/
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    print_r( $row);
+}
+/*
+Array
+(
+    [id] => A123456789
+    [pass] => 1234
+    [name] => 李小美
+)
+*/
+while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
+    print_r( $row);
+}
+/*
+Array
+(
+    [0] => A123456789
+    [id] => A123456789
+    [1] => 1234
+    [pass] => 1234
+    [2] => 李小美
+    [name] => 李小美
+)
+*/
 
 
 
