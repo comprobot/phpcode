@@ -480,7 +480,6 @@ if (qrcode_str == '') {
 			  
 			  
 			  
- 			  <?php } ?>
 			</div>
 
 			
