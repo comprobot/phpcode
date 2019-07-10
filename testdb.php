@@ -85,6 +85,22 @@ if (isset($_GET['update_system_info'])) {
   
 }
 
+if (isset($_GET['customer_qrcode'])) {
+	
+  $user_check_query = "SELECT * FROM system_settings";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  $adv_access_point = $user['adv_access_point'];
+  echo $adv_access_point;
+	
+	
+	
+}
+
+
+
+
+
 
 
 ?>
