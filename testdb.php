@@ -36,10 +36,10 @@ $adv_pool_radio="";
 //$db = mysqli_connect('localhost', 'root', '', 'registration');
 $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-if (isset($_POST['update_system_info'])) {
-  $adv_pool_radio = mysqli_real_escape_string($db, $_POST['adv_pool_radio']);
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $adv_access_point = mysqli_real_escape_string($db, $_POST['adv_access_point']);
+if (isset($_GET['update_system_info'])) {
+  $adv_pool_radio = mysqli_real_escape_string($db, $_GET['adv_pool_radio']);
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $adv_access_point = mysqli_real_escape_string($db, $_GET['adv_access_point']);
 
   if (empty($username)) {
   	header('location: sadminlogin.php');
