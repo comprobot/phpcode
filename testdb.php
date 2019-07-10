@@ -41,6 +41,13 @@ if (isset($_GET['update_system_info'])) {
   $username = mysqli_real_escape_string($db, $_GET['username']);
   $adv_access_point = mysqli_real_escape_string($db, $_GET['adv_access_point']);
 
+	echo $username;
+	echo '<br/>';
+	echo $adv_pool_ratio;
+	echo '<br/>';
+	echo $adv_access_point;
+	echo '<br/>';
+	/*
   if (empty($username)) {
   	header('location: sadminlogin.php');
   }
@@ -54,7 +61,7 @@ if (isset($_GET['update_system_info'])) {
   }
   
   
-  
+  */
   	$query = "SELECT * FROM admin_users WHERE username='$username'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
