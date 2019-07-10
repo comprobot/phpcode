@@ -104,12 +104,7 @@ if (param=="advvideo")
 	
 }
 
-if (param=="systemsetting")
-{
-	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#systemsetting').attr('data-ah-tab-active', 'true');
-	
-}
+
 if (param=="customerpayment")
 {
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
@@ -183,7 +178,7 @@ $(document).ready(function() {
 
 
 var qrcode_str = $("#qrcode_str").val();
-var adv_username =$("adv_username").val();		
+var adv_username =$("#adv_username").val();		
 		
 		
 		
@@ -196,6 +191,65 @@ if (qrcode_str == '') {
 					  
 					  
 );
+
+
+
+	$('#updateSystemSetting').submit(function() {
+	
+	  //event.preventDefault();
+	
+	$("#updateSystemSetting").validate({
+	 rules: {
+
+				adv_pool_ratio: {
+					required: true,
+					minlength: 1
+				},
+				adv_access_point: {
+					required: true,
+					minlength: 1
+				}
+			},
+			
+			
+			messages: {
+				
+				adv_pool_ratio: {
+					required: "Please enter adv pool ratio",
+					minlength: "Adv pool radio must consist of at least 1 number"
+				},
+				
+				adv_access_point: {
+					required: "Please enter adv access point",
+					minlength: "Adv access point must consist of at least 2 characters"
+				}
+			}
+		});
+	
+	
+	
+	
+
+
+
+var qrcode_str = $("#adv_pool_ratio").val();
+var adv_username =$("#adv_access_point").val();		
+		
+		
+		
+if (qrcode_str == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+}
+					  
+					  
+);
+
+
+
+
 
 
 
@@ -456,17 +510,20 @@ if (qrcode_str == '') {
 			     <form method="POST" action="all_function.php" id="updateSystemSetting" name="updateSystemSetting">
 			     <?php include('errors.php'); ?>
 			        <?php $row = mysqli_fetch_array($results) ?>
+					
+					
 					<div class="form-row">
-					<div class="row row-space"><strong>Adv user pool radio :</strong> </div>
+					<div class="row row-space"><strong>Adv user pool ratio :</strong> </div>
 					<div class="value">
 					<div class="input-group">
-					<input class="input--style-5" name="adv_pool_radio" id='adv_pool_radio' value="<?php echo $row[0]; ?>" > <label for="adv_pool_radio" class="error"></label>
+					<input class="input--style-5" name="adv_pool_ratio" id='adv_pool_ratio' value="<?php echo $row[0]; ?>" > <label for="adv_pool_ratio" class="error"></label>
 					</div>
 					</div>
 					</div>
 
 					<div class="form-row">
-					<div class="row row-space"><strong>Adv access point:</strong> </div><br/>
+					<div class="row row-space"><strong>Adv access point:</strong> </div>
+					<br/>
 					<div class="value">
 					<div class="input-group">
 					<input class="input--style-5" name="adv_access_point" id='adv_access_point' value="<?php echo $row[1];?>" > <label for="adv_access_point" class="error"></label>
