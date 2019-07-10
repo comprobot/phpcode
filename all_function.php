@@ -103,7 +103,13 @@ if (param=="advvideo")
 	$('#advvideo').attr('data-ah-tab-active', 'true');
 	
 }
-
+	
+if (param=="systemsetting")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#systemsetting').attr('data-ah-tab-active', 'true');
+	
+}
 
 if (param=="customerpayment")
 {
