@@ -227,7 +227,7 @@ if (qrcode_str == '') {
                     <a class="ah-tab-item" href="">View/Edit Adv user</a>
                     <a class="ah-tab-item" href="">View/Edit Store user</a>					
                     <a class="ah-tab-item" href="">Edit and Veify payments </a>
-                    <a class="ah-tab-item" href="">Other information tab</a>
+                    <a class="ah-tab-item" href="">System settings</a>
                     <a class="ah-tab-item" href="">About company</a>
                 </div>
             </div>						
@@ -444,8 +444,8 @@ if (qrcode_str == '') {
 			
 			
 			
-			<div class="ah-tab-content" id="systemsetting">	
-			               <?php $results = mysqli_query($db, "SELECT * FROM  system_settings"); ?>
+			<div class="ah-tab-content" id="systemsetting">			 
+              <?php $results = mysqli_query($db, "SELECT * FROM  system_settings"); ?>
 			  
 			    <div class="form-row">
 			     <form method="POST" action="all_function.php" id="updateSystemSetting" name="updateSystemSetting">
@@ -455,7 +455,7 @@ if (qrcode_str == '') {
 					<div class="row row-space"><strong>Adv user pool radio :</strong> </div>
 					<div class="value">
 					<div class="input-group">
-					<input class="input--style-5" name="adv_pool_radio" id='adv_pool_radio' value="<?php echo $row[0]['adv_pool_radio']; ?>" > <label for="adv_pool_radio" class="error"></label>
+					<input class="input--style-5" name="adv_pool_radio" id='adv_pool_radio' value="<?php echo $row[0]; ?>" > <label for="adv_pool_radio" class="error"></label>
 					</div>
 					</div>
 					</div>
@@ -464,20 +464,18 @@ if (qrcode_str == '') {
 					<div class="row row-space"><strong>Adv access point:</strong> </div>
 					<div class="value">
 					<div class="input-group">
-					<input class="input--style-5" name="adv_access_point" id='adv_access_point' value="<?php echo $row[0]['adv_access_point'] ?>" > <label for="adv_access_point" class="error"></label>
+					<input class="input--style-5" name="adv_access_point" id='adv_access_point' value="<?php echo $row[1];?>" > <label for="adv_access_point" class="error"></label>
 					</div>
 					</div>
 					</div>
 			
-					<button class="btn btn--radius-2 btn--red" name="update_system_info" id="update_system_info" type="submit">Submit Video</button>
+					<button class="btn btn--radius-2 btn--red" name="update_system_info" id="update_system_info" type="submit">Update setting</button>
 
 					<br/>
 					<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
 					<br/>
 					<br/>
 				  </form>
-			  
-			  
 			  
 			  
 			</div>
@@ -509,6 +507,7 @@ if (qrcode_str == '') {
                   </div>
                </div>
             </div>
+			
 			
 			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Submit Video</button>
 			
