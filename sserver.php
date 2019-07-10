@@ -791,6 +791,48 @@ if (isset($_GET['customer_login_user'])) {
 }
 
 
+if (isset($_GET['update_system_info'])) {
+  $adv_pool_radio = mysqli_real_escape_string($db, $_GET['adv_pool_radio']);
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $adv_access_point = mysqli_real_escape_string($db, $_GET['adv_access_point']);
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adv_pool_radio)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adv_access_point)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE system_settings SET adv_pool_radio = $adv_pool_radio ,adv_access_point = $adv_access_point";
+		
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=systemsetting');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
+
+
+
+
 if (isset($_POST['customer_login_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
