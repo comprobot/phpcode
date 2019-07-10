@@ -30,7 +30,7 @@ $errors = array();
 $checkpayment="";
 $qrcode_str="";
 $adv_access_point="";
-$adv_pool_radio="";
+$adv_pool_ratio="";
 
 
 
@@ -160,7 +160,7 @@ if (isset($_GET['delete_media_player'])) {
 
 
 if (isset($_POST['update_system_info'])) {
-  $adv_pool_radio = mysqli_real_escape_string($db, $_POST['adv_pool_radio']);
+  $adv_pool_ratio = mysqli_real_escape_string($db, $_POST['adv_pool_ratio']);
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $adv_access_point = mysqli_real_escape_string($db, $_POST['adv_access_point']);
 
@@ -168,7 +168,7 @@ if (isset($_POST['update_system_info'])) {
   	header('location: sadminlogin.php');
   }
   
-  if (empty($adv_pool_radio)) {
+  if (empty($adv_pool_ratio)) {
   	header('location: sadminlogin.php');
   }
   
@@ -182,7 +182,7 @@ if (isset($_POST['update_system_info'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "UPDATE system_settings SET adv_pool_radio = $adv_pool_radio ,adv_access_point = $adv_access_point";
+		$query2 = "UPDATE system_settings SET adv_pool_ratio = $adv_pool_ratio ,adv_access_point = $adv_access_point";
 		
 		if ($db->query($query2) === TRUE) {
 			header('location: all_function.php?tag=systemsetting');
