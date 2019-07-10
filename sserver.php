@@ -28,6 +28,11 @@ $dbname = 'ops';
 $adv_username="";
 $errors = array(); 
 $checkpayment="";
+$qrcode_str="";
+$adv_access_point="";
+$adv_pool_radio="";
+
+
 
 
 
