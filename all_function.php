@@ -104,7 +104,12 @@ if (param=="advvideo")
 	
 }
 
-
+if (param=="systemsetting")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#systemsetting').attr('data-ah-tab-active', 'true');
+	
+}
 if (param=="customerpayment")
 {
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
@@ -461,7 +466,7 @@ if (qrcode_str == '') {
 					</div>
 
 					<div class="form-row">
-					<div class="row row-space"><strong>Adv access point:</strong> </div>
+					<div class="row row-space"><strong>Adv access point:</strong> </div><br/>
 					<div class="value">
 					<div class="input-group">
 					<input class="input--style-5" name="adv_access_point" id='adv_access_point' value="<?php echo $row[1];?>" > <label for="adv_access_point" class="error"></label>
