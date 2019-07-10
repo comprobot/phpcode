@@ -250,13 +250,23 @@ if (isset($_GET['qrcode_customer'])) {
 	
   	$query = "SELECT POINT FROM customers WHERE username='$customer_username' AND password='$password'";
   	$results = mysqli_query($db, $query);
+	
+     $point_check_query = "SELECT * FROM system_settings";
+ 	 $resultpoint = mysqli_query($db, $point_check_query);
+     $userpoint = mysqli_fetch_assoc($resultpoint);
+     $adv_access_point = $userpoint['adv_access_point'];
+	
+	
   	if (mysqli_num_rows($results) == 1) {
   	
-	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$customer_username' AND password='$password'";  
+//	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$customer_username' AND password='$password'";  
+
+	$earnpoint = "UPDATE customers  SET point = point + $adv_access_point  WHERE username='$customer_username' AND password='$password'";  
 	
 	if ($db->query($earnpoint) === TRUE) {
 		
-		      $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
+		     // $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
+			  $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', $adv_access_point)";
 			
 			if ($db->query($insertCustomerAccess) === TRUE) 
 			{
@@ -276,7 +286,7 @@ if (isset($_GET['qrcode_customer'])) {
 		$results2 = mysqli_query($db, $query2);
 		if (mysqli_num_rows($results2) > 0) {	
 	
-			$updateCount = "UPDATE customer_access  SET count = count + 1  WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
+			$updateCount = "UPDATE customer_access  SET count = count + $adv_access_point  WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
 			
 			if ($db->query($updateCount) === TRUE) 
 			{
@@ -294,7 +304,7 @@ if (isset($_GET['qrcode_customer'])) {
 		}else{
 	
 			
-			$insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
+			$insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', $adv_access_point)";
 			
 			if ($db->query($insertCustomerAccess) === TRUE) 
 			{
