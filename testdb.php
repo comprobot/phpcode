@@ -27,54 +27,56 @@ $dbname = 'ops';
 $adv_username="";
 $errors = array(); 
 $checkpayment="";
+$qrcode_str="";
+$adv_access_point="";
+$adv_pool_radio="";
+
+
 // connect to the database
 //$db = mysqli_connect('localhost', 'root', '', 'registration');
 $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-$query2 = "SELECT * FROM  system_settings";
-$results = mysqli_query($db, $query2);
-$row = mysqli_fetch_array($results) ;
 
-echo  intval($row[0]['adv_pool_radio']);
-echo '<br/>';
-echo   intval($row[0]['adv_access_point']);
+if (isset($_POST['update_system_info'])) {
+  $adv_pool_radio = mysqli_real_escape_string($db, $_POST['adv_pool_radio']);
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $adv_access_point = mysqli_real_escape_string($db, $_POST['adv_access_point']);
 
-while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-    print_r( $row);
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adv_pool_radio)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adv_access_point)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE system_settings SET adv_pool_radio = $adv_pool_radio ,adv_access_point = $adv_access_point";
+		
+		if ($db->query($query2) === TRUE) {
+      echo 'done';
+			//header('location: all_function.php?tag=systemsetting');
+ 				        
+		} else {
+      echo 'erro2';
+		 // header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+      echo 'erroa';
+  		//header('location: sadminlogin.php');
+  	}
+  
 }
-/*
-Array
-(
-    [0] => A123456789
-    [1] => 1234
-    [2] => 李小美
-)
-*/
-while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    print_r( $row);
-}
-/*
-Array
-(
-    [id] => A123456789
-    [pass] => 1234
-    [name] => 李小美
-)
-*/
-while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)) {
-    print_r( $row);
-}
-/*
-Array
-(
-    [0] => A123456789
-    [id] => A123456789
-    [1] => 1234
-    [pass] => 1234
-    [2] => 李小美
-    [name] => 李小美
-)
-*/
-
 
 
 
