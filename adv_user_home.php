@@ -319,10 +319,12 @@ if (qrcode_str == '') {
 			 
 			</div>
 			<div class="ah-tab-content" id="customerpayment">
-
-			 <iframe src="paypal.html?username=<?php echo $_SESSION['username']; ?>" width="100%" height="600" frameborder="0" scrolling="yes"></iframe>
-			 
-			 
+<!--<iframe src="paypal.html?username=<?php echo $_SESSION['username']; ?>" width="100%" height="600" frameborder="0" scrolling="yes"></iframe>
+			 -->
+			 <object data="paypal.html?username=<?php echo $_SESSION['username']; ?>" width="100%" height="600" frameborder="0" scrolling="yes">
+					<embed src="paypal.html?username=<?php echo $_SESSION['username']; ?>" width="100%" height="600" frameborder="0" scrolling="yes"> </embed>
+					Error: Embedded data could not be displayed.
+			 </object>
 			 
 			 
 			 
