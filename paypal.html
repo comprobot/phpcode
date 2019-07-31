@@ -7,12 +7,13 @@
 
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>    
+    
     <!-- Include SmartCart CSS -->
     <link href="http://157.230.145.40/ops/dist/css/smart_cart.min.css" rel="stylesheet" type="text/css" />
-
-	
-		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript" ></script>
+	<!--
+	<script src="js/jquery.js"></script>
+	-->
 	<script>
 	
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -35,12 +36,26 @@ $(function () {
    /*var param = $.UrlParam("username");*/
    var param = getUrlParameter("username");
    
+   
+   
    $("#returncode").val("http://157.230.145.40/ops/successbuy.php?add_payment=add_payment&username="+param);
 	//alert ($("#returncode").val());
 	
 });
+
 	
 </script>
+
+<script>
+
+function test(){
+  // alert(100);
+
+}
+
+</script>
+	
+	
 	
 </head>
 <body>
@@ -55,29 +70,214 @@ $(function () {
                     <div class="panel-body">
                         <div class="row">
                             <!-- BEGIN PRODUCTS -->
+							
+							
                             <div class="col-md-4 col-sm-6">
                                 <div class="sc-product-item thumbnail">
                                     <img data-name="product_image" src="http://157.230.145.40/ops/src/productlogo.png" alt="...">
+									
+									
                                     <div class="caption">
-                                        <h4 data-name="product_name">Advertisement payment</h4>
-                                        <p data-name="product_desc">Product details</p>
+                                        <h4 data-name="product_name">Package 1 </h4>
+                                        <p data-name="product_desc">
+										<table border="1">
+										<thead>
+										<tr>
+										<th>Period</th>
+										<th>Number of player</th>
+										<th>Play time</th>					
+										<th>Duration</th>													
+										</tr>
+										</thead>
+										<tr>
+										<td>1 month </td>
+										<td>300 </td>
+										<td>150 </td>
+										<td> 10 second</td>
+										</tr>
+										</table>
+										
+										</p>
+										
                                         <hr class="line">
                                         
                                         <div>
+										<!--
                                             <div class="form-group2">
                                                 <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
                                             </div>
-                                            <strong class="price pull-left">$100</strong>
-                                            
-                                            <input name="product_price" value="1.0" type="hidden" />
-                                            <input name="product_id" value="12" type="hidden" />
+											-->
+                                            <strong class="price pull-left">$11800</strong>
+											
+											
+											
+											
+                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
+                                            <input name="product_price" value="4.0" type="hidden" />
+                                            <input name="product_id" value="100" type="hidden" />
                                             <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
+									
                                 </div>
-                            </div>
-                            
+
+
+                                <div class="sc-product-item thumbnail">
+                                    <img data-name="product_image" src="http://157.230.145.40/ops/src/productlogo.png" alt="...">
+									
+									
+                                    <div class="caption">
+                                        <h4 data-name="product_name">Package 2 </h4>
+                                        <p data-name="product_desc">
+										<table border="1">
+										<thead>
+										<tr>
+										<th>Period</th>
+										<th>Number of media player</th>
+										<th>Play time</th>					
+										<th>Duration</th>													
+										</tr>
+										</thead>
+										<tr>
+										<td>3 months </td>
+										<td>300 </td>
+										<td>150 </td>
+										<td> 10 second</td>
+										</tr>
+										</table>
+										
+										</p>
+										
+                                        <hr class="line">
+                                        
+                                        <div>
+										<!--
+                                            <div class="form-group2">
+                                                <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                            </div>
+											-->
+                                            <strong class="price pull-left">$28800</strong>
+											
+											
+											
+											
+                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
+                                            <input name="product_price" value="4.0" type="hidden" />
+                                            <input name="product_id" value="101" type="hidden" />
+                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+									
+                                </div>
+
+								
+                                <div class="sc-product-item thumbnail">
+                                    <img data-name="product_image" src="http://157.230.145.40/ops/src/productlogo.png" alt="...">
+									
+									
+                                    <div class="caption">
+                                        <h4 data-name="product_name">Package 3 </h4>
+                                        <p data-name="product_desc">
+										<table border="1">
+										<thead>
+										<tr>
+										<th>Period</th>
+										<th>Number of media player</th>
+										<th>Play time</th>					
+										<th>Duration</th>													
+										</tr>
+										</thead>
+										<tr>
+										<td>1 months </td>
+										<td>300 </td>
+										<td>250 </td>
+										<td> 20 second</td>
+										</tr>
+										</table>
+										
+										</p>
+										
+                                        <hr class="line">
+                                        
+                                        <div>
+										<!--
+                                            <div class="form-group2">
+                                                <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                            </div>
+											-->
+                                            <strong class="price pull-left">$14800</strong>
+											
+											
+											
+											
+                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
+                                            <input name="product_price" value="4.0" type="hidden" />
+                                            <input name="product_id" value="102" type="hidden" />
+                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+									
+                                </div>
+								
+								
+							
+
+                                <div class="sc-product-item thumbnail">
+                                    <img data-name="product_image" src="http://157.230.145.40/ops/src/productlogo.png" alt="...">
+									
+									
+                                    <div class="caption">
+                                        <h4 data-name="product_name">Package 4 </h4>
+                                        <p data-name="product_desc">
+										<table border="1">
+										<thead>
+										<tr>
+										<th>Period</th>
+										<th>Number of media player</th>
+										<th>Play time</th>					
+										<th>Duration</th>													
+										</tr>
+										</thead>
+										<tr>
+										<td>3 months </td>
+										<td>300 </td>
+										<td>250 </td>
+										<td> 20 second</td>
+										</tr>
+										</table>
+										
+										</p>
+										
+                                        <hr class="line">
+                                        
+                                        <div>
+										<!--
+                                            <div class="form-group2">
+                                                <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                            </div>
+											-->
+                                            <strong class="price pull-left">$38800</strong>
+											
+											
+											
+											
+                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
+                                            <input name="product_price" value="5.0" type="hidden" />
+                                            <input name="product_id" value="103" type="hidden" />
+                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right" >Add to cart</button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+									
+                                </div>
+								
+								
+								</div>
+
+							
                             <!-- END PRODUCTS -->
                         </div>
                     </div>
@@ -93,10 +293,15 @@ $(function () {
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="POST"> 
                     <!-- SmartCart element -->
                     <div id="smartcart"></div>
-                    <input name="business" value="wailunglo@gmail.com" type="hidden"> 
+                    <input name="business" value="wailunglo@gmail.com" type="hidden">
+                    <!-- Paypal required info, Please update based on your details -->
                     <!--<input name="business" value="dipumedayil@gmail.com" type="hidden">            -->
-		    <input name="currency_code" value="HKD" type="hidden">
-                    <input id="returncode" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment" type="hidden">
+					<!--<input name="business" value="wailunglo@@gmail.com" type="hidden">            -->
+                    <input name="currency_code" value="HKD" type="hidden">
+                    
+					<input id="returncode" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment" type="hidden">
+					
+					
                     <input name="cancel_return" value="http://157.230.145.40/ops/paypal.html" type="hidden">                    
                     <input name="cmd" value="_cart" type="hidden">    
                     <input name="upload" value="1" type="hidden">            
