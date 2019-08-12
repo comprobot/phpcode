@@ -34,11 +34,25 @@ var getUrlParameter = function getUrlParameter(sParam) {
 $(function () {
 
    /*var param = $.UrlParam("username");*/
-   var param = getUrlParameter("username");
+   var param = '&username='+getUrlParameter("username");
    
    
    
-   $("#returncode").val("http://157.230.145.40/ops/successbuy.php?add_payment=add_payment&username="+param);
+   
+   
+   $("#returncode1").val($("#returncode1").val()+param);
+   $("#returncode2").val($("#returncode2").val()+param);
+   $("#returncode3").val($("#returncode3").val()+param);
+   $("#returncode4").val($("#returncode4").val()+param);
+   
+   
+   
+   alert($("#returncode1").val());   
+   alert($("#returncode2").val());   
+   alert($("#returncode3").val());   
+   alert($("#returncode4").val());   
+   
+   
 	//alert ($("#returncode").val());
 	
 });
@@ -108,24 +122,18 @@ function test(){
                                             </div>
 											-->
                                             <strong class="price pull-left">$11800</strong>
-                                                 <form action="https://www.paypal.com/cgi-bin/webscr" method="POST"> 
-                    <!-- SmartCart element -->
-					<!--
-                    <div id="smartcart"></div>
-					-->
-                                                 					<p> Package 1 </p>
+                                                 <form id="f1" action="https://www.paypal.com/cgi-bin/webscr" method="POST">                        
 					                                                 <input name="business" value="wailunglo@gmail.com" type="hidden">
 					                                                 <input name="currency_code" value="HKD" type="hidden">
-					                                                 <input id="returncode" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment" type="hidden">
-					                                                 <input type="hidden" name="item_number" value="11452"> 
+					                                                 <input id="returncode1" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment&price=11800&item=1" type="hidden">
+					                                                 <input type="hidden" name="item_number" value="1"> 
 					                                                 <input type="hidden" name="item_name_1" value="Package 1"> 
-					                                                 <input type="hidden" name="amount_1" value="1000"> 
+					                                                 <input type="hidden" name="amount_1" value="5"> 
 					                                                 <input type="hidden" name="quantity_1" value="1"> 					
                                                                      <input name="cancel_return" value="http://157.230.145.40/ops/paypal.html" type="hidden">                    
                                                                      <input name="cmd" value="_cart" type="hidden">    
                                                                      <input name="upload" value="1" type="hidden">     
 					                                                 <input type="image" border="0" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" >
-
                                                                  </form>											
 											
                                         </div>
@@ -170,14 +178,19 @@ function test(){
                                             </div>
 											-->
                                             <strong class="price pull-left">$28800</strong>
-											
-											
-											
-											
-                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
-                                            <input name="product_price" value="4.0" type="hidden" />
-                                            <input name="product_id" value="101" type="hidden" />
-                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                                 <form id="f2" action="https://www.paypal.com/cgi-bin/webscr" method="POST">                        
+					                                                 <input name="business" value="wailunglo@gmail.com" type="hidden">
+					                                                 <input name="currency_code" value="HKD" type="hidden">
+					                                                 <input id="returncode2" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment&price=28800&item=2" type="hidden">
+					                                                 <input type="hidden" name="item_number" value="2"> 
+					                                                 <input type="hidden" name="item_name_1" value="Package 2"> 
+					                                                 <input type="hidden" name="amount_1" value="5"> 
+					                                                 <input type="hidden" name="quantity_1" value="1"> 					
+                                                                     <input name="cancel_return" value="http://157.230.145.40/ops/paypal.html" type="hidden">                    
+                                                                     <input name="cmd" value="_cart" type="hidden">    
+                                                                     <input name="upload" value="1" type="hidden">     
+					                                                 <input type="image" border="0" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" >
+                                                                 </form>											
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -220,14 +233,19 @@ function test(){
                                             </div>
 											-->
                                             <strong class="price pull-left">$14800</strong>
-											
-											
-											
-											
-                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
-                                            <input name="product_price" value="4.0" type="hidden" />
-                                            <input name="product_id" value="102" type="hidden" />
-                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
+                                                 <form id="f3" action="https://www.paypal.com/cgi-bin/webscr" method="POST">                        
+					                                                 <input name="business" value="wailunglo@gmail.com" type="hidden">
+					                                                 <input name="currency_code" value="HKD" type="hidden">
+					                                                 <input id="returncode3" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment&price=14800&item=3" type="hidden">
+					                                                 <input type="hidden" name="item_number" value="3"> 
+					                                                 <input type="hidden" name="item_name_1" value="Package 3"> 
+					                                                 <input type="hidden" name="amount_1" value="5"> 
+					                                                 <input type="hidden" name="quantity_1" value="1"> 					
+                                                                     <input name="cancel_return" value="http://157.230.145.40/ops/paypal.html" type="hidden">                    
+                                                                     <input name="cmd" value="_cart" type="hidden">    
+                                                                     <input name="upload" value="1" type="hidden">     
+					                                                 <input type="image" border="0" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" >
+                                                                 </form>											
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -272,14 +290,19 @@ function test(){
                                             </div>
 											-->
                                             <strong class="price pull-left">$38800</strong>
-											
-											
-											
-											
-                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
-                                            <input name="product_price" value="5.0" type="hidden" />
-                                            <input name="product_id" value="103" type="hidden" />
-                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right" >Add to cart</button>
+                                                 <form id="f4" action="https://www.paypal.com/cgi-bin/webscr" method="POST">                        
+					                                                 <input name="business" value="wailunglo@gmail.com" type="hidden">
+					                                                 <input name="currency_code" value="HKD" type="hidden">
+					                                                 <input id="returncode4" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment&price=38800&item=4" type="hidden">
+					                                                 <input type="hidden" name="item_number" value="4"> 
+					                                                 <input type="hidden" name="item_name_1" value="Package 4"> 
+					                                                 <input type="hidden" name="amount_1" value="5"> 
+					                                                 <input type="hidden" name="quantity_1" value="1"> 					
+                                                                     <input name="cancel_return" value="http://157.230.145.40/ops/paypal.html" type="hidden">                    
+                                                                     <input name="cmd" value="_cart" type="hidden">    
+                                                                     <input name="upload" value="1" type="hidden">     
+					                                                 <input type="image" border="0" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" >
+                                                                 </form>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -305,7 +328,9 @@ function test(){
                 <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="POST"> -->
 				<form action="https://157.230.145.40/ops/postpaypal.php" method="POST"> 
                     <!-- SmartCart element -->
+					<!--
                     <div id="smartcart"></div>
+					-->
                     <input name="business" value="wailunglo@gmail.com" type="hidden">
                     <!-- Paypal required info, Please update based on your details -->
                     <!--<input name="business" value="dipumedayil@gmail.com" type="hidden">            -->
