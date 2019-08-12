@@ -108,14 +108,26 @@ function test(){
                                             </div>
 											-->
                                             <strong class="price pull-left">$11800</strong>
+                                                 <form action="https://www.paypal.com/cgi-bin/webscr" method="POST"> 
+                    <!-- SmartCart element -->
+					<!--
+                    <div id="smartcart"></div>
+					-->
+                                                 					<p> Package 1 </p>
+					                                                 <input name="business" value="wailunglo@gmail.com" type="hidden">
+					                                                 <input name="currency_code" value="HKD" type="hidden">
+					                                                 <input id="returncode" name="return" value="http://157.230.145.40/ops/successbuy.php?add_payment=add_payment" type="hidden">
+					                                                 <input type="hidden" name="item_number" value="11452"> 
+					                                                 <input type="hidden" name="item_name_1" value="Package 1"> 
+					                                                 <input type="hidden" name="amount_1" value="1000"> 
+					                                                 <input type="hidden" name="quantity_1" value="1"> 					
+                                                                     <input name="cancel_return" value="http://157.230.145.40/ops/paypal.html" type="hidden">                    
+                                                                     <input name="cmd" value="_cart" type="hidden">    
+                                                                     <input name="upload" value="1" type="hidden">     
+					                                                 <input type="image" border="0" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" >
+
+                                                                 </form>											
 											
-											
-											
-											
-                                            <!--<input name="product_quantity" value="1.0" type="hidden" />-->
-                                            <input name="product_price" value="4.0" type="hidden" />
-                                            <input name="product_id" value="100" type="hidden" />
-                                            <button class="sc-add-to-cart btn btn-success btn-sm pull-right">Add to cart</button>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
