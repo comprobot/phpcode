@@ -343,6 +343,8 @@ if (qrcode_str == '') {
 			<thead>
 				<tr>
 					<th>Date</th>
+					<th>Package type</th>
+					<th>Price</th>
 					<th>Purchased</th>					
 					<th>Verified</th>			
 				</tr>
@@ -351,6 +353,8 @@ if (qrcode_str == '') {
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
 					<td><?php echo $row['tm']; ?></td>					
+					<td><?php echo $row['item']; ?></td>					
+					<td><?php echo $row['price']; ?></td>					
 					<td><?php echo $row['paid']; ?></td>	
 					<td><?php echo $row['verified']; ?></td>						
 			</tr>
