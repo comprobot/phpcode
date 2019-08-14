@@ -46,7 +46,7 @@ if (isset($_GET['add_payment'])) {
 	if (empty($item)) { array_push($errors, "Item ID is required"); }
 	if (empty($price)) { array_push($errors, "Price is required"); }
 
-	$query = "INSERT INTO customer_payment (customerid, paid ,item,price verified)  VALUES('$username', '$item',$price,'T', 'F')";
+	$query = "INSERT INTO customer_payment (customerid, paid ,item,price,verified)  VALUES('$username', '$item',$price,'T', 'F')";
 	if ($db->query($query) === TRUE) {
 		
 		echo "<h1>The advertisement plan you have sccessfully purcharsed. </h1>";
