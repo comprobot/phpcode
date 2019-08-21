@@ -457,7 +457,7 @@ CREATE TABLE `item_shop` (
 			<div class="ah-tab-content" id="itemshop" >
 			<?php 
 			$videouser = $_SESSION['username'];
-			$query = "SELECT * FROM  item_shop  WHERE customerid = '$videouser'" ;
+			$query = "SELECT * FROM  item_shop  WHERE adv_id = '$videouser'" ;
 			$results = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($results) >= 1) {
 			?>
