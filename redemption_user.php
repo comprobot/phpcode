@@ -100,12 +100,13 @@
 						if (mysqli_num_rows($results) >= 1) {
 						?>
 			
-					
+						<?php while ($row = mysqli_fetch_array($results)) { ?>		
                         <div class="avaiable-list-row">
                             <div class="avaiable-list-row-image"><img src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></div>
                             <div class="avaiable-list-row-name"><?php echo $row['item_name']; ?></div>
                             <div class="avaiable-list-row-point"><?php echo $row['item_price']; ?></div>
                         </div>
+						<?php } ?>
               		<?php
 						}
 					?>
