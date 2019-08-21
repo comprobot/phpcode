@@ -266,7 +266,7 @@ if (isset($_POST['upload_item'])) {
 	
 	if(isset($_POST['item_name'])  AND !empty($item_name)  AND !empty($item_price)  AND !empty($item_description) AND !empty($username)){
 	
-		if(isset($_FILES['myphoto']) AND $_FILES['myvideo']['error'] == 0) {
+		if(isset($_FILES['myphoto']) AND $_FILES['myphoto']['error'] == 0) {
         // Check size
 			if($_FILES['myphoto']['size'] <= 10000000000) {
             // Get extension name
@@ -277,7 +277,10 @@ if (isset($_POST['upload_item'])) {
 				
 			  
 			  
-			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','item_price',NEXTVAL('itemSeq')+$randnum,'$username','N','$fileInfo','$item_name');";
+			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',NEXTVAL('itemSeq')+$randnum,'$username','N','$filename','$item_name')";
+				
+				
+				
 				
 //				$query = "INSERT INTO advs_video (username, filename , qrcode, approved )  VALUES('$username', '$filename', '$qrcode_str','P')";
 				
