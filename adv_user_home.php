@@ -433,31 +433,12 @@ if (item_name == '') {
 			 
 			</div>
 			
-			<!--			
-			
-			
-			
-CREATE TABLE `item_shop` (
-  `customer_id` varchar(100) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `item_description` varchar(100) NOT NULL,
-  `item_price` int(11) NOT NULL,
-  `item_redeem_code` int(11) NOT NULL,
-  `adv_id` varchar(100) NOT NULL,
-  `item_status` varchar(1) NOT NULL,  
-  `item_photo_path` varchar(100) NOT NULL,
-  `item_kind_id` varchar(100) NOT NULL,
-  `tm` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB ;
-
-			
-			-->
 			
 			
 			<div class="ah-tab-content" id="itemshop" >
 			<?php 
 			$videouser = $_SESSION['username'];
-			$query = "SELECT * FROM  item_shop  WHERE adv_id = '$videouser'" ;
+			$query = "SELECT * FROM  item_shop  WHERE customerid = '$videouser'" ;
 			$results = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($results) >= 1) {
 			?>
@@ -488,7 +469,7 @@ CREATE TABLE `item_shop` (
 					<td><?php echo $row['item_redeem_code']; ?></td>	
 					<td><?php echo $row['customer_id']; ?></td>						
 					<td><?php echo $row['item_status']; ?></td>						
-					<td><?php echo $row['item_photo_path']; ?></td>						
+					<td><img width="200" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>						
 					<td><?php echo $row['item_kind_id']; ?></td>		
 					<td><?php echo $row['tm']; ?></td>											
 			</tr>
@@ -511,7 +492,7 @@ CREATE TABLE `item_shop` (
 			<div class="form-row">
 			     <div class="row row-space"><strong>Upload your items to the server </strong></div>				 
  			</div>			
-			<div>
+			<div >
 			<div class="form-row">			
 			  <div class="row row-space">                  
 			  <strong><input type="file" name="myphoto"/></strong>
