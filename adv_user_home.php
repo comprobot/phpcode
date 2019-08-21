@@ -517,15 +517,9 @@ CREATE TABLE `item_shop` (
 			  <strong><input type="file" name="myphoto"/></strong>
 			  </div> 				  
             </div>			    			
-			
-			<div class="form-row">
-              <div class="row row-space"><strong></strong> </div>
-                <div class="value">
-                  <div class="input-group">
-                     
-                  </div>
-               </div>
-            </div>
+
+			<p></p>
+
 			
 			<div class="form-row">
               <div class="row row-space"><strong>Item Name:</strong> </div>
@@ -554,15 +548,7 @@ CREATE TABLE `item_shop` (
                </div>
             </div>
 			
-			<div class="form-row">
-              <div class="row row-space"><strong></strong> </div>
-                <div class="value">
-                  <div class="input-group">
-                     
-                  </div>
-               </div>
-            </div>
-			
+			<p></p>			
 			
 			
 			<button class="btn btn--radius-2 btn--red" name="upload_item" id="upload_item" type="submit">Submit item</button>
