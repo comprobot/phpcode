@@ -60,7 +60,7 @@
 			<div id="points">現有積分：<?php echo $row['point']; ?> 分</div>	
 			<?php } ?>
 			
-			<?php } ?>
+			<?php endif ?>
 			
 			
             <div class="tab-content">
