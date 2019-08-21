@@ -122,6 +122,21 @@ if (param=="paymenthistory")
 }
 
 
+if (param=="itemshop")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#itemshop').attr('data-ah-tab-active', 'true');
+	
+}
+
+if (param=="additem")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#itemshop').attr('data-ah-tab-active', 'true');
+	
+}
+
+
 //id="advvideo"
 	
 	
@@ -152,22 +167,92 @@ $(document).ready(function() {
 			}
 		});
 	
-	
-	
-	
-	
-
 
 var qrcode_str = $("#qrcode_str").val();
-
-
-
 if (qrcode_str == '') {
 //alert("Please fill all fields...!!!!!!");
 } else {
 	
 }
 });
+
+
+
+
+$('#uploadItemForm').submit(function() {
+	
+	  //event.preventDefault();
+	
+	$("#uploadItemForm").validate({
+	 rules: {				
+				item_name: {
+					required: true,
+					minlength: 2
+				},
+				item_description: {
+					required: true,
+					minlength: 2
+				},
+				item_price: {
+					required: true,
+					minlength: 2
+				}
+				
+				
+			},
+			
+			
+			messages: {
+				item_str: {
+					required: "Please enter a String for Item name",
+					minlength: "Your string for item name must consist of at least 2 characters"
+				},
+				item_price: {
+					required: "Please enter a String for Item price",
+					minlength: "Your string for item price must consist of at least 2 characters"
+				},
+				item_description: {
+					required: "Please enter a String for Item description",
+					minlength: "Your string for item description must consist of at least 2 characters"
+				}
+			}
+		});
+	
+
+var item_name = $("#item_name").val();
+if (item_name == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+
+var item_price = $("#item_price").val();
+if (item_name == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+
+var item_name = $("#item_name").val();
+if (item_name == '') {
+//alert("Please fill all fields...!!!!!!");
+} else {
+	
+}
+
+}
+
+
+
+);
+
+
+
+
+
+
+
+
 });
 </script>	
 
@@ -197,7 +282,10 @@ if (qrcode_str == '') {
                     <a class="ah-tab-item" data-ah-tab-active="true" href="">Upload Adv video</a>
                     <a class="ah-tab-item" href="">View Customer access </a>
                     <a class="ah-tab-item" href="">Package payment</a> 
-	            <a class="ah-tab-item" href="">Payment history</a> 
+	                <a class="ah-tab-item" href="">Payment history</a> 
+					<a class="ah-tab-item" href="">Items on shop </a> 
+				    <a class="ah-tab-item" href="">Add item on shop </a> 
+				
                 </div>
             </div>		
 			
@@ -207,27 +295,13 @@ if (qrcode_str == '') {
 			
 			
    		   <div id="tab_list_content" class="ah-tab-content-wrapper">	
-		   
-		   
-		   
 			<div class="ah-tab-content" data-ah-tab-active="true" id="advvideo">
-
-
-
-			
-			
-			
 			<form method="POST" action="adv_user_home.php" id="uploadVideoForm" name="uploadVideoForm" enctype="multipart/form-data">
 			<?php include('errors.php'); ?>
-			
 			<div class="form-row">
 			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
-				 
  			</div>			
-			
-			
 			<div class="form-row">
-			
 			<?php 
 			$videouser = $_SESSION['username'];
 			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
@@ -247,21 +321,13 @@ if (qrcode_str == '') {
 			$resultsofyou = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
-			
 				<div class="row row-space"><strong>Your video is rejected </strong></div>				 
-				
 			<?php
 			}
 			?>
-			
-			
 			</div>			
 			
-			
-			
-			
 			<div class="form-row">			
-			
 			<div class="row row-space">                  
 			  <strong><input type="file" name="myvideo"/></strong></div> 				  
             </div>			    			
@@ -366,6 +432,132 @@ if (qrcode_str == '') {
 			?>
 			 
 			</div>
+			
+			<!--			
+			
+			
+			
+CREATE TABLE `item_shop` (
+  `customer_id` varchar(100) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `item_description` varchar(100) NOT NULL,
+  `item_price` int(11) NOT NULL,
+  `item_redeem_code` int(11) NOT NULL,
+  `adv_id` varchar(100) NOT NULL,
+  `item_status` varchar(1) NOT NULL,  
+  `item_photo_path` varchar(100) NOT NULL,
+  `item_kind_id` varchar(100) NOT NULL,
+  `tm` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB ;
+
+			
+			-->
+			
+			
+			<div class="ah-tab-content" id="itemshop" >
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT * FROM  item_shop  WHERE customerid = '$videouser'" ;
+			$results = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($results) >= 1) {
+			?>
+			 
+ 			
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Item ID</th>
+					<th>Item Name</th>
+					<th>Item Description</th>
+					<th>Item Price</th>
+					<th>Item Redeem code</th>					
+					<th>Customer ID</th>			
+					<th>Item status</th>					
+					<th>Item Photo name</th>			
+					<th>Item kind ID</th>			
+					<th>Update time</th>			
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['item_id']; ?></td>					
+					<td><?php echo $row['item_name']; ?></td>					
+					<td><?php echo $row['item_description']; ?></td>					
+					<td><?php echo $row['item_price']; ?></td>					
+					<td><?php echo $row['item_redeem_code']; ?></td>	
+					<td><?php echo $row['customer_id']; ?></td>						
+					<td><?php echo $row['item_status']; ?></td>						
+					<td><?php echo $row['item_photo_path']; ?></td>						
+					<td><?php echo $row['item_kind_id']; ?></td>		
+					<td><?php echo $row['tm']; ?></td>											
+			</tr>
+			<?php } ?>
+			</table>
+			 
+			<?php
+			}
+			?>
+			
+			</div>
+			
+			
+			
+			
+		 <div id="tab_list_content" class="ah-tab-content-wrapper">	
+			<div class="ah-tab-content" data-ah-tab-active="true" id="additem">
+			<form method="POST" action="adv_user_home.php" id="uploadItemForm" name="uploadItemForm" enctype="multipart/form-data">
+			<?php include('errors.php'); ?>
+			<div class="form-row">
+			     <div class="row row-space"><strong>Upload your items to the server </strong></div>				 
+ 			</div>			
+			<div class="form-row">
+			<div class="form-row">			
+			<div class="row row-space">                  
+			  <strong><input type="file" name="myphoto"/></strong></div> 				  
+            </div>			    			
+			
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Name:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_name" id='item_name' value="<?php echo $item_name; ?>" > <label for="item_name" class="error"></label>
+                  </div>
+               </div>
+            </div>
+			
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Description:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_description" id='item_description' value="<?php echo $item_description; ?>" > <label for="item_description" class="error"></label>
+                  </div>
+               </div>
+            </div>
+			
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Price:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_price" id='item_price' value="<?php echo $item_price; ?>" > <label for="item_price" class="error"></label>
+                  </div>
+               </div>
+            </div>
+			
+			
+			
+			
+			<button class="btn btn--radius-2 btn--red" name="upload_item" id="upload_item" type="submit">Submit item</button>
+			
+			<br/>
+			<input type='hidden' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' />
+			<br/>
+			<br/>
+			</form>
+			</div>
+				
+			
+			
 			
 			
 			
