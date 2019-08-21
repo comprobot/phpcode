@@ -93,38 +93,22 @@
                         </div>
                     </div>
                     <div id="avaiable-list">					
+					<?php 
+						$videouser = $_SESSION['username'];
+						$query = "SELECT * FROM  item_shop  WHERE item_status = 'N'" ;
+						$results = mysqli_query($db, $query); 			
+						if (mysqli_num_rows($results) >= 1) {
+						?>
+			
 					
-					
                         <div class="avaiable-list-row">
-                            <div class="avaiable-list-row-image"><img src="http://www.fivegold.hk/qrjetso_ui/img/sample_coupon.jpg" /></div>
-                            <div class="avaiable-list-row-name">百佳$100現金券</div>
-                            <div class="avaiable-list-row-point"><img src="http://www.fivegold.hk/qrjetso_ui/img/points_200.png" /></div>
+                            <div class="avaiable-list-row-image"><img src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></div>
+                            <div class="avaiable-list-row-name"><?php echo $row['item_name']; ?></div>
+                            <div class="avaiable-list-row-point"><?php echo $row['item_price']; ?></div>
                         </div>
-                        <div class="avaiable-list-row">
-                            <div class="avaiable-list-row-image"><img src="http://www.fivegold.hk/qrjetso_ui/img/sample_coupon.jpg" /></div>
-                            <div class="avaiable-list-row-name">百佳$100現金券</div>
-                            <div class="avaiable-list-row-point"><img src="http://www.fivegold.hk/qrjetso_ui/img/points_200.png" /></div>
-                        </div>
-                        <div class="avaiable-list-row">
-                            <div class="avaiable-list-row-image"><img src="http://www.fivegold.hk/qrjetso_ui/img/sample_coupon.jpg" /></div>
-                            <div class="avaiable-list-row-name">百佳$100現金券</div>
-                            <div class="avaiable-list-row-point"><img src="http://www.fivegold.hk/qrjetso_ui/img/points_200.png" /></div>
-                        </div>
-                        <div class="avaiable-list-row">
-                            <div class="avaiable-list-row-image"><img src="http://www.fivegold.hk/qrjetso_ui/img/sample_coupon.jpg" /></div>
-                            <div class="avaiable-list-row-name">百佳$100現金券</div>
-                            <div class="avaiable-list-row-point"><img src="http://www.fivegold.hk/qrjetso_ui/img/points_200.png" /></div>
-                        </div>
-                        <div class="avaiable-list-row">
-                            <div class="avaiable-list-row-image"><img src="http://www.fivegold.hk/qrjetso_ui/img/sample_coupon.jpg" /></div>
-                            <div class="avaiable-list-row-name">百佳$100現金券</div>
-                            <div class="avaiable-list-row-point"><img src="http://www.fivegold.hk/qrjetso_ui/img/points_200.png" /></div>
-                        </div>
-                        <div class="avaiable-list-row">
-                            <div class="avaiable-list-row-image"><img src="http://www.fivegold.hk/qrjetso_ui/img/sample_coupon.jpg" /></div>
-                            <div class="avaiable-list-row-name">百佳$100現金券</div>
-                            <div class="avaiable-list-row-point"><img src="http://www.fivegold.hk/qrjetso_ui/img/points_200.png" /></div>
-                        </div>
+              		<?php
+						}
+					?>
                     </div>
                 </div>
 				
