@@ -112,8 +112,13 @@ if (isset($_GET['upload_item'])) {
     $username='bblinux1';	
     	
     $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','item_price',NEXTVAL('itemSeq')+10,'$username','N','','$item_name')";
-				
+     echo $query;
 	
+    if ($db->query($query) === TRUE) {
+ 				       
+				} else {
+				       
+				}
 	
 }
 
