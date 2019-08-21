@@ -31,6 +31,11 @@ $qrcode_str="";
 $adv_access_point="";
 $adv_pool_ratio="";
 
+$item_name="";
+$item_price="";
+$item_description="";
+
+
 
 // connect to the database
 //$db = mysqli_connect('localhost', 'root', '', 'registration');
@@ -98,6 +103,19 @@ if (isset($_GET['customer_qrcode'])) {
 	
 }
 
+
+if (isset($_GET['upload_item'])) {
+	
+    $item_name='ipad';
+    $item_descrption='bbb ';
+    $item_price='100';	
+    $username='bblinux1';	
+    	
+    $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','item_price',NEXTVAL('itemSeq')+10,'$username','N','','$item_name')";
+				
+	
+	
+}
 
 
 
