@@ -511,7 +511,7 @@ CREATE TABLE `item_shop` (
 			<div class="form-row">
 			     <div class="row row-space"><strong>Upload your items to the server </strong></div>				 
  			</div>			
-			<div class="form-row">
+			<div>
 			<div class="form-row">			
 			  <div class="row row-space">                  
 			  <strong><input type="file" name="myphoto"/></strong>
