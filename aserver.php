@@ -19,6 +19,12 @@ $target_user="";
 $serial_number="";
 $info="";
 $id="";
+$qrcode_str="";
+$item_name="";
+$item_price="";
+$item_description="";
+
+
 
 $servername = 'localhost';
 $dbusername = 'ops';
@@ -234,6 +240,85 @@ if (isset($_POST['upload_video'])) {
 	
 	
 }
+
+
+
+if (isset($_POST['upload_item'])) {
+	header("Pragma:no-cache");
+    header("Cache-control:no-cache"); 
+	
+	$item_name = mysqli_real_escape_string($db, $_POST['item_name']);
+	$item_price = mysqli_real_escape_string($db, $_POST['item_price']);
+	$item_description = mysqli_real_escape_string($db, $_POST['item_description']);
+	
+	$username = mysqli_real_escape_string($db, $_POST['username']);
+	
+	if (empty($username)) { array_push($errors, "Username is required"); }
+	if (empty($item_name)) { array_push($errors, "Item name is required"); }
+	if (empty($item_price)) { array_push($errors, "Item price is required"); }
+	if (empty($item_description)) { array_push($errors, "Item description is required"); }
+	
+	
+	 $target_dir = dirname(__FILE__) ."/pic/";
+    echo $target_dir;
+    $target_file = $target_dir . basename($_FILES["myphoto"]["name"]);
+	$filename = $_FILES["myphoto"]["name"];	
+	
+	if(isset($_POST['item_name'])  AND !empty($item_name)  AND !empty($item_price)  AND !empty($item_description) AND !empty($username)){
+	
+		if(isset($_FILES['myphoto']) AND $_FILES['myvideo']['error'] == 0) {
+        // Check size
+			if($_FILES['myphoto']['size'] <= 10000000000) {
+            // Get extension name
+				$fileInfo = pathinfo($_FILES['myphoto']['name']);
+				$upload_extension = $fileInfo['extension'];
+				$allowed_extensions = array('png','jpeg','jpg','bmp');
+				$randnum = rand(10,999999);
+				
+			  
+			  
+			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','item_price',NEXTVAL('itemSeq')+$randnum,'$username','N','$fileInfo','$item_name');";
+				
+//				$query = "INSERT INTO advs_video (username, filename , qrcode, approved )  VALUES('$username', '$filename', '$qrcode_str','P')";
+				
+				
+			  
+				
+				if ($db->query($query) === TRUE) {
+ 				       
+				} else {
+				       array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+				}
+				
+				
+            // Check if the file has a correct, expected extension
+				if(in_array($upload_extension, $allowed_extensions)) {
+					if(move_uploaded_file($_FILES['myphoto']['tmp_name'], $target_file)) {
+									
+									
+						header('location: adv_user_home.php?tag=itemshop');
+					}
+				}
+				else
+					array_push($errors, "The file format is not correct, only allow bmp, jpg, jpeg and png");
+			}
+			else
+				array_push($errors, "Picture is over size");
+		}
+		else
+			array_push($errors, "The picture dont have size");
+    
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+}
+
 
 
 
