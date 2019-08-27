@@ -23,7 +23,7 @@ $qrcode_str="";
 $item_name="";
 $item_price="";
 $item_description="";
-
+$item_quantity="1";
 
 
 $servername = 'localhost';
@@ -250,12 +250,14 @@ if (isset($_POST['upload_item'])) {
 	$item_name = mysqli_real_escape_string($db, $_POST['item_name']);
 	$item_price = mysqli_real_escape_string($db, $_POST['item_price']);
 	$item_description = mysqli_real_escape_string($db, $_POST['item_description']);
+	$item_quantity = mysqli_real_escape_string($db, $_POST['item_quantity']);
 	
 	$username = mysqli_real_escape_string($db, $_POST['username']);
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
 	if (empty($item_name)) { array_push($errors, "Item name is required"); }
 	if (empty($item_price)) { array_push($errors, "Item price is required"); }
+	if (empty($item_quantity)) { array_push($errors, "Item quantity is required"); }
 	if (empty($item_description)) { array_push($errors, "Item description is required"); }
 	
 	
@@ -264,7 +266,7 @@ if (isset($_POST['upload_item'])) {
     $target_file = $target_dir . basename($_FILES["myphoto"]["name"]);
 	$filename = $_FILES["myphoto"]["name"];	
 	
-	if(isset($_POST['item_name'])  AND !empty($item_name)  AND !empty($item_price)  AND !empty($item_description) AND !empty($username)){
+	if(isset($_POST['item_name'])  AND !empty($item_name)  AND !empty($item_price) AND !empty($item_quantity)  AND !empty($item_description) AND !empty($username)){
 	
 		if(isset($_FILES['myphoto']) AND $_FILES['myphoto']['error'] == 0) {
         // Check size
@@ -277,7 +279,7 @@ if (isset($_POST['upload_item'])) {
 				
 			  
 			  
-			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',NEXTVAL('itemSeq')+$randnum,'$username','N','$filename','$item_name')";
+			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,NEXTVAL('itemSeq')+$randnum,'$username','N','$filename','$item_name')";
 				
 				
 				
