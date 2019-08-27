@@ -275,11 +275,24 @@ if (isset($_POST['upload_item'])) {
 				$fileInfo = pathinfo($_FILES['myphoto']['name']);
 				$upload_extension = $fileInfo['extension'];
 				$allowed_extensions = array('png','jpeg','jpg','bmp');
-				$randnum = rand(10,999999);
+				
+				
+				
+				$randnum = rand(10,999999999);
+				
+				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				$res = "";
+				for ($i = 0; $i < 10; $i++) {
+					$res .= $chars[mt_rand(0, strlen($chars)-1)];
+				}
+				
+				
+				
+				
 				
 			  
 			  
-			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,NEXTVAL('itemSeq')+$randnum,'$username','N','$filename','$item_name')";
+			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,'$res','$username','N','$filename','$item_name')";
 				
 				
 				
