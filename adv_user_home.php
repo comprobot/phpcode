@@ -511,6 +511,23 @@ if (item_name == '') {
                </div>
             </div>
 			
+				
+			
+
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Quantity:</strong> </div>
+                <div class="value">
+				
+				
+                  <div class="input-group">
+	   			      <input class="input--style-5"   type="number" name="item_quantity"  id='item_quantity'  min="1" max="100" value="<?php echo $item_quantity; ?>" >    
+                     <label for="item_name" class="error"></label>
+                  </div>
+				  
+				  
+				  
+               </div>
+            </div>				
 			<div class="form-row">
               <div class="row row-space"><strong>Item Description:</strong> </div>
                 <div class="value">
