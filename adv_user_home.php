@@ -486,7 +486,7 @@ if (item_name == '') {
 			
 			
 		 <!--<div id="tab_list_content" class="ah-tab-content-wrapper">	-->
-			<div class="ah-tab-content" data-ah-tab-active="true" id="additem">
+			<div class="ah-tab-content" id="additem">
 			<form method="POST" action="adv_user_home.php" id="uploadItemForm" name="uploadItemForm" enctype="multipart/form-data">
 			<?php include('errors.php'); ?>
 			<div class="form-row">
