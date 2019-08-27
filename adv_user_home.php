@@ -451,6 +451,7 @@ if (item_name == '') {
 					<th>Item Name</th>
 					<th>Item Description</th>
 					<th>Item Price</th>
+					<th>Item Quantity</th>
 					<th>Item Redeem code</th>					
 					<th>Customer ID</th>			
 					<th>Item status</th>					
@@ -465,11 +466,13 @@ if (item_name == '') {
 					<td><?php echo $row['item_id']; ?></td>					
 					<td><?php echo $row['item_name']; ?></td>					
 					<td><?php echo $row['item_description']; ?></td>					
-					<td><?php echo $row['item_price']; ?></td>					
+					<td><?php echo $row['item_price']; ?></td>
+					<td><?php echo $row['item_quantity']; ?></td>
+					
 					<td><?php echo $row['item_redeem_code']; ?></td>	
 					<td><?php echo $row['customer_id']; ?></td>						
 					<td><?php echo $row['item_status']; ?></td>						
-					<td><img width="200" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>						
+					<td><img width="100" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>						
 					<td><?php echo $row['item_kind_id']; ?></td>		
 					<td><?php echo $row['tm']; ?></td>											
 			</tr>
@@ -521,7 +524,7 @@ if (item_name == '') {
 				
                   <div class="input-group">
 	   			      <input class="input--style-5"   type="number" name="item_quantity"  id='item_quantity'  min="1" max="100" value="<?php echo $item_quantity; ?>" >    
-                     <label for="item_name" class="error"></label>
+                     <label for="item_quantity" class="error"></label>
                   </div>
 				  
 				  
