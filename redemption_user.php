@@ -61,7 +61,7 @@
 			<?php } ?>
 			
 			<?php endif ?>
-			
+			<?php include('errors.php'); ?>
 			
             <div class="tab-content">
 			
@@ -93,6 +93,25 @@
                         </div>
                     </div>
                     <div id="avaiable-list">					
+					
+					<script>
+					function confirmFunction(p)
+					{
+						var answer = window.confirm("確定兌換")
+						if (answer) {
+						//some code
+						  
+                            location.href="http://157.230.145.40/ops/redemption_user.php?action=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";						  						  
+						   
+						}
+						else {
+						//some code
+						
+						}
+					
+					}
+					
+					</script>					
 					<?php 
 						$videouser = $_SESSION['username'];
 						$query = "SELECT * FROM  item_shop  WHERE item_status = 'N'" ;
@@ -101,10 +120,14 @@
 						?>
 			
 						<?php while ($row = mysqli_fetch_array($results)) { ?>		
-                        <div class="avaiable-list-row">
+                        <div class="avaiable-list-row">						
                             <div class="avaiable-list-row-image"><img src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></div>
-                            <div class="avaiable-list-row-name"><?php echo $row['item_name']; ?></div>
-                            <div class="avaiable-list-row-point"><?php echo $row['item_price']; ?></div>
+                            <div class="avaiable-list-row-name"><?php echo $row['item_name']; ?></div>							
+                            <div class="avaiable-list-row-name"><a onclick="confirmFunction(<?php echo $row['item_id']; ?>)" href="#">[兌換積分]</a></div>
+							<div class="avaiable-list-row-point"><?php echo $row['item_price']; ?></div>
+							
+							
+							
                         </div>
 						<?php } ?>
               		<?php
