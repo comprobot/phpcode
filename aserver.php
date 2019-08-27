@@ -278,7 +278,7 @@ if (isset($_POST['upload_item'])) {
 				
 				
 				
-				$randnum = rand(10,999999999);
+				//$randnum = rand(10,999999999);
 				
 				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 				$res = "";
@@ -287,6 +287,7 @@ if (isset($_POST['upload_item'])) {
 				}
 				
 				
+				echo $res;
 				
 				
 				
