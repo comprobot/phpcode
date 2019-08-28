@@ -473,22 +473,24 @@ if (isset($_GET['buyitem'])) {
 				    header('location: redemption_processing.php');	
 					
 				}else{
-					
+					 echo "error2";
 					array_push($errors, "Error2 ");
 				}
 				        
 			} else {
+				echo "error1";
 				array_push($errors, "Erro1 ");
 			
 			}
 		
 		}else {
-		
+		    echo "The item is out of stock";
 			array_push($errors, "The item is out of stock");
 		
 		}
 	
 	}else {
+		echo "user doesnot exist";
   		array_push($errors, "User does not exist ");
   	}
   
