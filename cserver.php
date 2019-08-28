@@ -438,11 +438,11 @@ if (isset($_GET['buyitem'])) {
 	
   	$results = mysqli_query($db, $queryM);
 	
-	$rowc = mysqli_fetch_assoc($results);
+	
 	
   	if (mysqli_num_rows($results) == 1) {
 		
-		$item_point=$rowc['point'];
+		
 		
 		
   
@@ -450,9 +450,16 @@ if (isset($_GET['buyitem'])) {
 	
 		$results = mysqli_query($db, $query);
 		
+		
+		
 		if (mysqli_num_rows($results) == 1) {
 		
 			$query2 = "UPDATE item_shop SET item_quantity =  item_quantity - 1 WHERE item_id='$item_id'";		
+			
+			$rowc = mysqli_fetch_assoc($results);
+		
+		    $item_point=$rowc['item_price'];
+			
 		
 			if ($db->query($query2) === TRUE) {
 			
