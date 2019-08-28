@@ -1,6 +1,8 @@
 <?php   
-  if (isset($_GET['redeem_code'])) {  	  	
+  if (empty($_GET['redeem_code'])) {
   	header("location: user_login.php");
+	
+	
   }
 ?>
 <?php include('cserver.php') ?>
@@ -34,11 +36,10 @@
 		    <div id="points">請廣告商在下方輸入密碼，兌換禮物</div>	
 			
 			<form action="redemption_claim.php">
-				密碼: <input type="password" name="password_adv" id="password_adv"  ><br>			
-				<input type="submit"  value="輸入">
+				密碼: <input type="password" name="password_adv" id="password_adv" > <input type="submit"  value="輸入">
 			</form>
 			
-			<div id="points">用戶禮物兌換碼：<?php echo $_GET['redeem_code']; ?> 分</div>	
+			<div id="points">用戶禮物兌換碼：<?php echo $_GET['redeem_code']; ?> </div>	
 			<?php include('errors.php'); ?>
 				
             </div>
