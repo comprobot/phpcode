@@ -257,7 +257,7 @@ if (isset($_GET['claim_item'])) {
 	
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "UPDATE customer_item SET item_status =  C  WHERE item_redeem_code='$redeem_code'";		
+		$query2 = "UPDATE customer_item SET item_status = 'C'  WHERE item_redeem_code='$redeem_code'";		
 		if ($db->query($query2) === TRUE) {
 		
 			header('location: redemption_complete.php');	
