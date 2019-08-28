@@ -40,10 +40,10 @@
             <div id="tab_header">
                 <ul>
                     <li>
-                        <a href="redemption_list.html">可兌換</a>
+                        <a href="redemption_user.php">可兌換</a>
                     </li>
                     <li class="active">
-                        <a href="redemption_processing.html">換領記錄</a>
+                        <a href="redemption_processing.php">換領記錄</a>
                     </li>
                 </ul>
                 <div class="tab_header_shadow"></div>
@@ -75,6 +75,26 @@
                         </ul>
                         <div class="tab_header_shadow"></div>
                     </div>
+					
+					<script>
+					function confirmFunction(p)
+					{
+						var answer = window.confirm("確定兌換")
+						if (answer) {
+						//some code
+						  
+                            location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";						  						  
+						   
+						}
+						else {
+						//some code
+						
+						}
+					
+					}
+					
+					</script>	
+					
                     <div id="records-list">
 					<?php 
 						$videouser = $_SESSION['username'];
@@ -107,7 +127,7 @@
                                         </tr>
 										<tr>
                                             <td>Redemption</td>
-                                            <td><a href="" >[ 確定 ]</a></td>
+                                            <td><a href="http://157.230.145.40/ops/genEcoupon.php?redeem_code=<?php echo $row['item_redeem_code']; ?>" >[下載換領劵]</a></td>
                                         </tr>
 										
                                     </table>
