@@ -67,11 +67,8 @@
                     <div id="records-header">
                         <ul>
                             <li class="processing_active">
-                                <a href="#">處理中</a>
-                            </li>
-                            <li>
-                                <a href="redemption_completed.html">已兌換</a>
-                            </li>
+                                <a href="#">已兌換</a>
+                            </li>                            
                         </ul>
                         <div class="tab_header_shadow"></div>
                     </div>
