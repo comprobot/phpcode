@@ -452,6 +452,7 @@ if (item_name == '') {
 					<th>Item Description</th>
 					<th>Item Price</th>								
 					<th>Item status</th>					
+					<th>Item quantity</th>					
 					<th>Item Photo name</th>								
 					<th>Update time</th>			
 				</tr>
@@ -464,6 +465,7 @@ if (item_name == '') {
 					<td><?php echo $row['item_description']; ?></td>					
 					<td><?php echo $row['item_price']; ?></td>										
 					<td><?php echo $row['item_status']; ?></td>						
+					<td><?php echo $row['item_quantity']; ?></td>						
 					<td><img width="100" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>											
 					<td><?php echo $row['tm']; ?></td>											
 			</tr>
