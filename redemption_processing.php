@@ -78,7 +78,7 @@
                     <div id="records-list">
 					<?php 
 						$videouser = $_SESSION['username'];
-						$query = "SELECT * FROM  item_shop  WHERE customer_id = '$videouser' and item_status = 'B' " ;
+						$query = "SELECT * FROM  item_shop i , customer_item c  WHERE c.user_id = '$videouser' and c.item_id = i.item_id and c.item_status = 'B' " ;
 						$results = mysqli_query($db, $query); 			
 						if (mysqli_num_rows($results) >= 1) {
 						?>
