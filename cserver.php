@@ -19,6 +19,7 @@ $target_user="";
 $serial_number="";
 $info="";
 $id="";
+$item_id="";
 
 $servername = 'localhost';
 $dbusername = 'ops';
@@ -107,83 +108,6 @@ if (isset($_POST['register'])) {
   
 }
 
-
-if (isset($_GET['buyitem'])) {
-  $username = mysqli_real_escape_string($db, $_GET['userid']);
-  $itemid = mysqli_real_escape_string($db, $_GET['itemid']);
-
-  if (empty($username)) {
-  	header('location: user_login.php');
-  }
-  
-  if (empty($itemid)) {
-  	header('location: user_login.php');
-  }
-  
-  //NEXTVAL('itemSeq')
-  
-    //check exist of memember
-	
-    $queryM = "SELECT * FROM customers WHERE username='$username'";
-	
-  	$results = mysqli_query($db, $queryM);
-  	if (mysqli_num_rows($results) == 1) {
-  
-		$query = "SELECT * FROM item_shop WHERE item_id = '$item_id' and item_quantity > 0";
-	
-		$results = mysqli_query($db, $query);
-		if (mysqli_num_rows($results) == 1) {
-		
-			$query2 = "UPDATE item_shop SET item_quantity =  item_quantity - 1 WHERE item_id='$item_id'";		
-		
-			if ($db->query($query2) === TRUE) {
-			
-			   // check redeem code exist:
-				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-				$res = "";
-				for ($i = 0; $i < 10; $i++) {
-					$res .= $chars[mt_rand(0, strlen($chars)-1)];
-				}			   
-			   
-			    $queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
-				
-				while ($db->query($queryRedeemCode) === TRUE) {
-					$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-					$res = "";
-					for ($i = 0; $i < 10; $i++) {
-						$res .= $chars[mt_rand(0, strlen($chars)-1)];
-					}			   
-					$queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
-				}
-				
-			  
-				$query3 = "INSERT INTO customer_item (userid, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
-				
-				if ($db->query($query3) === TRUE) {
-					
-				    header('location: redemption_processing.php');	
-					
-				}else{
-					
-					
-				}
-				        
-			} else {
-			
-			}
-		
-		}else {
-		
-			array_push($errors, "The item is out of stock");
-		
-		}
-	
-	}else {
-  		array_push($errors, "User does not exist ");
-  	}
-  
-  
-}
 
 if (isset($_POST['add_media_player'])) {
 	
@@ -428,6 +352,147 @@ if (isset($_POST['store_login_user'])) {
   		array_push($errors, "Wrong username/password combination");
   	}
   }
+}
+
+
+
+
+if (isset($_GET['use_point'])) {
+  $username = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $videoid = mysqli_real_escape_string($db, $_GET['videoid']);
+  $approvel = mysqli_real_escape_string($db, $_GET['approvel']);
+
+  if (empty($username)) {
+  	header('location: user_login.php');
+  }
+  
+  if (empty($videoid)) {
+  	header('location: user_login.php');
+  }
+  
+  if (empty($approvel)) {
+  	header('location: user_login.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE advs_video SET approved = '$approvel' WHERE id='$videoid'";
+		if ($db->query($query2) === TRUE) {
+			header('location: redemption_user.php');
+
+		
+		} else {
+		  header('location: user_login.php');
+		}
+		
+		
+		
+		
+		
+  	  
+  	}else {
+  		header('location: user_login.php');
+  	}
+  
+}
+
+
+
+/*
+
+
+CREATE TABLE `customer_item` (
+  `user_id` varchar(100) NOT NULL,  
+  `item_id` int(11) NOT NULL,  
+  `item_redeem_code` varchar(11) NOT NULL,
+  `item_status` varchar(1) NOT NULL,  
+  `tm` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB 
+
+*/
+
+
+
+if (isset($_GET['buyitem'])) {
+  $username = mysqli_real_escape_string($db, $_GET['userid']);
+  $itemid = mysqli_real_escape_string($db, $_GET['itemid']);
+
+  if (empty($username)) {
+  	header('location: user_login.php');
+  }
+  
+  if (empty($itemid)) {
+  	header('location: user_login.php');
+  }
+  
+  //NEXTVAL('itemSeq')
+  
+    //check exist of memember
+	
+    $queryM = "SELECT * FROM customers WHERE username='$username'";
+	
+  	$results = mysqli_query($db, $queryM);
+  	if (mysqli_num_rows($results) == 1) {
+  
+		$query = "SELECT * FROM item_shop WHERE item_id = '$item_id' and item_quantity > 0";
+	
+		$results = mysqli_query($db, $query);
+		if (mysqli_num_rows($results) == 1) {
+		
+			$query2 = "UPDATE item_shop SET item_quantity =  item_quantity - 1 WHERE item_id='$item_id'";		
+		
+			if ($db->query($query2) === TRUE) {
+			
+			   // check redeem code exist:
+				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				$res = "";
+				for ($i = 0; $i < 10; $i++) {
+					$res .= $chars[mt_rand(0, strlen($chars)-1)];
+				}			   
+			   
+			    $queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
+				
+				while ($db->query($queryRedeemCode) === TRUE) {
+					$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+					$res = "";
+					for ($i = 0; $i < 10; $i++) {
+						$res .= $chars[mt_rand(0, strlen($chars)-1)];
+					}			   
+					$queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
+				}
+				
+			  
+				$query3 = "INSERT INTO customer_item (userid, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
+				
+				if ($db->query($query3) === TRUE) {
+					
+				    header('location: redemption_processing.php');	
+					
+				}else{
+					
+					array_push($errors, "Error2 ");
+				}
+				        
+			} else {
+				array_push($errors, "Erro1 ");
+			
+			}
+		
+		}else {
+		
+			array_push($errors, "The item is out of stock");
+		
+		}
+	
+	}else {
+  		array_push($errors, "User does not exist ");
+  	}
+  
+  
 }
 
 
