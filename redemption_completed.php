@@ -66,9 +66,12 @@
                 <div id="records" class="tab-pane">
                     <div id="records-header">
                         <ul>
+                            <li>
+                                <a href="redemption_processing.php">處理中</a>
+                            </li>
                             <li class="processing_active">
-                                <a href="#">已兌換</a>
-                            </li>                            
+                                <a href="redemption_completed.php">已兌換</a>
+                            </li>
                         </ul>
                         <div class="tab_header_shadow"></div>
                     </div>
