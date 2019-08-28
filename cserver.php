@@ -434,13 +434,22 @@ if (isset($_GET['buyitem'])) {
     //check exist of memember
 	
     $queryM = "SELECT * FROM customers WHERE username='$username'";
+	$item_point = "0";
 	
   	$results = mysqli_query($db, $queryM);
+	
+	$rowc = mysqli_fetch_assoc($results);
+	
   	if (mysqli_num_rows($results) == 1) {
+		
+		$item_point=$rowc['point'];
+		
+		
   
 		$query = "SELECT * FROM item_shop WHERE item_id = '$item_id' and item_quantity > 0";
 	
 		$results = mysqli_query($db, $query);
+		
 		if (mysqli_num_rows($results) == 1) {
 		
 			$query2 = "UPDATE item_shop SET item_quantity =  item_quantity - 1 WHERE item_id='$item_id'";		
@@ -469,8 +478,18 @@ if (isset($_GET['buyitem'])) {
 				$query3 = "INSERT INTO customer_item (user_id, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
 				
 				if ($db->query($query3) === TRUE) {
+					// reduce point from member
 					
-				    header('location: redemption_processing.php');	
+					$query4 = "UPDATE customers SET point =  point - $item_point WHERE username='$username'";			
+					
+					if ($db->query($query4) === TRUE) {
+						header('location: redemption_processing.php');							
+						
+					}else{						
+						 echo "error3";
+						 array_push($errors, "Error3 ");
+					}
+					
 					
 				}else{
 					 echo "error2";
