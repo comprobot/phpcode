@@ -101,7 +101,7 @@
 						if (answer) {
 						//some code
 						  
-                            location.href="http://157.230.145.40/ops/redemption_user.php?action=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";						  						  
+                            location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";						  						  
 						   
 						}
 						else {
