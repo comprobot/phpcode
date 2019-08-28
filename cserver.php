@@ -237,7 +237,41 @@ if (isset($_POST['upload_video'])) {
 }
 
 
-
+if (isset($_GET['claim_item'])) {
+	
+	$adv_user_password = mysqli_real_escape_string($db, $_GET['password_adv']);	
+	$redeem_code = mysqli_real_escape_string($db, $_GET['redeem_code']);
+	
+	if (empty($adv_user_password)) {
+		header('location: user_login.php');
+	}
+  
+	if (empty($redeem_code)) {
+		header('location: user_login.php');
+	}
+	
+		
+    $queryM = "SELECT * FROM  item_shop i , customer_item c, adv_users a   WHERE c.item_id = i.item_id and c.item_redeem_code='$redeem_code' and a.username = i.adv_id and a.password=$adv_user_password;";
+	
+  	$results = mysqli_query($db, $queryM);
+	
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE customer_item SET item_status =  C  WHERE item_redeem_code='$redeem_code'";		
+		if ($db->query($query2) === TRUE) {
+		
+			header('location: redemption_complete.php');	
+		
+		}else{
+			
+		   array_push($errors, "Cannot update record");	
+		}
+	}else{
+		
+		array_push($errors, "Please provide the correct password for adv user");
+	}
+		
+}
 
 
 
