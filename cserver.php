@@ -466,7 +466,7 @@ if (isset($_GET['buyitem'])) {
 				}
 				
 			  
-				$query3 = "INSERT INTO customer_item (userid, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
+				$query3 = "INSERT INTO customer_item (user_id, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
 				
 				if ($db->query($query3) === TRUE) {
 					
