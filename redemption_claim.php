@@ -36,7 +36,7 @@
 			
 		    <div id="points">請廣告商在下方輸入密碼，兌換禮物</div>	
 			
-			<div id="points"
+			<div id="points">
 			<form action="redemption_claim.php">
 				密碼: <input type="password" name="password_adv" id="password_adv" > <input type="hidden" name="redeem_code" id="redeem_code" value="<?php echo $_GET['redeem_code']; ?>" >  <input name="claim_item" id="claim_item"  type="submit"  value="輸入">
 			</form>
