@@ -1,6 +1,6 @@
 <?php
 require('fpdf.php');
-include "qrlib.php";    
+include "phpqrcode.php";    
 
 $target_dir = dirname(__FILE__) ."/pic/";
 $target_file = $target_dir . "temp.png";
