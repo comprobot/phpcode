@@ -419,13 +419,13 @@ CREATE TABLE `customer_item` (
 
 if (isset($_GET['buyitem'])) {
   $username = mysqli_real_escape_string($db, $_GET['userid']);
-  $itemid = mysqli_real_escape_string($db, $_GET['itemid']);
+  $item_id = mysqli_real_escape_string($db, $_GET['item_id']);
 
   if (empty($username)) {
   	header('location: user_login.php');
   }
   
-  if (empty($itemid)) {
+  if (empty($item_id)) {
   	header('location: user_login.php');
   }
   
