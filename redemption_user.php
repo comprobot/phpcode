@@ -22,13 +22,13 @@
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">        
     </head>
     <body>
-        <div id="header">
+       <div id="header">
             <div id="logo_bar">
                 <div id="back">
-                    <a href="home.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/back.png" srcset="http://www.fivegold.hk/qrjetso_ui/img/back-2x.png 2x, http://www.fivegold.hk/qrjetso_ui/img/back-3x.png 3x, http://www.fivegold.hk/qrjetso_ui/img/back-4x.png 4x"/></a>
+                    <a href="home.html"><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
                 </div>
                 <div id="logo">
-                    <a href="home.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/logo.png" srcset="http://www.fivegold.hk/qrjetso_ui/img/logo-2x.png 2x, http://www.fivegold.hk/qrjetso_ui/img/logo-3x.png 3x, http://www.fivegold.hk/qrjetso_ui/img/logo-4x.png 4x"/></a>
+                    <a href="home.html"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
                 </div>
                 <div id="next">
                 </div>
@@ -86,10 +86,10 @@
                             </select>
                         </div>
                         <div id="select_thumbnail">
-                            <a href="redemption_thumbnail.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/btn_thumbnail.png" /></a>
+                            <a href="redemption_thumbnail.html"><img src="img/btn_thumbnail.png" /></a>
                         </div>
                         <div id="select_list">
-                            <img src="http://www.fivegold.hk/qrjetso_ui/img/btn_list.png" />
+                            <img src="img/btn_list.png" />
                         </div>
                     </div>
                     <div id="avaiable-list">					
@@ -140,14 +140,11 @@
 				
             </div>
         </div>
-        <div id="footer_container">
-            <div class="sperator"></div>
+       <div id="footer_container">
             <div id="bottom_menu">
-                <div><a href="home.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/btn_home.png" /></a></div>
-                <div><a href="home.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/btn_search.png" /></a></div>
-                <div><a href="registration_1.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/btn_inbox.png" /></a></div>
-                <div><a href="account.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/btn_account.png" /></a></div>
-                <div><a href="home.html"><img src="http://www.fivegold.hk/qrjetso_ui/img/btn_scan.png" /></a></div>
+                <div><a href="home.html"><img src="img/btn_home.png" /></a></div>
+                <div><a href="account.html"><img src="img/btn_account.png" /></a></div>
+                <div><a href="guide_1.html"><img src="img/btn_scan.png" /></a></div>
             </div>
         </div>
     </body>
