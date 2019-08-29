@@ -24,10 +24,8 @@
             <div class="sperator"></div>
         </div>
         <div id="page">		
-		    <div id="points">你的禮物已能成功兌換</div>				
-			<div id="points">回到<a href="redemption_user.php">換領禮物</a></div>				
-			<div id="points">回到<a href="redemption_processing.php">待換領記錄</a></div>				
-		    <div id="points">回到<a href="redemption_processing.php">已換領記錄</a></div>				            
+		    <div id="points">已替客戶成功兌換禮物</div>				
+			
         </div>
        <div id="footer_container">
             <div id="bottom_menu">
