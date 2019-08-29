@@ -11,7 +11,7 @@ if (isset($_GET['redeem_code'])) {
 $target_dir = dirname(__FILE__) ."/pic/";
 $target_file = $target_dir . "tempcode.png";
 
-$value = 'http://157.230.145.40/ops/redeemption_claim.php?redeem_code='.$_GET['redeem_code']; //二维码内容   
+$value = 'http://157.230.145.40/ops/redemption_claim.php?redeem_code='.$_GET['redeem_code']; //二维码内容   
 $errorCorrectionLevel = 'L';//容错级别   
 $matrixPointSize = 6;//生成图片大小   
 //生成二维码图片   
