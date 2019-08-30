@@ -269,7 +269,7 @@ if (item_name == '') {
                 </div>
                 <div class="card-body">  
 
-
+           <div class="content">
 
 				
             <?php  if (isset($_SESSION['username'])) : ?>
@@ -570,7 +570,8 @@ if (item_name == '') {
 			
 			
 			<?php endif ?>
-            
+			
+            </div>
                 </div>
             </div>
         </div>
@@ -585,6 +586,8 @@ if (item_name == '') {
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+
+
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
