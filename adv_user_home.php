@@ -306,7 +306,6 @@ if (item_name == '') {
 			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
  			</div>			
 			<div class="form-row">
-						
 			<?php 
 			$videouser = $_SESSION['username'];
 			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
@@ -348,7 +347,6 @@ if (item_name == '') {
 			
 			
 			</div>			
-
 			
 			<div class="form-row">			
 			<div class="row row-space">                  
@@ -478,7 +476,21 @@ if (item_name == '') {
 					<td><?php echo $row['item_name']; ?></td>					
 					<td><?php echo $row['item_description']; ?></td>					
 					<td><?php echo $row['item_price']; ?></td>										
-					<td><?php echo $row['item_status']; ?></td>						
+					
+					<td><?php if ($row['item_status'] == 'N')
+							  {
+							  	echo "Approved";
+							  } else if ($row['item_status'] == 'P'){								  
+								 echo "Pending"; 
+							  } else if ($row['item_status'] == 'F'){
+								 echo "Rejected"; 
+							  }								  
+						?>
+					
+					
+					</td>						
+					
+					
 					<td><?php echo $row['item_quantity']; ?></td>						
 					<td><img width="100" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>											
 					<td><?php echo $row['tm']; ?></td>											
