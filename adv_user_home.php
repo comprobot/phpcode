@@ -585,8 +585,6 @@ if (item_name == '') {
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
-
-
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
