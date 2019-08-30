@@ -308,29 +308,52 @@ if (item_name == '') {
 			<div class="form-row">
 			<?php 
 			$videouser = $_SESSION['username'];
-			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser'";
-			$resultsofyou = mysqli_query($db, $query);
-		    $rowc = mysqli_fetch_assoc($resultsofyou);		
-		    $approval=$rowc['approved'];			
-			if ($approval == "T") {
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
+			$resultsofyou = mysqli_query($db, $query); 			
+			$rowc = mysqli_fetch_assoc($resultsofyou);
+		    
+			?>
+			
+			<?php echo   $rowc['approved'];			 ?>
+			
+			<?php
+			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
 			
 				<div class="row row-space"><strong>Your video is approved </strong></div>				 
 				
 			<?php
-			}else if ($approval == "P") {
+			}
+			?>
+
+                
+
+			
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'P'";
+			$resultsofyou = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
 				<div class="row row-space"><strong>Your video is Pending for approval </strong></div>				 
 			<?php
-			}else {
+			}
+			?>
+			</div>			
 			
+			
+			
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'F'";
+			$resultsofyou = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
 				<div class="row row-space"><strong>Your video is rejected </strong></div>				 
 			<?php
 			}
 			?>
-			<?php echo $rowc['approval']; ?>
-						
+			
 			</div>			
 			
 			<div class="form-row">			
