@@ -310,15 +310,15 @@ if (item_name == '') {
 			$videouser = $_SESSION['username'];
 			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser'";
 			$resultsofyou = mysqli_query($db, $query);
-		    	$rowc = mysqli_fetch_assoc($resultsofyou);		
-		    	$approval=$rowc['approved'];			
-			if ($approval == 'T') {
+		    $rowc = mysqli_fetch_assoc($resultsofyou);		
+		    $approval=$rowc['approved'];			
+			if ($approval == "T") {
 			?>
 			
 				<div class="row row-space"><strong>Your video is approved </strong></div>				 
 				
 			<?php
-			}else if ($approval == 'P') {
+			}else if ($approval == "P") {
 			?>
 				<div class="row row-space"><strong>Your video is Pending for approval </strong></div>				 
 			<?php
@@ -329,7 +329,10 @@ if (item_name == '') {
 			<?php
 			}
 			?>
+			<?php echo $rowc['approval']; ?>
+						
 			</div>			
+			
 			<div class="form-row">			
 			<div class="row row-space">                  
 			  <strong><input type="file" name="myvideo"/></strong></div> 				  
