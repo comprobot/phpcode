@@ -305,18 +305,12 @@ if (item_name == '') {
 			<div class="form-row">
 			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
  			</div>			
-			<div class="form-row">
+						<div class="form-row">
 			<?php 
 			$videouser = $_SESSION['username'];
 			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
 			$resultsofyou = mysqli_query($db, $query); 			
-			$rowc = mysqli_fetch_assoc($resultsofyou);
-		    
-			?>
-			
-			<?php echo   $rowc['approved'];			 ?>
-			
-			<?php
+			$rowc = mysqli_fetch_assoc($resultsofyou);		    			
 			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
 			
@@ -324,9 +318,7 @@ if (item_name == '') {
 				
 			<?php
 			}
-			?>
-
-                
+			?>  
 
 			
 			<?php 
@@ -339,8 +331,6 @@ if (item_name == '') {
 			<?php
 			}
 			?>
-			</div>			
-			
 			
 			
 			<?php 
