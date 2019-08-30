@@ -466,7 +466,8 @@ if (item_name == '') {
 					<th>Item status</th>					
 					<th>Item quantity</th>					
 					<th>Item Photo name</th>								
-					<th>Update time</th>			
+					<th>Update time</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 	
@@ -486,14 +487,15 @@ if (item_name == '') {
 								 echo "Rejected"; 
 							  }								  
 						?>
-					
-					
-					</td>						
-					
-					
+					</td>
 					<td><?php echo $row['item_quantity']; ?></td>						
 					<td><img width="100" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>											
 					<td><?php echo $row['tm']; ?></td>											
+					<td>
+						<a href="aserver.php?itemid=<?php echo $row['item_id']; ?>&delte_item=delte_item&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >DELETE</a>
+					</td>					
+			</tr>
+					
 			</tr>
 			<?php } ?>
 			</table>
