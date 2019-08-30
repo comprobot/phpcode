@@ -308,29 +308,28 @@ if (item_name == '') {
 			<div class="form-row">
 			<?php 
 			$videouser = $_SESSION['username'];
-			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
-			$resultsofyou = mysqli_query($db, $query); 			
-			if (mysqli_num_rows($resultsofyou) == 1) {
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser'";
+			$resultsofyou = mysqli_query($db, $query);
+		    	$rowc = mysqli_fetch_assoc($resultsofyou);		
+		    	$approval=$rowc['approved'];			
+			if ($approval == 'T') {
 			?>
 			
 				<div class="row row-space"><strong>Your video is approved </strong></div>				 
 				
 			<?php
-			}
+			}else if ($approval == 'P') {
 			?>
+				<div class="row row-space"><strong>Your video is Pending for approval </strong></div>				 
+			<?php
+			}else {
 			
-			<?php 
-			$videouser = $_SESSION['username'];
-			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'F'";
-			$resultsofyou = mysqli_query($db, $query); 			
-			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
 				<div class="row row-space"><strong>Your video is rejected </strong></div>				 
 			<?php
 			}
 			?>
 			</div>			
-			
 			<div class="form-row">			
 			<div class="row row-space">                  
 			  <strong><input type="file" name="myvideo"/></strong></div> 				  
