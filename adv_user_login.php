@@ -136,7 +136,7 @@ if (username == '' ||  password == '') {
                         </div>						
 					     
 			<div class="form-row">
-				<div class="name"> <a href="index.php" style="color: red;">Register</a></div>
+				<div class="name"> <a href="adv_index.php" style="color: red;">Register</a></div>
 			</div>							     
 					     
 				    </form>
