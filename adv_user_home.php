@@ -305,12 +305,12 @@ if (item_name == '') {
 			<div class="form-row">
 			     <div class="row row-space"><strong>Upload your promote video to the server </strong></div>				 
  			</div>			
-						<div class="form-row">
+			<div class="form-row">
+						
 			<?php 
 			$videouser = $_SESSION['username'];
 			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'T'";
 			$resultsofyou = mysqli_query($db, $query); 			
-			$rowc = mysqli_fetch_assoc($resultsofyou);		    			
 			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
 			
@@ -318,20 +318,7 @@ if (item_name == '') {
 				
 			<?php
 			}
-			?>  
-
-			
-			<?php 
-			$videouser = $_SESSION['username'];
-			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'P'";
-			$resultsofyou = mysqli_query($db, $query); 			
-			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
-				<div class="row row-space"><strong>Your video is Pending for approval </strong></div>				 
-			<?php
-			}
-			?>
-			
 			
 			<?php 
 			$videouser = $_SESSION['username'];
@@ -339,12 +326,29 @@ if (item_name == '') {
 			$resultsofyou = mysqli_query($db, $query); 			
 			if (mysqli_num_rows($resultsofyou) == 1) {
 			?>
+			
 				<div class="row row-space"><strong>Your video is rejected </strong></div>				 
+				
 			<?php
 			}
 			?>
 			
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT approved FROM  advs_video WHERE username = '$videouser' and approved = 'P'";
+			$resultsofyou = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($resultsofyou) == 1) {
+			?>
+			
+				<div class="row row-space"><strong>Your video is Pending </strong></div>				 
+				
+			<?php
+			}
+			?>
+			
+			
 			</div>			
+
 			
 			<div class="form-row">			
 			<div class="row row-space">                  
