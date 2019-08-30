@@ -285,7 +285,7 @@ if (item_name == '') {
 	                <a class="ah-tab-item" href="">Payment history</a> 
 					<a class="ah-tab-item" href="">Items on shop </a> 
 				    <a class="ah-tab-item" href="">Add item on shop </a> 
-				<button type="menu" class="ah-tab-overflow-menu"></button>
+				
                 </div>
             </div>		
 			
