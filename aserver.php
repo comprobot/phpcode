@@ -24,7 +24,7 @@ $item_name="";
 $item_price="";
 $item_description="";
 $item_quantity="1";
-
+$approval="";
 
 $servername = 'localhost';
 $dbusername = 'ops';
