@@ -149,6 +149,8 @@ $(document).ready(function() {
 	$('#uploadVideoForm').submit(function() {
 	
 	  //event.preventDefault();
+	  
+	  /*
 	
 	$("#uploadVideoForm").validate({
 	 rules: {				
@@ -174,6 +176,8 @@ if (qrcode_str == '') {
 } else {
 	
 }
+
+*/
 });
 
 
@@ -330,16 +334,7 @@ if (item_name == '') {
 			<div class="form-row">			
 			<div class="row row-space">                  
 			  <strong><input type="file" name="myvideo"/></strong></div> 				  
-            </div>			    			
-			
-			<div class="form-row">
-              <div class="row row-space"><strong>Qr code message:</strong> </div>
-                <div class="value">
-                  <div class="input-group">
-                     <input class="input--style-5" name="qrcode_str" id='qrcode_str' value="<?php echo $qrcode_str; ?>" > <label for="qrcode_str" class="error"></label>
-                  </div>
-               </div>
-            </div>
+            </div>			    						
 			
 			<button class="btn btn--radius-2 btn--red" name="upload_video" id="upload_video" type="submit">Submit Video</button>
 			
