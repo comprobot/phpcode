@@ -295,7 +295,7 @@ if (isset($_POST['upload_item'])) {
 				
 			  
 			  
-			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,'$res','$username','N','$filename','$item_name')";
+			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,'$res','$username','P','$filename','$item_name')";
 				
 				
 				
@@ -462,7 +462,41 @@ if (isset($_POST['store_login_user'])) {
 
 
 
+if (isset($_GET['delete_item'])) {
+  $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $videoid = mysqli_real_escape_string($db, $_GET['item_id']);
+  $action = mysqli_real_escape_string($db, $_GET['delete_item']);
 
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adminuser)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($action)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  	$query = "SELECT * FROM adv_users WHERE username='$adminuser'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "DELETE FROM item_shop  WHERE item_id='$videoid'";
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=itemshop');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
 
 
 
