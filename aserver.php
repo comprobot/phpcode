@@ -461,22 +461,21 @@ if (isset($_POST['store_login_user'])) {
 
 
 
-
 if (isset($_GET['delete_item'])) {
   $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
   $videoid = mysqli_real_escape_string($db, $_GET['item_id']);
   $action = mysqli_real_escape_string($db, $_GET['delete_item']);
 
   if (empty($username)) {
-  	header('location: sadminlogin.php');
+  	header('location: adv_user_login.php');
   }
   
   if (empty($adminuser)) {
-  	header('location: sadminlogin.php');
+  	header('location: adv_user_login.php');
   }
   
   if (empty($action)) {
-  	header('location: sadminlogin.php');
+  	header('location: adv_user_login.php');
   }
   
   	$query = "SELECT * FROM adv_users WHERE username='$adminuser'";
@@ -485,19 +484,18 @@ if (isset($_GET['delete_item'])) {
 		
 		$query2 = "DELETE FROM item_shop  WHERE item_id='$videoid'";
 		if ($db->query($query2) === TRUE) {
-			header('location: all_function.php?tag=itemshop');
+			header('location: adv_user_home.php?tag=itemshop');
  				        
 		} else {
-		  header('location: sadminlogin.php');
+		  header('location: adv_user_login.php');
 		}
 		
   	  
   	}else {
-  		header('location: sadminlogin.php');
+  		header('location: adv_user_login.php');
   	}
   
 }
-
 
 
 
