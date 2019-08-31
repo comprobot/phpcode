@@ -568,6 +568,7 @@ if (qrcode_str == '') {
 
 
 			
+			
 			<div class="ah-tab-content" id="itemshop" >
 			<?php 			
 			$query = "SELECT * FROM  item_shop " ;
@@ -612,13 +613,13 @@ if (qrcode_str == '') {
 					<td><img width="100" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>											
 					<td><?php echo $row['tm']; ?></td>											
 					<td>
-						<a href="sserver.php?videoid=<?php echo $row['item_id']; ?>&approvel_item=N&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Approve</a>
+						<a href="sserver.php?item_id=<?php echo $row['item_id']; ?>&approvel_item=N&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Approve</a>
 					</td>
 					<td>
-						<a href="sserver.php?videoid=<?php echo $row['item_id']; ?>&approvel_item=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
+						<a href="sserver.php?item_id=<?php echo $row['item_id']; ?>&approvel_item=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
 					</td>
 					<td>
-						<a href="sserver.php?videoid=<?php echo $row['item_id']; ?>&delete_item=delete_item&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Delete</a>
+						<a href="sserver.php?item_id=<?php echo $row['item_id']; ?>&delete_item=delete_item&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Delete</a>
 					</td>					
 			</tr>
 					
