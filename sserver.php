@@ -450,7 +450,7 @@ if (isset($_GET['delete_adv_video'])) {
 if (isset($_GET['approvel_item'])) {
   $username = mysqli_real_escape_string($db, $_GET['adminuser']);
   $videoid = mysqli_real_escape_string($db, $_GET['item_id']);
-  $approvel = mysqli_real_escape_string($db, $_GET['approvel']);
+  $approvel = mysqli_real_escape_string($db, $_GET['approvel_item']);
 
   if (empty($username)) {
   	header('location: sadminlogin.php');
