@@ -117,6 +117,16 @@ if (param=="customerpayment")
 	$('#customerpayment').attr('data-ah-tab-active', 'true');
 	
 }
+
+if (param=="itemshop")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#itemshop').attr('data-ah-tab-active', 'true');
+	
+}
+
+
+
 //id="advvideo"
 	
 	
@@ -293,6 +303,7 @@ if (qrcode_str == '') {
                     <a class="ah-tab-item" href="">View/Edit Store user</a>					
                     <a class="ah-tab-item" href="">Edit and Veify payments </a>
                     <a class="ah-tab-item" href="">System settings</a>
+					<a class="ah-tab-item" href="">Item shop approval</a>
                     <a class="ah-tab-item" href="">About company</a>
                 </div>
             </div>						
@@ -309,7 +320,7 @@ if (qrcode_str == '') {
 			<div class="row row-space">
 			 <strong><input type="file" name="myvideo"/></strong></div>
 			</div>
-
+<!--
 			<div class="form-row">
 			<div class="row row-space"><strong>Qr code message:</strong> </div>
 			<div class="value">
@@ -318,7 +329,7 @@ if (qrcode_str == '') {
 			</div>
 			</div>
 			</div>
-
+-->
 			<div class="form-row">
 			<div class="row row-space"><strong>Adv username:</strong> </div>
 			<div class="value">
