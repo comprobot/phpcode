@@ -447,6 +447,39 @@ if (isset($_GET['delete_adv_video'])) {
 
 
 
+if (isset($_GET['approvel_item'])) {
+  $username = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $videoid = mysqli_real_escape_string($db, $_GET['item_id']);
+  $approvel = mysqli_real_escape_string($db, $_GET['approvel']);
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($videoid)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($approvel)) {
+  	header('location: sadminlogin.php');
+  }
+  	$query = "SELECT * FROM admin_users WHERE username='$username'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		$query2 = "UPDATE item_shop SET item_status = '$approvel' WHERE item_id='$videoid'";
+		if ($db->query($query2) === TRUE) {
+			header('location: all_function.php?tag=itemshop'); 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+}
+
+
 
 
 if (isset($_GET['approvel'])) {
