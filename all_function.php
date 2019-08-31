@@ -557,6 +557,65 @@ if (qrcode_str == '') {
 
 
 
+			
+			<div class="ah-tab-content" id="itemshop" >
+			<?php 			
+			$query = "SELECT * FROM  item_shop " ;
+			$results = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($results) >= 1) {
+			?>
+			 
+ 			
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Item ID</th>
+					<th>Item Name</th>
+					<th>Item Description</th>
+					<th>Item Price</th>								
+					<th>Item status</th>					
+					<th>Item quantity</th>					
+					<th>Item Photo name</th>								
+					<th>Update time</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['item_id']; ?></td>					
+					<td><?php echo $row['item_name']; ?></td>					
+					<td><?php echo $row['item_description']; ?></td>					
+					<td><?php echo $row['item_price']; ?></td>										
+					
+					<td><?php if ($row['item_status'] == 'N')
+							  {
+							  	echo "Approved";
+							  } else if ($row['item_status'] == 'P'){								  
+								 echo "Pending"; 
+							  } else if ($row['item_status'] == 'F'){
+								 echo "Rejected"; 
+							  }								  
+						?>
+					</td>
+					<td><?php echo $row['item_quantity']; ?></td>						
+					<td><img width="100" height="100" src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   ></td>											
+					<td><?php echo $row['tm']; ?></td>											
+					<td>
+						<a href="aserver.php?itemid=<?php echo $row['item_id']; ?>&delte_item=delte_item&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >DELETE</a>
+					</td>					
+			</tr>
+					
+			</tr>
+			<?php } ?>
+			</table>
+			 
+			<?php
+			}
+			?>
+			
+			</div>
+						
 
 
 			
