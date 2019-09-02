@@ -84,7 +84,7 @@ if (isset($_GET['reg_customer'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO customers (username, lastname, firstname, password,area_code, telephone, point, email, title, age) 
+  	$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age) 
   			  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 200 ,'$email','$title','$age' )";
   	//mysqli_query($db, $query);
 	
