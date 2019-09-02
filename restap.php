@@ -38,6 +38,8 @@ $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
 if (isset($_GET['reg_customer'])) {
   // receive all input values from the form
+  $first_name = mysqli_real_escape_string($db, $_GET['first_name']);  	
+  $last_name = mysqli_real_escape_string($db, $_GET['last_name']);  	
   $username = mysqli_real_escape_string($db, $_GET['username']);  
   $password = mysqli_real_escape_string($db, $_GET['password']);
   $cpassword = mysqli_real_escape_string($db, $_GET['cpassword']);    
@@ -48,6 +50,8 @@ if (isset($_GET['reg_customer'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
+  if (empty($last_name)) { array_push($errors, "lastname is required"); }
+  if (empty($first_name)) { array_push($errors, "firstname is required"); }
   if (empty($username)) { array_push($errors, "Username is required"); }
   if (empty($age)) { array_push($errors, "Username is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
@@ -80,8 +84,8 @@ if (isset($_GET['reg_customer'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO customers (username, password,area_code, telephone, point, email, title, age) 
-  			  VALUES('$username','$password', '$area_code', '$phone', 200 ,'$email','$title','$age' )";
+  	$query = "INSERT INTO customers (username, lastname, firstname, password,area_code, telephone, point, email, title, age) 
+  			  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 200 ,'$email','$title','$age' )";
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
