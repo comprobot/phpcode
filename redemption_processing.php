@@ -70,7 +70,7 @@
                                 <a href="#">處理中</a>
                             </li>
                             <li>
-                                <a href="redemption_completed.html">已兌換</a>
+                                <a href="redemption_completed.php">已兌換</a>
                             </li>
                         </ul>
                         <div class="tab_header_shadow"></div>
