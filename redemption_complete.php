@@ -29,8 +29,8 @@
         </div>
        <div id="footer_container">
             <div id="bottom_menu">
-                <div><a href="home.html"><img src="img/btn_home.png" /></a></div>
-                <div><a href="account.html"><img src="img/btn_account.png" /></a></div>
+                <div><a href="home.php"><img src="img/btn_home.png" /></a></div>
+                <div><a href="account.php"><img src="img/btn_account.png" /></a></div>
                 <div><a href="guide_1.html"><img src="img/btn_scan.png" /></a></div>
             </div>
         </div>
