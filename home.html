@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="lightslider.css"/>
+        <script src="lightslider.js"></script> 
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">        
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo_bar">
+                <div id="back">
+                </div>
+                <div id="logo">
+                    <a href="home.html"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
+                </div>
+                <div id="next">
+                </div>
+            </div>
+            <div class="sperator"></div>
+        </div>
+        <div id="page">
+            <div id="slider">
+                <ul id="content-slider" class="content-slider">
+                    <li>
+                        <img src="img/slide01.jpg" />
+                    </li>
+                    <li>
+                        <img src="img/slide02.jpg" />
+                    </li>
+                    <li>
+                        <img src="img/slide03.jpg" />
+                    </li>
+                    <li>
+                        <img src="img/slide04.jpg" />
+                    </li>
+                    <li>
+                        <img src="img/slide05.jpg" />
+                    </li>
+                </ul>
+            </div>
+            <div id="content">
+                <div id="home_btn">
+                    <div class="home_btn_row">
+                        <span><a href="rules.html"><img src="img/btn_home_play.png" /></a></span>
+                        <span><a href="redemption_list.html"><img src="img/btn_home_gift.png" /></a></span>
+                        <span><a href="records.html"><img src="img/btn_home_record.png" /></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_container">
+            <div id="bottom_menu">
+                <div><a href="home.html"><img src="img/btn_home.png" /></a></div>
+                <div><a href="account.html"><img src="img/btn_account.png" /></a></div>
+                <div><a href="guide_1.html"><img src="img/btn_scan.png" /></a></div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#content-slider").lightSlider({
+                    item: 1,
+                    autoWidth: false,
+                    slideMargin: 0,
+                    auto: true,
+                    pauseOnHover: true,
+                    loop: true,
+                    slideEndAnimation: false,
+                    keyPress: true,
+                    controls: false,
+                    gallery: false,
+                });
+            });
+        </script>
+        <script>
+            var callShare = function() {
+                var shareInfo = JSON.stringify({"title": "标题", "desc": "内容", "shareUrl": "http://www.jianshu.com/p/f896d73c670a",
+                                               "shareIco":"http://upload-images.jianshu.io/upload_images/1192353-fd26211d54aea8a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+                                               Toyun.share(shareInfo);
+                                               
+                                               
+            }
+        
+        
+        
+        var callScan = function() {
+            var shareInfo = JSON.stringify({"scan": "scan"});
+            Toyun.callScan(shareInfo);
+            
+            
+        }
+        
+        
+        
+        
+        var picCallback = function(photos) {
+            alert(photos);
+        }
+        
+        var shareCallback = function(){
+            //alert('success');
+        }
+        
+        var validCallback = function(){
+            alert('success');
+        }
+        
+        
+        
+            </script>
+        
+        
+    </body>
+</html>
