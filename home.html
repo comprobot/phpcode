@@ -56,7 +56,7 @@
         </div>
         <div id="footer_container">
             <div id="bottom_menu">
-                <div><a href="home.html"><img src="img/btn_home.png" /></a></div>
+                <div><a href="#" onclick=callHome()><img src="img/btn_home.png" /></a></div>
                 <div><a href="account.html"><img src="img/btn_account.png" /></a></div>
                 <div><a href="#"  onclick="callScan()" ><img src="img/btn_scan.png" /></a></div>
             </div>
@@ -95,6 +95,14 @@
             
         }
         
+     
+               
+        var callHome = function() {
+            var shareInfo = JSON.stringify({"scan": "scan"});
+            Toyun.callHome(shareInfo);
+            
+            
+        }
         
         
         
