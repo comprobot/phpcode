@@ -350,6 +350,40 @@ if (isset($_GET['qrcode_customer'])) {
 
 
 
+if (isset($_GET['customer_login_app_api'])) {
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $password = mysqli_real_escape_string($db, $_GET['password']);
+
+  if (empty($username)) {
+  	array_push($errors, "Username is required");
+  }
+  if (empty($password)) {
+  	array_push($errors, "Password is required");
+  }
+
+  if (count($errors) == 0) {
+  	//$password = md5($password);
+	
+	
+	
+  	$query = "SELECT * FROM customers WHERE username='$username' AND password='$password'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+          
+	   $_SESSION['username'] = $username;
+  	   $_SESSION['success'] = "You are now logged in";
+  	   header('location: home.php');
+           echo "<p>SUCCESS</p>";        
+	
+  	}else {
+  		array_push($errors, "Wrong username/password combination");
+  	}
+  }
+}  
+
+
+
+
 if (isset($_GET['customer_login_api'])) {
   $username = mysqli_real_escape_string($db, $_GET['username']);
   $password = mysqli_real_escape_string($db, $_GET['password']);
