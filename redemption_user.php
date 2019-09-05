@@ -25,10 +25,10 @@
        <div id="header">
             <div id="logo_bar">
                 <div id="back">
-                    <a href="home.html"><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
+                    <a href="home.php"><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
                 </div>
                 <div id="logo">
-                    <a href="home.html"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
+                    <a href="home.php"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
                 </div>
                 <div id="next">
                 </div>
@@ -42,7 +42,7 @@
                         <a href="#">可兌換</a>
                     </li>
                     <li>
-                        <a href="redemption_processing.html">換領記錄</a>
+                        <a href="redemption_processing.php">換領記錄</a>
                     </li>
                 </ul>
                 <div class="tab_header_shadow"></div>
@@ -140,12 +140,6 @@
 				
             </div>
         </div>
-       <div id="footer_container">
-            <div id="bottom_menu">
-                <div><a href="home.php"><img src="img/btn_home.png" /></a></div>
-                <div><a href="account.php"><img src="img/btn_account.png" /></a></div>
-                <div><a href="guide_1.html"><img src="img/btn_scan.png" /></a></div>
-            </div>
-        </div>
+
     </body>
 </html>
