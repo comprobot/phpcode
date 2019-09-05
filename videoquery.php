@@ -16,7 +16,7 @@ $result = $db->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo $row["filename"].','. $row["qrcode"].'\r\n';
+        echo $row["filename"].','. $row["qrcode"]." \n ";
     }
 } else {
     echo "0 results";
