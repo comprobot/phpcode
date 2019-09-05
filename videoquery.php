@@ -16,7 +16,7 @@ $result = $db->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo $row["filename"].','. $row["username"]." \n ";
+        echo 'http://157.230.145.40/ops/video/'.$row["filename"].','. $row["username"]." \n ";
     }
 } else {
     echo "0 results";
