@@ -11,7 +11,7 @@ $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
-$db = "SELECT filename, qrcode FROM advs_video where approved = 'T' ";
+$sql = "SELECT filename, qrcode FROM advs_video where approved = 'T' ";
 $result = $db->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
