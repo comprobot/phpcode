@@ -231,7 +231,7 @@ if (isset($_POST['upload_video'])) {
             // Get extension name
 				$fileInfo = pathinfo($_FILES['myvideo']['name']);
 				$upload_extension = $fileInfo['extension'];
-				$allowed_extensions = array('mp4','avi');
+				$allowed_extensions = array('mp4','avi','MP4','AVI','mov','MOV');
 				
 				$query2 = "SELECT * FROM advs_video WHERE username='$adv_username'";
 				$results = mysqli_query($db, $query2);
