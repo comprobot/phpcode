@@ -525,7 +525,7 @@ if (qrcode_str == '') {
 			
 			
 			<div class="ah-tab-content" id="systemsetting">			 
-              <?php $results = mysqli_query($db, "SELECT * FROM  system_settings"); ?>
+              <?php $results = mysqli_query($db, "SELECT adv_pool_ratio, adv_access_point, store_user_pool_ratio FROM  system_settings"); ?>
 			  
 			    <div class="form-row">
 			     <form method="POST" action="all_function.php" id="updateSystemSetting" name="updateSystemSetting">
@@ -551,6 +551,17 @@ if (qrcode_str == '') {
 					</div>
 					</div>
 					</div>
+					
+					<div class="form-row">
+					<div class="row row-space"><strong>Store user access point:</strong> </div>
+					<br/>
+					<div class="value">
+					<div class="input-group">
+					<input class="input--style-5" name="store_user_pool_ratio" id='store_user_pool_ratio' value="<?php echo $row[2];?>" > <label for="store_user_pool_ratio" class="error"></label>
+					</div>
+					</div>
+					</div>
+								
 			
 					<button class="btn btn--radius-2 btn--red" name="update_system_info" id="update_system_info" type="submit">Update setting</button>
 
