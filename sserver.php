@@ -32,6 +32,7 @@ $qrcode_str="";
 $adv_access_point="";
 $adv_pool_ratio="";
 $store_user_pool_ratio="";
+$price="";
 
 
 
@@ -605,6 +606,7 @@ if (isset($_GET['veify_customer_payment'])) {
   $username = mysqli_real_escape_string($db, $_GET['customerid']);
   $approvel = mysqli_real_escape_string($db, $_GET['veify_customer_payment']);
   $checkpayment = mysqli_real_escape_string($db, $_GET['check']);
+  $price = mysqli_real_escape_string($db, $_GET['price']);
   
   //echo  $adminuser.$username.$approvel.$checkpayment;
   
@@ -625,6 +627,11 @@ if (isset($_GET['veify_customer_payment'])) {
   	header('location: sadminlogin.php');
   }
   
+  if (empty($price)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
   
   	$query = "SELECT * FROM admin_users WHERE username='$adminuser'";
   	$results = mysqli_query($db, $query);
@@ -632,7 +639,22 @@ if (isset($_GET['veify_customer_payment'])) {
 		
 		$query2 = "UPDATE customer_payment SET verified = 'T' WHERE customerid='$username'";
 		if ($db->query($query2) === TRUE) {
-			header('location: all_function.php?tag=customerpayment');
+			
+			    $query3 = "SELECT count(*) as sum_store_user FROM store_users ";
+	 	 	    $result_store_user = mysqli_query($db, $query3);
+                $userpoint = mysqli_fetch_assoc($result_store_user);
+                $sum_store_user = $userpoint['sum_store_user'];
+				
+				$query4 = "UPDATE point_db SET point = point + ( $price / $sum_store_user ) ";
+				if ($db->query($query4) === TRUE) 
+				{
+					header('location: all_function.php?tag=customerpayment');
+					
+				}else{
+					
+					
+				}
+			
  				        
 		} else {
 		  header('location: sadminlogin.php');
