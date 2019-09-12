@@ -202,6 +202,7 @@ if (serial_number == '') {
                 <div class="ah-tab">
                     <a class="ah-tab-item" data-ah-tab-active="true" href="">Add media player items</a>
                     <a class="ah-tab-item" href="">View Customer access </a>
+					<a class="ah-tab-item" href="">View Current point </a>
                 </div>
             </div>		
 						
@@ -259,11 +260,10 @@ if (serial_number == '') {
 			     <div class="row row-space"><strong>List the media player items</strong></div>				 
  			</div>			
 			
-			<?php 
-			$stser = $_SESSION['username'];
-			?>
 			
-			<?php $results = mysqli_query($db, "SELECT * FROM  store_display where username = '$stser' "); ?>
+			<?php 
+			$stser = $_SESSION['username'];			
+			$results = mysqli_query($db, "SELECT * FROM  store_display where username = '$stser' "); ?>
 			<table border="1">
 			<thead>
 				<tr>
@@ -322,6 +322,37 @@ if (serial_number == '') {
 			 
 			</div>
 			
+			<div class="ah-tab-content" id="viewcurrentpoint" >
+			<?php 
+			$videouser = $_SESSION['username'];
+			$query = "SELECT point, tm  FROM point_db WHERE username = '$videouser'" ;
+			$results = mysqli_query($db, $query); 			
+			if (mysqli_num_rows($results) >= 1) {
+			?>
+			 
+ 			
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Point</th>					
+					<th>time</th>								
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['point']; ?></td>										
+					<td><?php echo $row['tm']; ?></td>						
+					
+			</tr>
+			<?php } ?>
+			</table>
+			 
+			<?php
+			}
+			?>
+			 
+			</div>			
 			
 			
 			
