@@ -553,7 +553,7 @@ if (qrcode_str == '') {
 					</div>
 					
 					<div class="form-row">
-					<div class="row row-space"><strong>Store user access point:</strong> </div>
+					<div class="row row-space"><strong>Store user pool ratio:</strong> </div>
 					<br/>
 					<div class="value">
 					<div class="input-group">
