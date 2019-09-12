@@ -943,7 +943,7 @@ if (isset($_POST['update_system_info'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "UPDATE system_settings SET adv_pool_radio = $adv_pool_radio ,adv_access_point = $adv_access_point, store_user_pool_radio = $store_user_pool_ratio";
+		$query2 = "UPDATE system_settings SET adv_pool_ratio = $adv_pool_ratio ,adv_access_point = $adv_access_point, store_user_pool_radio = $store_user_pool_ratio";
 		
 		if ($db->query($query2) === TRUE) {
 			header('location: all_function.php?tag=systemsetting');
