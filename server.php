@@ -316,9 +316,15 @@ $target_user="";
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO store_users (username, email, password,first_name, last_name,area_code, phone, title,industry, store_name, store_address, target_user) 
-  			  VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title', '$industry', '$store_name', '$store_address', '$target_user')";
+  	$query = "INSERT INTO store_users (username, email, password,first_name, last_name,area_code, phone, title,industry, store_name, store_address, target_user) VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title', '$industry', '$store_name', '$store_address', '$target_user')";
   	mysqli_query($db, $query);
+	
+	
+	$query = "INSERT INTO point_db (username, point) VALUES('$username', '0')";
+  	mysqli_query($db, $query);
+	
+	
+	
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: storeuserhome.php');
