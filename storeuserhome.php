@@ -259,7 +259,7 @@ if (serial_number == '') {
 			     <div class="row row-space"><strong>List the media player items</strong></div>				 
  			</div>			
 			
-			<?php $results = mysqli_query($db, "SELECT * FROM  store_display"); ?>
+			<?php $results = mysqli_query($db, "SELECT * FROM  store_display where username = '$_SESSION['username']' "); ?>
 			<table border="1">
 			<thead>
 				<tr>
