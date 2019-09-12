@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login Page</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css"/>
@@ -13,38 +13,41 @@
         <div id="header">
             <div id="logo_bar">
                 <div id="back">
-                    <a href="home.html"><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
+                    <a href="home.php"><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
                 </div>
                 <div id="logo">
-                    <a href="home.html"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
+                    <a href="home.php"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
                 </div>
                 <div id="next">
                 </div>
             </div>
             <div class="sperator"></div>
-        </div>	    
-	    
-            <div id="page">
-                <div data-role="main" class="ui-content">
-                    <form method="post" action="user_login.php" data-ajax="false"  id="loginform" name="loginForm">
-                        <label for="name">用戶名稱 : <span>*</span></label>
-                        <input type="text" name="username" id="username" placeholder="Name">
-                            
-                        <label for="password">密碼 : <span>*</span></label>
-                         <input type="password" name="password" id="password" placeholder="password">
-                                    
-                         <input type="submit" name="customer_login_user" id="customer_login_user" value="登入">
-                    </form>
-					<?php include('errors.php'); ?>
-					
+        </div>
+        <div id="page">
+      		<?php include('errors.php'); ?>
+            <div id="login_header">登入</div>
+            <div id="content">
+               <form method="post" action="user_login.php" data-ajax="false"  id="loginform" name="loginForm">			
+                <div class="row">
+                    <label class="label">用戶名稱*</label>
+                    <div class="row_flex">
+                        <input name="username" type="text" placeholder="用戶名稱" />
+                    </div>
                 </div>
-                
-      <div id="footer_container">
-            <div id="bottom_menu">
-                <div><a href="home.html"><img src="img/btn_home.png" /></a></div>
-                <div><a href="account.html"><img src="img/btn_account.png" /></a></div>
-                <div><a href="guide_1.html"><img src="img/btn_scan.png" /></a></div>
+                <div class="row">
+                    <label class="label">密碼*</label>
+                    <div class="row_flex">
+                        <input name="password" type="text" placeholder="密碼" />
+                    </div>
+                </div>
+                <div class="setting_spacer"></div>
+                <div class="row">
+                    <div class="row_flex row_center">
+                        <button type="submit" class="btn_blue"  name="customer_login_user" id="customer_login_user" >登入</button>
+                    </div>
+                </div>
+				</form>
             </div>
-        </div>	
+        </div>
     </body>
 </html>
