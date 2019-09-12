@@ -32,7 +32,7 @@ $qrcode_str="";
 $adv_access_point="";
 $adv_pool_ratio="";
 $store_user_pool_ratio="";
-$price="";
+$price="0";
 
 
 
