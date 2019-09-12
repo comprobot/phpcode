@@ -29,9 +29,9 @@
             <div id="content">
                <form method="post" action="user_login.php" data-ajax="false"  id="loginform" name="loginForm">			
                 <div class="row">
-                    <label class="label">用戶名稱*</label>
+                    <label class="label">電郵名稱*</label>
                     <div class="row_flex">
-                        <input name="username" type="text" placeholder="用戶名稱" />
+                        <input name="username" type="text" placeholder="電郵名稱" />
                     </div>
                 </div>
                 <div class="row">
