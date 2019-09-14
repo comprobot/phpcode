@@ -266,7 +266,7 @@ if (isset($_GET['qrcode_customer'])) {
 	 
 	 $checkLastScan = "SELECT * FROM customer_access where customerid='$customer_username' and storeid='store_username' and displayid='serial_number' and advid='$adv_user' and (now() - tm) < 1000000";
 	 $checkLastScanResult = mysqli_query($db, $checkLastScan);
-	 if (mysqli_num_rows($checkLastScanResult) < 1) {
+	 if (mysqli_num_rows($checkLastScanResult) > 0) {
 	 
 	
 		if (mysqli_num_rows($results) == 1) {
