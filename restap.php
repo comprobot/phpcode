@@ -262,92 +262,47 @@ if (isset($_GET['qrcode_customer'])) {
  	 $resultpoint = mysqli_query($db, $point_check_query);
      $userpoint = mysqli_fetch_assoc($resultpoint);
      $adv_access_point = $userpoint['adv_access_point'];
+	 
+	 
+	 $checkLastScan = "SELECT * FROM customer_access where customerid='$customer_username' and storeid='store_username' and displayid='serial_number' and advid='$adv_user' and (now() - tm) < 1000000";
+	 $checkLastScanResult = mysqli_query($db, $checkLastScan);
+	 if (mysqli_num_rows($checkLastScanResult) < 1) {
+	 
 	
-	
-  	if (mysqli_num_rows($results) == 1) {
+		if (mysqli_num_rows($results) == 1) {
   	
-//	$earnpoint = "UPDATE customers  SET point = point + 1  WHERE username='$customer_username' AND password='$password'";  
-
-	$earnpoint = "UPDATE customers  SET point = point + $adv_access_point  WHERE username='$customer_username' AND password='$password'";  
+			$earnpoint = "UPDATE customers  SET point = point + $adv_access_point  WHERE username='$customer_username' AND password='$password'";  
 	
-	if ($db->query($earnpoint) === TRUE) {
+			if ($db->query($earnpoint) === TRUE) {
 		
 		     // $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
-			  $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', $adv_access_point)";
+				$insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', $adv_access_point)";
 			
-			if ($db->query($insertCustomerAccess) === TRUE) 
-			{
-				echo "<p>SUCCESS</p>";        
-			}else{
+				if ($db->query($insertCustomerAccess) === TRUE) 
+				{
+					echo "<p>SUCCESS</p>";        
+				}else{
+					foreach ($errors as $error) {
+						echo "<p>".$error ."</p>";  
+					} 
+				}	
+			} else {
+	
 				foreach ($errors as $error) {
 					echo "<p>".$error ."</p>";  
-			
-	
-	  			} 
-			}	
-		
-		/*
-	
-		$query2 = "SELECT * FROM customer_access WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
-		
-		$results2 = mysqli_query($db, $query2);
-		if (mysqli_num_rows($results2) > 0) {	
-	
-			$updateCount = "UPDATE customer_access  SET count = count + $adv_access_point  WHERE customerid='$customer_username' AND storeid='$store_username' AND displayid='$serial_number' AND advid='$adv_user'";
-			
-			if ($db->query($updateCount) === TRUE) 
-			{
-				
-			   echo "<p>SUCCESS</p>";        
-			}else{
-				
-		foreach ($errors as $error) {
-		echo "<p>".$error ."</p>";  
-	  } 
-  	  		
-				
-			}			
-		   
-		}else{
-	
-			
-			$insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', $adv_access_point)";
-			
-			if ($db->query($insertCustomerAccess) === TRUE) 
-			{
-				echo "<p>SUCCESS</p>";        
-			}else{
-				foreach ($errors as $error) {
-		echo "<p>".$error ."</p>";  
-		
-	
-	  } 
+				} 
+			}	  
+		}else {
+			foreach ($errors as $error) {
+				echo "<p>".$error ."</p>";  
+			} 
   	  
-				
-				
-			}
-			
 		}
-		
-		*/
-		
- 
-	} else {
+	 }else{
+		 
+		echo "請不要太密去 SCAN Code";  
+	 }
 	
-	    foreach ($errors as $error) {
-		echo "<p>".$error ."</p>";  
-	  } 
-  	  
-	}	  
-	  
-  	}else {
-		
-	
-  		foreach ($errors as $error) {
-		echo "<p>".$error ."</p>";  
-	  } 
-  	  
-  	}
   }
 }
 
