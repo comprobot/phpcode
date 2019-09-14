@@ -106,6 +106,14 @@ if (isset($_POST['register'])) {
   	$query = "INSERT INTO adv_users (username, email, password,first_name, last_name,area_code, phone, title,package,industry) 
   			  VALUES('$username', '$email', '$password', '$first_name', '$last_name', '$area_code', '$phone', '$title', '$package', '$industry')";
   	mysqli_query($db, $query);
+	
+	
+	$query = "INSERT INTO point_db (username, point) VALUES('$username', '0')";
+  	mysqli_query($db, $query);
+	
+	
+	  
+	  
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: adv_user_home.php');
