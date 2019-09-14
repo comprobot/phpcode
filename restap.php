@@ -102,7 +102,7 @@ if (isset($_GET['reg_customer'])) {
   }else{	  
 	  
 	  foreach ($errors as $error) {
-		echo "".$error.PHP_EOL.;
+		echo "".$error.PHP_EOL;
 
 	  } 
   	    
