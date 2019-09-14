@@ -264,15 +264,22 @@ if (isset($_GET['qrcode_customer'])) {
      $adv_access_point = $userpoint['adv_access_point'];
 	 
 	 
-	 $checkLastScan = "SELECT * FROM customer_access where customerid='$customer_username' and storeid='store_username' and displayid='serial_number' and advid='$adv_user' and (now() - tm) < 1000000";
+	 $checkLastScan = "SELECT * FROM customer_access where customerid='$customer_username' and storeid='store_username' and displayid='serial_number' and advid='$adv_user' and (now() - tm) > 1000000";
 	 $checkLastScanResult = mysqli_query($db, $checkLastScan);
-	 if (mysqli_num_rows($checkLastScanResult) > 0) {
+	 
+	 //$checkPointEnough = "SELECT * FROM point_db where username='$adv_user' and  (point - $adv_access_point < 0)";
+     //SELECT * FROM point_db where username='storeuer' and (point - 5 > 0)
+	 
+	 
+	 
+	 if (mysqli_num_rows($checkLastScanResult) > 0 ) {
 	 
 	
 		if (mysqli_num_rows($results) == 1) {
   	
-			$earnpoint = "UPDATE customers  SET point = point + $adv_access_point  WHERE username='$customer_username' AND password='$password'";  
-	
+			$earnpoint = "UPDATE customers  SET point = point + $adv_access_point  WHERE username='$customer_username' AND password='$password'"; 
+            $lostpoint = "UPDATE point_db  SET point = point - $adv_access_point  WHERE username='$adv_user' "; 
+
 			if ($db->query($earnpoint) === TRUE) {
 		
 		     // $insertCustomerAccess = "INSERT INTO customer_access (customerid, storeid, displayid,advid, count) VALUES('$customer_username', '$store_username', '$serial_number', '$adv_user', 1)";
@@ -280,7 +287,17 @@ if (isset($_GET['qrcode_customer'])) {
 			
 				if ($db->query($insertCustomerAccess) === TRUE) 
 				{
-					echo "<p>SUCCESS</p>";        
+					
+					if ($db->query($lostpoint) === TRUE) 
+					{	
+						echo "<p>SUCCESS</p>";        
+						
+					}else{
+						foreach ($errors as $error) {
+							echo "<p>".$error ."</p>";  
+						} 
+					}
+					
 				}else{
 					foreach ($errors as $error) {
 						echo "<p>".$error ."</p>";  
