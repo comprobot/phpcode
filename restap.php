@@ -50,11 +50,11 @@ if (isset($_GET['reg_customer'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($last_name)) { array_push($errors, "lastname is required"); }
-  if (empty($first_name)) { array_push($errors, "firstname is required"); }
-  if (empty($username)) { array_push($errors, "Username is required"); }
-  if (empty($age)) { array_push($errors, "Username is required"); }
-  if (empty($email)) { array_push($errors, "Email is required"); }
+  if (empty($last_name)) { array_push($errors, "姓氏是必須輸入的"); }
+  if (empty($first_name)) { array_push($errors, "名字是必須輸入的"); }
+  if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }
+  if (empty($age)) { array_push($errors, "年齡是必須輸入的"); }
+  if (empty($email)) { array_push($errors, "電郵是必須輸入的"); }
   
 
   
@@ -62,7 +62,7 @@ if (isset($_GET['reg_customer'])) {
   if (empty($password)) { array_push($errors, "Password is required"); }  
   if (empty($cpassword)) { array_push($errors, "Confirm password is required"); }  
   if ($password != $cpassword) {
-	array_push($errors, "The two passwords do not match");
+	array_push($errors, "密碼與再次輸入密碼相同");
   }
   
   
@@ -75,7 +75,7 @@ if (isset($_GET['reg_customer'])) {
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
-      array_push($errors, "Username already exists");
+      array_push($errors, "請用另一個電郵");
     }
   }
 
@@ -102,7 +102,8 @@ if (isset($_GET['reg_customer'])) {
   }else{	  
 	  
 	  foreach ($errors as $error) {
-		echo "<p>".$error ."</p>";  
+		echo "".$error.PHP_EOL.;
+
 	  } 
   	    
   }
@@ -120,7 +121,7 @@ if (isset($_GET['reg_phone'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($username)) { array_push($errors, "Username is required"); }  
+  if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }  
   if (empty($phone)) { array_push($errors, "Phone is required"); }
   
   
@@ -168,7 +169,7 @@ if (isset($_GET['register_customer'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($username)) { array_push($errors, "Username is required"); }
+  if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }
   if (empty($area_code)) { array_push($errors, "Area code is required"); }
   if (empty($phone)) { array_push($errors, "Phone is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }  
@@ -230,7 +231,7 @@ if (isset($_GET['qrcode_customer'])) {
    echo "test"; 
 
   if (empty($customer_username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "電郵是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
@@ -355,7 +356,7 @@ if (isset($_GET['customer_account_app_api'])) {
   $password = mysqli_real_escape_string($db, $_GET['password']);
 
   if (empty($username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "電郵是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
@@ -387,7 +388,7 @@ if (isset($_GET['customer_login_app_api'])) {
   $password = mysqli_real_escape_string($db, $_GET['password']);
 
   if (empty($username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "電郵是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
@@ -421,7 +422,7 @@ if (isset($_GET['customer_login_api'])) {
   $password = mysqli_real_escape_string($db, $_GET['password']);
 
   if (empty($username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "電郵是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
@@ -452,7 +453,7 @@ if (isset($_GET['customer_check_point'])) {
   $password = mysqli_real_escape_string($db, $_GET['password']);
 
   if (empty($username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "電郵是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
@@ -483,7 +484,7 @@ if (isset($_GET['customer_earn_point'])) {
   $password = mysqli_real_escape_string($db, $_GET['password']);
 
   if (empty($username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "電郵是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
