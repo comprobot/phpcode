@@ -641,20 +641,40 @@ if (isset($_GET['veify_customer_payment'])) {
 		if ($db->query($query2) === TRUE) {
 			
 			
-			    $queryratio = "SELECT store_user_pool_ratio FROM system_settings ";
+			    $queryratio = "SELECT store_user_pool_ratio, adv_pool_ratio FROM system_settings ";
 	 	 	    $result_store_ratio = mysqli_query($db, $queryratio);
                 $storeuserratio = mysqli_fetch_assoc($result_store_ratio);
                 $store_user_ratio = $storeuserratio['store_user_pool_ratio'];
+				$adv_pool_ratio = $storeuserratio['adv_pool_ratio'];
 			
+			
+			/*
 			    $query3 = "SELECT count(*) as sum_store_user FROM store_users ";
 	 	 	    $result_store_user = mysqli_query($db, $query3);
                 $userpoint = mysqli_fetch_assoc($result_store_user);
                 $sum_store_user = $userpoint['sum_store_user'];
+				*/
 				
-				$query4 = "UPDATE point_db SET point = point + floor( $price / $sum_store_user  * $store_user_ratio / 100) ";
+				$query4 = "UPDATE point_db SET point = point + floor( $price  * $adv_pool_ratio / 100) WHERE  username = $username ";
+				
+				
 				if ($db->query($query4) === TRUE) 
 				{
+					
+					
+					//$query5 = "UPDATE point_db SET point = point + floor( $price / $sum_store_user  * $store_user_ratio / 100) ";
+					
+					
+					
+					
+					
+					
 					header('location: all_function.php?tag=customerpayment');
+					
+					
+					
+					
+					
 					
 				}else{
 					
