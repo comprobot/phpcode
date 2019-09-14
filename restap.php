@@ -59,8 +59,8 @@ if (isset($_GET['reg_customer'])) {
 
   
   
-  if (empty($password)) { array_push($errors, "Password is required"); }  
-  if (empty($cpassword)) { array_push($errors, "Confirm password is required"); }  
+  if (empty($password)) { array_push($errors, "密碼是必須輸入的"); }  
+  if (empty($cpassword)) { array_push($errors, "再次輸入密碼是必須輸入的"); }  
   if ($password != $cpassword) {
 	array_push($errors, "密碼與再次輸入密碼相同");
   }
@@ -117,19 +117,21 @@ if (isset($_GET['reg_phone'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_GET['username']);    
   $phone = mysqli_real_escape_string($db, $_GET['phone']);  
+  $area_code = mysqli_real_escape_string($db, $_GET['phone']);  
   
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }  
-  if (empty($phone)) { array_push($errors, "Phone is required"); }
+  if (empty($phone)) { array_push($errors, "電話是必須輸入的"); }
+  if (empty($area_code)) { array_push($errors, "區碼是必須輸入的"); }
   
   
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "UPDATE customers set telephone ='$phone' , area_code = '852' WHERE username = '$username' ";
+  	$query = "UPDATE customers set telephone ='$phone' , area_code = '$area_code' WHERE username = '$username' ";
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
