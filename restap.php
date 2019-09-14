@@ -264,7 +264,7 @@ if (isset($_GET['qrcode_customer'])) {
      $adv_access_point = $userpoint['adv_access_point'];
 	 
 	 
-	 $checkLastScan = "SELECT * FROM customer_access where customerid='$customer_username' and storeid='store_username' and displayid='serial_number' and advid='$adv_user' and (now() - tm) > 1000000";
+	 $checkLastScan = "SELECT * FROM customer_access where customerid='$customer_username' and storeid='store_username' and displayid='serial_number' and advid='$adv_user' and (now() - tm) < 1000000";
 	 $checkLastScanResult = mysqli_query($db, $checkLastScan);
 	 
 	 //$checkPointEnough = "SELECT * FROM point_db where username='$adv_user' and  (point - $adv_access_point < 0)";
@@ -272,7 +272,7 @@ if (isset($_GET['qrcode_customer'])) {
 	 
 	 
 	 
-	 if (mysqli_num_rows($checkLastScanResult) > 0 ) {
+	 if (mysqli_num_rows($checkLastScanResult)< 1 ) {
 	 
 	
 		if (mysqli_num_rows($results) == 1) {
