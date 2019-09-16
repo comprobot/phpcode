@@ -649,8 +649,9 @@ if (isset($_GET['veify_customer_payment'])) {
                 $store_user_ratio = $storeuserratio['store_user_pool_ratio'];
 				$adv_pool_ratio = $storeuserratio['adv_pool_ratio'];
 				
-				$query4 = "UPDATE point_db SET point = point + floor( $price  * $adv_pool_ratio / 100) WHERE  username = $username ";
+				$query4 = "UPDATE point_db SET point = point + floor( $price  * $adv_pool_ratio / 100) WHERE  username = '$username' ";
 				
+				echo $query4;
 				
 				if ($db->query($query4) === TRUE) 
 				{
@@ -663,6 +664,9 @@ if (isset($_GET['veify_customer_payment'])) {
 					$result_store_point = mysqli_query($db, $point_check_store_query);
 					$totalplayer = mysqli_fetch_assoc($result_store_point);
 					$sum_of_player = $totalplayer['total_player'];
+					
+					echo $sum_of_player;
+					
 
 
 					$query = "SELECT username,COUNT(username) as num_player FROM store_display GROUP BY username ORDER BY num_player DESC;" ;
@@ -677,6 +681,10 @@ if (isset($_GET['veify_customer_payment'])) {
 							$usernameCol = $row['username'];
 							array_push($pairs ,"('$usernameCol' , point + $increment_point  )");
 							array_push($recordpairs ,"('$usernameCol' , $increment_point )");
+							
+							
+							//$pairs[] = "('$row['username']' ,  point + $increment_point  )";
+							//$recordpairs[] = "('$row['username']' ,  $increment_point  )";
 					}					
 			
 					$query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE point = VALUES(point)";
