@@ -675,25 +675,33 @@ if (isset($_GET['veify_customer_payment'])) {
 					$updatepairs = array();
 					$recordpairs = array();
 					
+					$update_1_str = "UPDATE point_db  SET point = (case"; 
+					$update_2_str = "";
+					$update_3_str = "           end) WHERE username in ("; 
+					$update_4_str = "";
+					$update_5_str =")";
+					
+					
+					
 			
 					while ($row = mysqli_fetch_array($results)) { 								      
 							
 							$increment_point = floor( $price * $row['num_player']/ $sum_of_player * $store_user_ratio / 100);					
 							$usernameCol = $row['username'];
 							array_push($pairs ,"('$usernameCol' , point + $increment_point  )");
-							array_push($recordpairs ,"('$usernameCol' , $increment_point )");
+							array_push($recordpairs ,"('$usernameCol' , $increment_point )");							
 							array_push($updatepairs ,"point =  VALUES(point + $increment_point)");
 							
-							
-							
-							
-							
-							//$pairs[] = "('$row['username']' ,  point + $increment_point  )";
-							//$recordpairs[] = "('$row['username']' ,  $increment_point  )";
+							$update_2_str = $update_2_str + " when username = '$usernameCol' then point + $increment_point ";
+							$update_4_str = $update_4_str +  "'$usernameCol'," 						 
+
 					}					
+
+
+
+					$query_store_user = $update_1_str+$update_2_str+$update_3_str+$update_4_str+$update_5_str;
 			
-			
-			       $query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE". implode(', ', $updatepairs);
+			        
 			
 					//$query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE point = VALUES(point)";
 					
