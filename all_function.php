@@ -310,7 +310,8 @@ if (qrcode_str == '') {
                     <a class="ah-tab-item" href="">View/Edit Adv user</a>
                     <a class="ah-tab-item" href="">View/Edit Store user</a>					
 					<a class="ah-tab-item" href="">Add/Edit Store media player</a>										
-                    <a class="ah-tab-item" href="">Edit and Veify payments </a>
+                    <a class="ah-tab-item" href="">Edit and Veify payments </a>					
+					<a class="ah-tab-item" href="">Store owner point  </a>										
                     <a class="ah-tab-item" href="">System settings</a>
 					<a class="ah-tab-item" href="">Item shop approval</a>
                     <a class="ah-tab-item" href="">About company</a>
@@ -653,7 +654,7 @@ if (qrcode_str == '') {
 
 			<div class="ah-tab-content" id="listofstockgain">
 			 <div class="form-row">
-			     <div class="row row-space"><strong>Stock owner point  </strong></div>				 
+			     <div class="row row-space"><strong>Store owner point  </strong></div>				 
  			</div>			
 			
 			<?php $results = mysqli_query($db, "SELECT * FROM  store_record"); ?>
