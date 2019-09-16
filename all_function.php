@@ -757,7 +757,7 @@ if (qrcode_str == '') {
 					<th>Item quantity</th>					
 					<th>Item Photo name</th>								
 					<th>Update time</th>
-					<th colspan="3">>Action</th>
+					<th colspan="3">Action</th>
 				</tr>
 			</thead>
 	
