@@ -674,8 +674,9 @@ if (isset($_GET['veify_customer_payment'])) {
 					while ($row = mysqli_fetch_array($results)) { 								      
 							
 							$increment_point = floor( $price * $row['num_player']/ $sum_of_player * $store_user_ratio / 100);					
-							$pairs[] = "('$row['username']' ,  point + $increment_point  )";
-							$recordpairs[] = "('$row['username']' ,  $increment_point  )";
+							$usernameCol = $row['username'];
+							array_push($pairs ,"('$usernameCol' , point + $increment_point  )");
+							array_push($recordpairs ,"('$usernameCol' , $increment_point )");
 					}					
 			
 					$query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE point = VALUES(point)";
