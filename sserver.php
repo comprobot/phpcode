@@ -672,6 +672,7 @@ if (isset($_GET['veify_customer_payment'])) {
 					$query = "SELECT username,COUNT(username) as num_player FROM store_display GROUP BY username ORDER BY num_player DESC;" ;
 					$results = mysqli_query($db, $query); 			
 					$pairs = array();
+					$updatepairs = array();
 					$recordpairs = array();
 					
 			
@@ -681,13 +682,20 @@ if (isset($_GET['veify_customer_payment'])) {
 							$usernameCol = $row['username'];
 							array_push($pairs ,"('$usernameCol' , point + $increment_point  )");
 							array_push($recordpairs ,"('$usernameCol' , $increment_point )");
+							array_push($updatepairs ,"point =  VALUES(point + $increment_point");
+							
+							
+							
 							
 							
 							//$pairs[] = "('$row['username']' ,  point + $increment_point  )";
 							//$recordpairs[] = "('$row['username']' ,  $increment_point  )";
 					}					
 			
-					$query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE point = VALUES(point)";
+			
+			       $query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE". implode(', ', $updatepairs);
+			
+					//$query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE point = VALUES(point)";
 					
 					echo $query_store_user;
 					
