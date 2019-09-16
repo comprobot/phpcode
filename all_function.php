@@ -487,7 +487,7 @@ if (qrcode_str == '') {
 			
 			<div class="ah-tab-content" id="storemediaplayer">			
 		   
-			<form method="POST" action="all_function.php" id="adddisplay" name="adddisplay" ">
+			<form method="POST" action="all_function.php" id="adddisplay" name="adddisplay" >
 			
                  <div class="form-row">
 			        <div class="row row-space"><strong>Add the media player items</strong></div>				 
@@ -596,10 +596,31 @@ if (qrcode_str == '') {
 					<th>Paid</th>
 					<th>Verfied</th>
 					<th>Time</th>					
+					<!--
 					<th>Delete</th>
+					-->
 					<th>Veify payment</th>
 				</tr>
 			</thead>
+			
+					<script>
+					function confirmFunction(p)
+					{
+						var answer = window.confirm("Confirm")
+						if (answer) {
+						//some code
+						  
+                            location.href="http://157.230.145.40/ops/sserver.php?check=T&veify_customer_payment=veify_customer_payment&"+p;
+						   
+						}
+						else {
+						//some code
+						
+						}
+					
+					}
+					
+					</script>			
 	
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
@@ -609,12 +630,18 @@ if (qrcode_str == '') {
 					<td><?php echo $row['paid']; ?></td>
 					<td><?php echo $row['verified']; ?></td>
 					<td><?php echo $row['tm']; ?></td>					
-					
+<!--					
 				<td>
 					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&delete_customer_payment=delete_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete</a>
 				</td>				
+				-->
 				<td>
+					<a onclick="confirmFunction('customerid=<?php echo $row['customerid']; ?>&price=<?php echo $row['price']; ?>')&adminuser=<?php echo $_SESSION['username']?>')" href="#"> class="edit_btn" >Verify</a>				
+				</td>				
+				<!--
 					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&price=<?php echo $row['price']; ?>&check=T&veify_customer_payment=veify_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Verify</a>
+				-->	
+					
 				</td>				
 				
 			</tr>
@@ -622,6 +649,33 @@ if (qrcode_str == '') {
 			</table>
 			
 			</div>
+
+
+			<div class="ah-tab-content" id="listofstockgain">
+			 <div class="form-row">
+			     <div class="row row-space"><strong>Stock owner point  </strong></div>				 
+ 			</div>			
+			
+			<?php $results = mysqli_query($db, "SELECT * FROM  store_record"); ?>
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Point</th>
+					<th>Time</th>					
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['point']; ?></td>
+					<td><?php echo $row['tm']; ?></td>					
+			</tr>
+			<?php } ?>
+			</table>
+			</div>
+
 			
 			
 			
