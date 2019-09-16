@@ -682,7 +682,7 @@ if (isset($_GET['veify_customer_payment'])) {
 							$usernameCol = $row['username'];
 							array_push($pairs ,"('$usernameCol' , point + $increment_point  )");
 							array_push($recordpairs ,"('$usernameCol' , $increment_point )");
-							array_push($updatepairs ,"point =  VALUES(point + $increment_point");
+							array_push($updatepairs ,"point =  VALUES(point + $increment_point)");
 							
 							
 							
