@@ -200,9 +200,10 @@ if (serial_number == '') {
 			
 			<div id="tab_list" class="ah-tab-wrapper">
                 <div class="ah-tab">
-                    <a class="ah-tab-item" data-ah-tab-active="true" href="">Add media player items</a>
+                    <a class="ah-tab-item" data-ah-tab-active="true" href="">Show media player items</a>
                     <a class="ah-tab-item" href="">View Customer access </a>
 					<a class="ah-tab-item" href="">View Current point </a>
+					<a class="ah-tab-item" href="">View point history </a>
                 </div>
             </div>		
 						
@@ -217,6 +218,7 @@ if (serial_number == '') {
 
 			
 			
+			<!--
 			
 			<form method="POST" action="storeuserhome.php" id="adddisplay" name="adddisplay" ">
 			
@@ -252,7 +254,7 @@ if (serial_number == '') {
 				<div class="name"> <br/></div>
 			</div>			
 						
-			
+			-->
 			
 			<?php include('errors.php'); ?>
 			
@@ -353,6 +355,45 @@ if (serial_number == '') {
 			?>
 			 
 			</div>			
+			
+			
+			
+			
+			<div class="ah-tab-content" id="listofstockgain">
+			 <div class="form-row">
+			     <div class="row row-space"><strong>Store owner point  </strong></div>				 
+ 			</div>			
+			
+			<?php 
+			$videouser = $_SESSION['username'];
+			$results = mysqli_query($db, "SELECT * FROM  store_record WHERE username = '$videouser'"); 
+			$total_point = 0;
+			?>
+			<table border="1">
+			<thead>
+				<tr>					
+					<th>Point</th>
+					<th>Time</th>					
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { 
+			     $total_point = $total_point+$row['point'];
+			?>
+				<tr>					
+					<td><?php echo $row['point']; ?></td>
+					<td><?php echo $row['tm']; ?></td>					
+			</tr>
+			<?php } ?>
+			<p>
+			Total point : <?php echo $total_point ?>
+			</p>
+			
+			</table>
+			</div>
+			
+			
+			
 			
 			
 			
