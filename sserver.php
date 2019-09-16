@@ -121,7 +121,7 @@ if (isset($_POST['add_media_player'])) {
 	
 	$serial_number = mysqli_real_escape_string($db, $_POST['serial_number']);
 	$info = mysqli_real_escape_string($db, $_POST['info']);
-	$username = mysqli_real_escape_string($db, $_POST['username'] );
+	$username = mysqli_real_escape_string($db, $_POST['store_user_id'] );
 	$location = mysqli_real_escape_string($db, $_POST['location'] );
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
@@ -648,14 +648,6 @@ if (isset($_GET['veify_customer_payment'])) {
                 $storeuserratio = mysqli_fetch_assoc($result_store_ratio);
                 $store_user_ratio = $storeuserratio['store_user_pool_ratio'];
 				$adv_pool_ratio = $storeuserratio['adv_pool_ratio'];
-			
-			
-			/*
-			    $query3 = "SELECT count(*) as sum_store_user FROM store_users ";
-	 	 	    $result_store_user = mysqli_query($db, $query3);
-                $userpoint = mysqli_fetch_assoc($result_store_user);
-                $sum_store_user = $userpoint['sum_store_user'];
-				*/
 				
 				$query4 = "UPDATE point_db SET point = point + floor( $price  * $adv_pool_ratio / 100) WHERE  username = $username ";
 				
@@ -667,15 +659,41 @@ if (isset($_GET['veify_customer_payment'])) {
 					//$query5 = "UPDATE point_db SET point = point + floor( $price / $sum_store_user  * $store_user_ratio / 100) ";
 					
 					
+					$point_check_store_query = "SELECT count(*) as total_player FROM store_display";
+					$result_store_point = mysqli_query($db, $point_check_store_query);
+					$totalplayer = mysqli_fetch_assoc($result_store_point);
+					$sum_of_player = $totalplayer['total_player'];
+
+
+					$query = "SELECT username,COUNT(username) as num_player FROM store_display GROUP BY username ORDER BY num_player DESC;" ;
+					$results = mysqli_query($db, $query); 			
+					$pairs = array();
+					$recordpairs = array();
 					
+			
+					while ($row = mysqli_fetch_array($results)) { 								      
+							
+							$increment_point = floor( $price * $row['num_player']/ $sum_of_player * $store_user_ratio / 100);					
+							$pairs[] = "('$row['username']' ,  point + $increment_point  )";
+							$recordpairs[] = "('$row['username']' ,  $increment_point  )";
+					}					
+			
+					$query_store_user = "INSERT INTO point_db (username, point) VALUES " . implode(', ', $pairs) . " ON DUPLICATE KEY UPDATE point = VALUES(point)";
 					
+					echo $query_store_user;
 					
-					
-					header('location: all_function.php?tag=customerpayment');
-					
-					
-					
-					
+			
+					$query_store_user_record = "INSERT INTO store_record (username, point) VALUES " . implode(', ',$recordpairs);
+			
+					if ($db->query($query_store_user) === TRUE) 
+					{			
+						if ($db->query($query_store_user_record) === TRUE) 
+						{
+							header('location: all_function.php?tag=customerpayment');
+				
+						}
+			     
+					}
 					
 					
 				}else{
