@@ -111,6 +111,14 @@ if (param=="systemsetting")
 	
 }
 
+if (param=="storemediaplayer")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#storemediaplayer').attr('data-ah-tab-active', 'true');
+	
+}
+
+
 if (param=="customerpayment")
 {
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
@@ -301,6 +309,7 @@ if (qrcode_str == '') {
                     <a class="ah-tab-item" href="">Approve Adv video</a>
                     <a class="ah-tab-item" href="">View/Edit Adv user</a>
                     <a class="ah-tab-item" href="">View/Edit Store user</a>					
+					<a class="ah-tab-item" href="">Add/Edit Store media player</a>										
                     <a class="ah-tab-item" href="">Edit and Veify payments </a>
                     <a class="ah-tab-item" href="">System settings</a>
 					<a class="ah-tab-item" href="">Item shop approval</a>
@@ -474,6 +483,77 @@ if (qrcode_str == '') {
 			</table>
 			</div>
 			
+
+			<div id="storemediaplayer" class="ah-tab-content">	
+		   
+			<form method="POST" action="storeuserhome.php" id="adddisplay" name="adddisplay" ">
+			
+                 <div class="form-row">
+			        <div class="row row-space"><strong>Add the media player items</strong></div>				 
+ 			    </div>						
+			   <div class="form-row">
+                 <div class="name">Serial Number</div>
+                    <div class="value">
+                       <div class="input-group">
+                         <input class="input--style-5" type="text" name="serial_number" id='serial_number' value="<?php echo $serial_number; ?>" required> <label for="serial_number" class="error"></label>
+                       </div>
+                 </div>
+               </div>			
+			  <div class="form-row">
+                 <div class="name">Information</div>
+                    <div class="value">
+                       <div class="input-group">
+                         <input class="input--style-5" type="text" name="info" id='info' value="<?php echo $info; ?>" required> <label for="info" class="error"></label>
+                       </div>
+                 </div>
+              </div>			
+						
+			  <div>
+            
+				<button class="btn btn--radius-2 btn--red" name="add_media_player" id="add_media_player" >Add</button>
+              </div>
+			 
+			
+			</form>
+			
+			<div class="form-row">
+				<div class="name"> <br/></div>
+			</div>			
+						
+			
+			
+			<?php include('errors.php'); ?>
+			
+			<div class="form-row">
+			     <div class="row row-space"><strong>List the media player items</strong></div>				 
+ 			</div>			
+			
+			
+			<?php 
+			$stser = $_SESSION['username'];			
+			$results = mysqli_query($db, "SELECT * FROM  store_display where username = '$stser' "); ?>
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Serial Number</th>
+					<th>Info</th>					
+					<th>Action</th>					
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['serial_number']; ?></td>					
+					<td><?php echo $row['info']; ?></td>									
+					<td>
+						<a href="server.php?storeid=<?php echo $row['id']; ?>&delete_media_player=T&user=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete item </a>
+					</td>					
+			</tr>
+			<?php } ?>
+			</table>
+			</div>
+
+
 			
 			
 			
