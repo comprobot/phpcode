@@ -486,11 +486,19 @@ if (qrcode_str == '') {
 
 			<div id="storemediaplayer" class="ah-tab-content">	
 		   
-			<form method="POST" action="storeuserhome.php" id="adddisplay" name="adddisplay" ">
+			<form method="POST" action="all_function.php" id="adddisplay" name="adddisplay" ">
 			
                  <div class="form-row">
 			        <div class="row row-space"><strong>Add the media player items</strong></div>				 
  			    </div>						
+			   <div class="form-row">
+                 <div class="name">Store User ID</div>
+                    <div class="value">
+                       <div class="input-group">
+                         <input class="input--style-5" type="text" name="store_user_id" id='store_user_id' value="<?php echo $username; ?>" required> <label for="store_user_id" class="error"></label>
+                       </div>
+                 </div>
+               </div>							
 			   <div class="form-row">
                  <div class="name">Serial Number</div>
                     <div class="value">
@@ -507,6 +515,7 @@ if (qrcode_str == '') {
                        </div>
                  </div>
               </div>			
+			  
 						
 			  <div>
             
@@ -530,11 +539,12 @@ if (qrcode_str == '') {
 			
 			
 			<?php 
-			$stser = $_SESSION['username'];			
-			$results = mysqli_query($db, "SELECT * FROM  store_display where username = '$stser' "); ?>
+			
+			$results = mysqli_query($db, "SELECT * FROM  store_display "); ?>
 			<table border="1">
 			<thead>
 				<tr>
+				    <th>Store user id</th>
 					<th>Serial Number</th>
 					<th>Info</th>					
 					<th>Action</th>					
@@ -543,10 +553,11 @@ if (qrcode_str == '') {
 	
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
+					<td><?php echo $row['username']; ?></td>					
 					<td><?php echo $row['serial_number']; ?></td>					
 					<td><?php echo $row['info']; ?></td>									
 					<td>
-						<a href="server.php?storeid=<?php echo $row['id']; ?>&delete_media_player=T&user=<?php echo $_SESSION['username']?>" class="edit_btn" >Delete item </a>
+						<a href="sserver.php?storeid=<?php echo $row['id']; ?>&delete_media_player=T&user=<?php echo $row['username'];?>" class="edit_btn" >Delete item </a>
 					</td>					
 			</tr>
 			<?php } ?>
