@@ -484,7 +484,8 @@ if (qrcode_str == '') {
 			</div>
 			
 
-			<div id="storemediaplayer" class="ah-tab-content">	
+			
+			<div class="ah-tab-content" id="storemediaplayer">			
 		   
 			<form method="POST" action="all_function.php" id="adddisplay" name="adddisplay" ">
 			
@@ -515,7 +516,16 @@ if (qrcode_str == '') {
                        </div>
                  </div>
               </div>			
-			  
+
+			<div class="form-row">
+                 <div class="name">Location</div>
+                    <div class="value">
+                       <div class="input-group">
+                         <input class="input--style-5" type="text" name="location" id='location' value="<?php echo $location; ?>" required> <label for="location" class="error"></label>
+                       </div>
+                 </div>
+              </div>			
+			  			  
 						
 			  <div>
             
@@ -546,6 +556,7 @@ if (qrcode_str == '') {
 				<tr>
 				    <th>Store user id</th>
 					<th>Serial Number</th>
+					<th>Location</th>					
 					<th>Info</th>					
 					<th>Action</th>					
 				</tr>
@@ -553,8 +564,9 @@ if (qrcode_str == '') {
 	
 			<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
-					<td><?php echo $row['username']; ?></td>					
-					<td><?php echo $row['serial_number']; ?></td>					
+					<td><?php echo $row['username']; ?></td>										
+					<td><?php echo $row['serial_number']; ?></td>				
+					<td><?php echo $row['location']; ?></td>										
 					<td><?php echo $row['info']; ?></td>									
 					<td>
 						<a href="sserver.php?storeid=<?php echo $row['id']; ?>&delete_media_player=T&user=<?php echo $row['username'];?>" class="edit_btn" >Delete item </a>
