@@ -121,15 +121,17 @@ if (isset($_POST['add_media_player'])) {
 	
 	$serial_number = mysqli_real_escape_string($db, $_POST['serial_number']);
 	$info = mysqli_real_escape_string($db, $_POST['info']);
-	$username = mysqli_real_escape_string($db, $_SESSION['username'] );
+	$username = mysqli_real_escape_string($db, $_POST['username'] );
+	$location = mysqli_real_escape_string($db, $_POST['location'] );
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
 	if (empty($serial_number)) { array_push($errors, "Serial number is required"); }
 	if (empty($info)) { array_push($errors, "Information is required"); }
+	if (empty($location)) { array_push($errors, "Location is required"); }
 	
-	$query = "INSERT INTO store_display (username, serial_number , info)  VALUES('$username', '$serial_number', '$info')";
+	$query = "INSERT INTO store_display (username, serial_number , info, location)  VALUES('$username', '$serial_number', '$info', '$location')";
 	if ($db->query($query) === TRUE) {
-		header('location: storeuserhome.php');
+		header('location: all_function.php?tag=storemediaplayer');
 		
  	} else {
 	   array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
@@ -151,7 +153,7 @@ if (isset($_GET['delete_media_player'])) {
 	
 	$query = "DELETE FROM store_display  WHERE ( username='$username' AND  id='$id')";
 	if ($db->query($query) === TRUE) {
-		header('location: storeuserhome.php');
+		header('location: all_function.php?tag=storemediaplayer');
 		
  	} else {
 	   array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
