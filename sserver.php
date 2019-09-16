@@ -682,7 +682,7 @@ if (isset($_GET['veify_customer_payment'])) {
 					$update_5_str =")";
 					
 					
-					
+					echo "1";
 			
 					while ($row = mysqli_fetch_array($results)) { 								      
 							
@@ -692,14 +692,14 @@ if (isset($_GET['veify_customer_payment'])) {
 							array_push($recordpairs ,"('$usernameCol' , $increment_point )");							
 							array_push($updatepairs ,"point =  VALUES(point + $increment_point)");
 							
-							$update_2_str = $update_2_str + " when username = '$usernameCol' then point + $increment_point ";
-							$update_4_str = $update_4_str +  "'$usernameCol'," 						 
+							$update_2_str = $update_2_str . " when username = '$usernameCol' then point + $increment_point ";
+							$update_4_str = $update_4_str .  "'$usernameCol'," 		;				 
 
 					}					
 
+                    $update_4_str =  substr_replace($update_4_str ,"",-1) ;
 
-
-					$query_store_user = $update_1_str+$update_2_str+$update_3_str+$update_4_str+$update_5_str;
+					$query_store_user = $update_1_str.$update_2_str.$update_3_str.$update_4_str.$update_5_str;
 			
 			        
 			
