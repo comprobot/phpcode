@@ -694,6 +694,49 @@ if (isset($_GET['veify_customer_payment'])) {
 
 
 
+if (isset($_POST['add_media_player'])) {
+	
+	$username = mysqli_real_escape_string($db, $_POST['store_user_id']);
+	$serial_number = mysqli_real_escape_string($db, $_POST['serial_number']);
+	$info = mysqli_real_escape_string($db, $_POST['info']);
+	
+	
+	if (empty($username)) { array_push($errors, "Username is required"); }
+	if (empty($serial_number)) { array_push($errors, "Serial number is required"); }
+	if (empty($info)) { array_push($errors, "Information is required"); }
+	
+	$query = "INSERT INTO store_display (username, serial_number , info)  VALUES('$username', '$serial_number', '$info')";
+	if ($db->query($query) === TRUE) {
+		header('location: all_function.php?tag=storemediaplayer');
+		
+ 	} else {
+	   array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+	}
+	
+}
+
+
+
+
+if (isset($_GET['delete_media_player'])) {
+	
+	$id = mysqli_real_escape_string($db, $_GET['storeid']);	
+	$username = mysqli_real_escape_string($db, $_GET['user'] );
+	
+	if (empty($username)) { array_push($errors, "Username is required"); }
+	if (empty($id)) { array_push($errors, "Serial number is required"); }
+	
+	
+	$query = "DELETE FROM store_display  WHERE ( username='$username' AND  id='$id')";
+	if ($db->query($query) === TRUE) {
+		header('location: all_function.php?tag=storemediaplayer');
+		
+ 	} else {
+	   array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+	}
+	
+}
+
 
 
 if (isset($_GET['delete_adv_users'])) {
