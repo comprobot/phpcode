@@ -118,6 +118,21 @@ if (param=="storemediaplayer")
 	
 }
 
+if (param=="listofstockgain")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#listofstockgain').attr('data-ah-tab-active', 'true');
+	
+}
+
+if (param=="redemptForStoreOwner")
+{
+	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
+	$('#redemptForStoreOwner').attr('data-ah-tab-active', 'true');
+	
+}
+
+//
 
 if (param=="customerpayment")
 {
@@ -678,7 +693,38 @@ if (qrcode_str == '') {
 			</div>
 
 			
+			<div class="ah-tab-content" id="redemptForStoreOwner">
+			 <div class="form-row">
+			     <div class="row row-space"><strong>Store owner redemption  </strong></div>				 
+ 			</div>			
 			
+			<?php $results = mysqli_query($db, "SELECT * FROM  store_user_request"); ?>
+			<table border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Status</th>
+					<th>Time</th>				
+					<th colspan="2">Action</th>
+					
+				</tr>
+			</thead>
+	
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td><?php echo $row['username']; ?></td>
+					<td><?php echo $row['action']; ?></td>
+					<td><?php echo $row['tm']; ?></td>					
+					<td>
+						<a href="sserver.php?store_id=<?php echo $row['username']; ?>&approvel_store_request=T&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Approve</a>
+					</td>
+					<td>
+						<a href="sserver.php?store_id=<?php echo $row['username']; ?>&approvel_store_request=F&adminuser=<?php echo $_SESSION['username']?>" class="del_btn">Reject</a>
+					</td>					
+			</tr>
+			<?php } ?>
+			</table>
+			</div>
 			
 			
 			
