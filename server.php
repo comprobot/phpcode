@@ -107,6 +107,22 @@ if (isset($_POST['register'])) {
   
 }
 
+if (isset($_GET['add_store_request'])) {
+	
+	//ON DUPLICATE KEY UPDATE point = VALUES(point)";
+	
+	$username = mysqli_real_escape_string($db, $_SESSION['username'] );
+	if (empty($username)) { array_push($errors, "Username is required"); }	
+	$query = "INSERT INTO store_user_request (username,action)  VALUES('$username', 'submitted') ON DUPLICATE KEY UPDATE action = VALUES(action)";	
+	if ($db->query($query) === TRUE) {
+		header('location: storeuserhome.php?tag=listofstockgain');
+		
+ 	} else {
+	   array_push($errors, "Error: " . $query . "<br>" . $db->error);    					
+	}
+	
+}
+
 
 if (isset($_POST['add_media_player'])) {
 	
