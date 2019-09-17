@@ -327,6 +327,7 @@ if (qrcode_str == '') {
 					<a class="ah-tab-item" href="">Add/Edit Store media player</a>										
                     <a class="ah-tab-item" href="">Edit and Veify payments </a>					
 					<a class="ah-tab-item" href="">Store owner point  </a>										
+					<a class="ah-tab-item" href="">Rememption for store user</a>
                     <a class="ah-tab-item" href="">System settings</a>
 					<a class="ah-tab-item" href="">Item shop approval</a>
                     <a class="ah-tab-item" href="">About company</a>
