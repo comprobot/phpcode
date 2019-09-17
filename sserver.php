@@ -594,7 +594,7 @@ if (isset($_GET['approvel_store_request'])) {
 		
 		$query2 = "UPDATE store_user_request SET action = 'approved'  WHERE username='$username'";	
 		
-		if ($action = 'T')
+		if ($action == 'T')
 		{
 			$query2 = "UPDATE store_user_request SET action = 'approved'  WHERE username='$username'";	
 			
@@ -605,9 +605,9 @@ if (isset($_GET['approvel_store_request'])) {
 		
 		if ($db->query($query2) === TRUE) {
 			
-			if ($action = 'T')
+			if ($action == 'T')
 			{
-				$query3 = "insert store_record(username, point) values('$username','-100' ) WHERE username='$username'";	
+				$query3 = "insert store_record(username, point) values('$username','-100' )";	
 				$db->query($query3);
 				$query4 = "UPDATE point_db SET point = point - 100  WHERE username='$username'";	
 				$db->query($query4);
