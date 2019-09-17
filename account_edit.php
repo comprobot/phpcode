@@ -50,7 +50,7 @@
 			?>
 			<?php while ($row = mysqli_fetch_array($results)) { ?>            			
 			    <form action="account_edit.php"  METHOD="GET" >
-			     <input type="hidden" name="username" id="username" value"<?php echo $username; ?>" />
+			     <input type="hidden" name="username" id="username" value"<?php echo $_SESSION['username'];	 ?>" />
                 <div class="row">
                     <div class="label_required">*必填</div>
                 </div>
