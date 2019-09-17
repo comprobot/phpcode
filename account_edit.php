@@ -10,7 +10,7 @@
   	header("location: user_login.php");
   }
 ?>
-<?php include('cserver.php') ?>
+<?php include('restap.php') ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,8 +49,8 @@
 			
 			?>
 			<?php while ($row = mysqli_fetch_array($results)) { ?>            			
-			
-			
+			    <form action="account_edit.php" >
+			     <input type="hidden" name="username" id="username" value"<?php echo $row['username']; ?>" />
                 <div class="row">
                     <div class="label_required">*必填</div>
                 </div>
@@ -149,11 +149,6 @@
 								<option value=">65" selected> >65</option>							
 							<?php } ?>		
 						
-						
-						
-						
-                            
-							
 							
                         </select>
                     </div>
@@ -161,36 +156,34 @@
                 <div class="row">
                     <label class="label">密碼*</label>
                     <div class="row_flex">
-                        <input name="password" type="text" placeholder="6 至 12 位英文字母及/或數字" value="<?php echo $row['password']; ?>"/>
+                        <input name="password" type="password" placeholder="6 至 12 位英文字母及/或數字" value="<?php echo $row['password']; ?>"/>
                     </div>
                 </div>
                 <div class="row">
                     <label class="label">再次輸入密碼*</label>
                     <div class="row_flex">
-                        <input name="password_retype" type="text" placeholder="確認您的密碼"/>
+                        <input name="password_retype" type="password" placeholder="確認您的密碼"/>
                     </div>
                 </div>
                 <div class="setting_spacer"></div>
                 <div class="row">
                     <div class="row_flex row_center">
-                        <button type="button" class="btn_blue" onclick="window.location.href = 'account_details.html'">儲存</button>
+					
+                         <button type="submit" class="btn_blue" name="update_customer" id="update_customer" >儲存</button>
+						 
+					<!--	<button type="button" class="btn_blue" onclick="window.location.href = 'account_details.html'">儲存</button>-->
                     </div>
                 </div>
 				
 				
+				
+			</form>	
 				
 			<?php } ?>							
 			<?php endif ?>
 			<?php include('errors.php'); ?>					
 				
             </div>
-        </div>
-        <div id="footer_container">
-            <div id="bottom_menu">
-                <div><a href="home.html"><img src="img/btn_home.png" /></a></div>
-                <div><a href="account.html"><img src="img/btn_account.png" /></a></div>
-                <div><a href="guide_1.html"><img src="img/btn_scan.png" /></a></div>
-            </div>
-        </div>
+        </div>        
     </body>
 </html>
