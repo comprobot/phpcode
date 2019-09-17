@@ -201,9 +201,8 @@ if (serial_number == '') {
 			<div id="tab_list" class="ah-tab-wrapper">
                 <div class="ah-tab">
                     <a class="ah-tab-item" data-ah-tab-active="true" href="">Show media player items</a>
-                    <a class="ah-tab-item" href="">View Customer access </a>
-					<a class="ah-tab-item" href="">View Current point </a>
-					<a class="ah-tab-item" href="">View point history </a>
+                    <a class="ah-tab-item" href="">View Customer access </a>					
+					<a class="ah-tab-item" href="">Redempt point and point history </a>
                 </div>
             </div>		
 						
@@ -325,39 +324,6 @@ if (serial_number == '') {
 			</div>
 			
 			
-			<div class="ah-tab-content" id="viewcurrentpoint" >
-			<?php 
-			$videouser = $_SESSION['username'];
-			$query = "SELECT point, tm  FROM point_db WHERE username = '$videouser'" ;
-			$results = mysqli_query($db, $query); 			
-			if (mysqli_num_rows($results) >= 1) {
-			?>
-			 
- 			
-			<table border="1">
-			<thead>
-				<tr>
-					<th>Point</th>					
-					<th>time</th>								
-				</tr>
-			</thead>
-	
-			<?php while ($row = mysqli_fetch_array($results)) { ?>
-				<tr>
-					<td><?php echo $row['point']; ?></td>										
-					<td><?php echo $row['tm']; ?></td>						
-					
-			</tr>
-			<?php } ?>
-			</table>
-			 
-			<?php
-			}
-			?>
-			 
-			</div>			
-			
-			
 			
 			
 			<div class="ah-tab-content" id="listofstockgain">
@@ -389,7 +355,7 @@ if (serial_number == '') {
 			<p>
 			Total point : <?php echo $total_point ?>
 			</p>
-			<?php if ($total_point > 10)?>
+			<?php if ($total_point > 10){ ?>
 			<a href="storeuserhome.php?add_store_request=add_store_request&username=<?php echo $_SESSION['username']?>">Redempt the POINT </a>
 			
 			
