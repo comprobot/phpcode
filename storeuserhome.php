@@ -100,10 +100,10 @@ if (param=="customeraccess")
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
 	$('#customeraccess').attr('data-ah-tab-active', 'true');
 }
-if (param=="customerpayment")
+if (param=="listofstockgain")
 {
 	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#customerpayment').attr('data-ah-tab-active', 'true');
+	$('#listofstockgain').attr('data-ah-tab-active', 'true');
 	
 }
 if (param=="advvideo")
@@ -112,14 +112,6 @@ if (param=="advvideo")
 	$('#advvideo').attr('data-ah-tab-active', 'true');
 	
 }
-
-if (param=="paymenthistory")
-{
-	$('#tab_list_content .ah-tab-content').removeAttr('data-ah-tab-active');	 
-	$('#paymenthistory').attr('data-ah-tab-active', 'true');
-	
-}
-
 
 //id="advvideo"
   
