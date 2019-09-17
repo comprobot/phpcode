@@ -564,6 +564,75 @@ if (isset($_GET['approvel'])) {
 }
 
 
+
+if (isset($_GET['approvel_store_request'])) {
+  $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
+  $username = mysqli_real_escape_string($db, $_GET['store_id']);
+  $action = mysqli_real_escape_string($db, $_GET['approvel_store_request']);
+
+  if (empty($username)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($adminuser)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  if (empty($action)) {
+  	header('location: sadminlogin.php');
+  }
+  
+  
+  
+  	$query = "SELECT * FROM admin_users WHERE username='$adminuser'";
+	
+	
+	
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+		
+		
+		$query2 = "UPDATE store_user_request SET action = 'approved'  WHERE username='$username'";	
+		
+		if ($action = 'T')
+		{
+			$query2 = "UPDATE store_user_request SET action = 'approved'  WHERE username='$username'";	
+			
+		}else{
+			
+			$query2 = "UPDATE store_user_request SET action = 'rejected'  WHERE username='$username'";	
+		}
+		
+		if ($db->query($query2) === TRUE) {
+			
+			if ($action = 'T')
+			{
+				$query3 = "insert store_record(username, point) values('$username','-100' ) WHERE username='$username'";	
+				$db->query($query3);
+				$query4 = "UPDATE point_db SET point = point - 100  WHERE username='$username'";	
+				$db->query($query4);
+				
+			}
+			
+			header('location: all_function.php?tag=redemptForStoreOwner');
+ 				        
+		} else {
+		  header('location: sadminlogin.php');
+		}
+		
+  	  
+  	}else {
+  		header('location: sadminlogin.php');
+  	}
+  
+}
+
+
+
+
+
+
+
 if (isset($_GET['delete_customer_payment'])) {
   $adminuser = mysqli_real_escape_string($db, $_GET['adminuser']);
   $username = mysqli_real_escape_string($db, $_GET['customerid']);
