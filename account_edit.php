@@ -49,8 +49,8 @@
 			
 			?>
 			<?php while ($row = mysqli_fetch_array($results)) { ?>            			
-			    <form action="account_edit.php" >
-			     <input type="hidden" name="username" id="username" value"<?php echo $row['username']; ?>" />
+			    <form action="account_edit.php"  METHOD="GET" >
+			     <input type="hidden" name="username" id="username" value"<?php echo $username; ?>" />
                 <div class="row">
                     <div class="label_required">*必填</div>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="row">
                     <label class="label">年齡*</label>
                     <div class="row_flex">
-                        <select id="registration_age">
+                        <select id="registration_age" name="registration_age">
 							<?php if  ($row['age'] == "16-25" ) {?>												
 								<option value="16-25" selected >16-25</option>
 								<option value="26-35">26-35</option>
