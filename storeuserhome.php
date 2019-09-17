@@ -324,6 +324,7 @@ if (serial_number == '') {
 			 
 			</div>
 			
+			
 			<div class="ah-tab-content" id="viewcurrentpoint" >
 			<?php 
 			$videouser = $_SESSION['username'];
@@ -388,6 +389,22 @@ if (serial_number == '') {
 			<p>
 			Total point : <?php echo $total_point ?>
 			</p>
+			<?php if ($total_point > 10)?>
+			<a href="storeuserhome.php?add_store_request=add_store_request&username=<?php echo $_SESSION['username']?>">Redempt the POINT </a>
+			
+			
+			
+            
+			
+			
+			<?php 
+			$videouser = $_SESSION['username'];
+			$results = mysqli_query($db, "SELECT * from store_user_request WHERE username = '$videouser' "); 			
+			?>
+			<?php while ($row = mysqli_fetch_array($results)) { ?>
+			<p>Current Request status : <?php echo $row['action']; ?></p>
+			<?php } ?>
+			<?php } ?>
 			
 			</table>
 			</div>
