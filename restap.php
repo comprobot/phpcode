@@ -155,7 +155,7 @@ if (isset($_GET['update_customer'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-	$query = "UPDATE customers lname='$last_name' , fname='$first_name', password='$password' , age='$age' , title='$title' WHERE username = '$username'";
+	$query = "UPDATE customers SET lname='$last_name' , fname='$first_name', password='$password' , age='$age' , title='$title' WHERE username = '$username'";
 	
 	
   	//$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age)  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 200 ,'$email','$title','$age' )";
