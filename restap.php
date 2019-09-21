@@ -477,6 +477,41 @@ if (isset($_GET['customer_login_app_api'])) {
 
 
 
+if (isset($_GET['customer_login_app_phone_api'])) {
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $password = mysqli_real_escape_string($db, $_GET['password']);
+
+  if (empty($username)) {
+  	array_push($errors, "電郵是必須輸入的");
+  }
+  if (empty($password)) {
+  	array_push($errors, "Password is required");
+  }
+
+  if (count($errors) == 0) {
+  	//$password = md5($password);
+	
+	
+	
+  	$query = "SELECT * FROM customers WHERE username='$username' AND password='$password'";
+  	$results = mysqli_query($db, $query);
+	
+	  
+  	if (mysqli_num_rows($results) == 1) {
+           $user = mysqli_fetch_assoc($result);  
+	   $_SESSION['username'] = $username;
+  	   $_SESSION['success'] = "You are now logged in";
+  	   header('location: home.php');
+           echo "SUCCESS,".$user['telephone'];        
+	
+  	}else {
+  		array_push($errors, "Wrong username/password combination");
+  	}
+  }
+}  
+
+
+
 
 if (isset($_GET['customer_login_api'])) {
   $username = mysqli_real_escape_string($db, $_GET['username']);
