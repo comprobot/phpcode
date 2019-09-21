@@ -501,7 +501,7 @@ if (isset($_GET['customer_login_app_phone_api'])) {
            $user = mysqli_fetch_assoc($result);  
 	   $_SESSION['username'] = $username;
   	   $_SESSION['success'] = "You are now logged in";
-  	   header('location: home.php');
+  	   //header('location: home.php');
            echo "SUCCESS,".$user['telephone'];        
 	
   	}else {
