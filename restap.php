@@ -410,7 +410,36 @@ if (isset($_GET['qrcode_customer'])) {
   }
 }
 
+if (isset($_GET['customer_login_app_shop_api'])) {
+  $username = mysqli_real_escape_string($db, $_GET['username']);
+  $password = mysqli_real_escape_string($db, $_GET['password']);
 
+  if (empty($username)) {
+  	array_push($errors, "電郵是必須輸入的");
+  }
+  if (empty($password)) {
+  	array_push($errors, "Password is required");
+  }
+
+  if (count($errors) == 0) {
+  	//$password = md5($password);
+	
+	
+	
+  	$query = "SELECT * FROM customers WHERE username='$username' AND password='$password'";
+  	$results = mysqli_query($db, $query);
+  	if (mysqli_num_rows($results) == 1) {
+          
+	   $_SESSION['username'] = $username;
+  	   $_SESSION['success'] = "You are now logged in";
+  	   header('location: redemption_user.php');
+           echo "<p>SUCCESS</p>";        
+	
+  	}else {
+  		array_push($errors, "Wrong username/password combination");
+  	}
+  }
+}  
 
 if (isset($_GET['customer_account_app_api'])) {
   $username = mysqli_real_escape_string($db, $_GET['username']);
