@@ -3,8 +3,8 @@
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: user_login.php');
-  }
   if (isset($_GET['logout'])) {
+  }
   	session_destroy();
   	unset($_SESSION['username']);
   	header("location: user_login.php");
@@ -25,7 +25,7 @@
        <div id="header">
             <div id="logo_bar">
                 <div id="back">
-                    <a  href="#"  onclick="callHome()" ><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
+                    <a  href="#"  onclick="callHome()" ><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
                 </div>
                 <div id="logo">
                     <a  href="#"  onclick="callHome()" ><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
