@@ -653,7 +653,7 @@ if (qrcode_str == '') {
 				</td>				
 				-->
 				<td>
-					<a onclick="confirmFunction('customerid=<?php echo $row['customerid']; ?>&price=<?php echo $row['price']; ?>'&adminuser=<?php echo $_SESSION['username']?>')" href="#" class="edit_btn" >Verify</a>				
+					<a onclick="confirmFunction('customerid=<?php echo $row['customerid']; ?>&price=<?php echo $row['price']; ?>&adminuser=<?php echo $_SESSION['username']?>')" href="#" class="edit_btn" >Verify</a>				
 				</td>				
 				<!--
 					<a href="sserver.php?customerid=<?php echo $row['customerid']; ?>&price=<?php echo $row['price']; ?>&check=T&veify_customer_payment=veify_customer_payment&adminuser=<?php echo $_SESSION['username']?>" class="edit_btn" >Verify</a>
