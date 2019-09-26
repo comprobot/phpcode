@@ -25,10 +25,10 @@
        <div id="header">
             <div id="logo_bar">
                 <div id="back">
-                    <a href="home.php"><img src="img/back.png" srcset="img/back-2x.png 2x, img/back-3x.png 3x, img/back-4x.png 4x"/></a>
+                    <a  href="#"  onclick="callHome()" ><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
                 </div>
                 <div id="logo">
-                    <a href="home.php"><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
+                    <a  href="#"  onclick="callHome()" ><img src="img/logo.png" srcset="img/logo-2x.png 2x, img/logo-3x.png 3x, img/logo-4x.png 4x"/></a>
                 </div>
                 <div id="next">
                 </div>
@@ -69,6 +69,8 @@
 			
                 <div id="avaiable" class="tab-pane">
                     <div id="avaiable-header">
+					<!--
+					
                         <div id="select_type">
                             <select>
                                 <option value="類別">類別</option>
@@ -85,9 +87,12 @@
                                 <option value="排序">排序</option>
                             </select>
                         </div>
+						-->
+						<!--
                         <div id="select_thumbnail">
                             <a href="redemption_thumbnail.html"><img src="img/btn_thumbnail.png" /></a>
                         </div>
+						-->
                         <div id="select_list">
                             <img src="img/btn_list.png" />
                         </div>
@@ -114,7 +119,7 @@
 					</script>					
 					<?php 
 						$videouser = $_SESSION['username'];
-						$query = "SELECT * FROM  item_shop  WHERE item_status = 'N'" ;
+						$query = "SELECT * FROM  item_shop  WHERE item_status = 'N' and item_quantity > 0" ;
 						$results = mysqli_query($db, $query); 			
 						if (mysqli_num_rows($results) >= 1) {
 						?>
@@ -140,6 +145,34 @@
 				
             </div>
         </div>
-
+<script>
+var callShare = function() {
+    var shareInfo = JSON.stringify({"title": "标题", "desc": "内容", "shareUrl": "http://www.jianshu.com/p/f896d73c670a",
+                                  "shareIco":"http://upload-images.jianshu.io/upload_images/1192353-fd26211d54aea8a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"});
+    Toyun.share(shareInfo);
+}
+var callScan = function() {
+    var shareInfo = JSON.stringify({"scan": "scan"});
+    Toyun.callScan(shareInfo);
+}
+var callHome = function() {
+    var shareInfo = JSON.stringify({"home": "home"});
+    Toyun.callHome(shareInfo);
+}
+var callAcc = function() {
+    var shareInfo = JSON.stringify({"acc": "acc"});
+    Toyun.callAcc(shareInfo);
+}
+var picCallback = function(photos) {
+    alert(photos);
+}
+var shareCallback = function(){
+    //alert('success');
+}
+var validCallback = function(){
+    alert('success');
+}
+</script>  
+  
     </body>
 </html>
