@@ -471,81 +471,77 @@ if (isset($_GET['buyitem'])) {
 	$item_point = "0";
 	
   	$results = mysqli_query($db, $queryM);
-	
-	
+	$user_points = mysqli_fetch_assoc($results);  
+	//	$user_points['point']; 
 	
   	if (mysqli_num_rows($results) == 1) {
 		
-		
-		
-		
-  
-		$query = "SELECT * FROM item_shop WHERE item_id = '$item_id' and item_quantity > 0";
-	
+		$query = "SELECT * FROM item_shop WHERE item_id = '$item_id' and item_quantity > 0";	
 		$results = mysqli_query($db, $query);
-		
 		
 		
 		if (mysqli_num_rows($results) == 1) {
 		
 			$query2 = "UPDATE item_shop SET item_quantity =  item_quantity - 1 WHERE item_id='$item_id'";		
-			
 			$rowc = mysqli_fetch_assoc($results);
-		
 		    $item_point=$rowc['item_price'];
 			
-		
-			if ($db->query($query2) === TRUE) {
+			if ($item_point < $user_points['point']) {
 			
-			   // check redeem code exist:
-				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-				$res = "";
-				for ($i = 0; $i < 10; $i++) {
-					$res .= $chars[mt_rand(0, strlen($chars)-1)];
-				}			   
-			   
-			    $queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
-				
-				while ($db->query($queryRedeemCode) === TRUE) {
+				if ($db->query($query2) === TRUE) {
+			
+					// check redeem code exist:
 					$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 					$res = "";
 					for ($i = 0; $i < 10; $i++) {
 						$res .= $chars[mt_rand(0, strlen($chars)-1)];
 					}			   
+			   
 					$queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
-				}
 				
-			  
-				$query3 = "INSERT INTO customer_item (user_id, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
-				
-				if ($db->query($query3) === TRUE) {
-					// reduce point from member
-					
-					$query4 = "UPDATE customers SET point =  point - $item_point WHERE username='$username'";			
-					
-					if ($db->query($query4) === TRUE) {
-						header('location: redemption_processing.php');							
-						
-					}else{						
-						 echo "error3";
-						 array_push($errors, "Error ");
+					while ($db->query($queryRedeemCode) === TRUE) {
+						$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+						$res = "";
+						for ($i = 0; $i < 10; $i++) {
+							$res .= $chars[mt_rand(0, strlen($chars)-1)];
+						}			   
+						$queryRedeemCode = "SELECT * FROM customer_item WHERE item_redeem_code = '$res'";
 					}
+				
+					$query3 = "INSERT INTO customer_item (user_id, item_id ,item_redeem_code, item_status)  VALUES('$username','$item_id', '$res', 'B')";
+					if ($db->query($query3) === TRUE) {
+						// reduce point from member
+						$query4 = "UPDATE customers SET point =  point - $item_point WHERE username='$username'";			
+						if ($db->query($query4) === TRUE) {
+							header('location: redemption_processing.php');							
+						
+						}else{						
+							echo "error3";
+							array_push($errors, "Error ");
+						}
 					
-					
-				}else{
-					 echo "error2";
-					array_push($errors, "Error2 ");
-				}
+					}else{
+						echo "error2";
+						array_push($errors, "Error2 ");
+					}	
 				        
-			} else {
-				echo "error1";
-				array_push($errors, "Erro1 ");
+				} else {
+					echo "error1";
+					array_push($errors, "Erro1 ");
 			
+				}
+			}else{
+				echo "The item is out of stock";
+				array_push($errors, "你的積分不夠換此貨品");
 			}
 		
 		}else {
-		    echo "The item is out of stock";
-			array_push($errors, "The item is out of stock");
+		    //echo "The item is out of stock";
+			//array_push($errors, "The item is out of stock");
+			
+			
+			echo "The item is out of stock";
+			array_push($errors, "這個貨品已換完，請選另一貨品");
 		
 		}
 	
