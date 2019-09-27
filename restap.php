@@ -85,7 +85,7 @@ if (isset($_GET['reg_customer'])) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age) 
-  			  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 200 ,'$email','$title','$age' )";
+  			  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 25 ,'$email','$title','$age' )";
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
@@ -158,7 +158,7 @@ if (isset($_GET['update_customer'])) {
 	$query = "UPDATE customers SET lname='$last_name' , fname='$first_name', password='$password' , age='$age' , title='$title' WHERE username = '$username'";
 	
 	
-  	//$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age)  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 200 ,'$email','$title','$age' )";
+  	//$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age)  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 25 ,'$email','$title','$age' )";
 			  
 			  
 			  
@@ -270,7 +270,7 @@ if (isset($_GET['register_customer'])) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO customers (username, password,area_code, telephone, point) 
-  			  VALUES('$username','$password', '$area_code', '$phone', 200 )";
+  			  VALUES('$username','$password', '$area_code', '$phone', 25 )";
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
