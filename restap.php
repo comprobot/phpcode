@@ -567,7 +567,7 @@ if (isset($_GET['customer_login_app_phone_api'])) {
 	
   	}else {
   		array_push($errors, "Wrong username/password combination");
-		echo "電郵和密碼不正確"；
+		echo "電郵和密碼不正確";
   	}
   }
 }  
