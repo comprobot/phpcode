@@ -199,7 +199,17 @@ if (isset($_GET['reg_phone'])) {
   if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }  
   if (empty($phone)) { array_push($errors, "電話是必須輸入的"); }
   if (empty($area_code)) { array_push($errors, "區碼是必須輸入的"); }
+
+	  
+  $user_check_query = "SELECT * FROM customers WHERE telephone='$phone' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
   
+  if ($user) { // if user exists
+    if ($user['telephone'] === $phone) {
+      array_push($errors, "請用另一個電話");
+    }
+  }
   
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
@@ -577,7 +587,7 @@ if (isset($_GET['customer_login_app_telephone_api'])) {
   $password = mysqli_real_escape_string($db, $_GET['password']);
 
   if (empty($username)) {
-  	array_push($errors, "電郵是必須輸入的");
+  	array_push($errors, "電話是必須輸入的");
   }
   if (empty($password)) {
   	array_push($errors, "Password is required");
@@ -593,7 +603,7 @@ if (isset($_GET['customer_login_app_telephone_api'])) {
 	
 	  
   	if (mysqli_num_rows($results) == 1) {
-           $user = mysqli_fetch_assoc($result);  
+           $user = mysqli_fetch_assoc($results);  
 	   $_SESSION['username'] =$user['username'];
   	   $_SESSION['success'] = "You are now logged in";
   	   //header('location: home.php');
