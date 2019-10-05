@@ -607,7 +607,7 @@ if (isset($_GET['customer_login_app_telephone_api'])) {
 	   $_SESSION['username'] =$user['username'];
   	   $_SESSION['success'] = "You are now logged in";
   	   //header('location: home.php');
-           echo "SUCCESS,".$user['telephone'];        
+           echo "SUCCESS,".$user['username'];        
 	
   	}else {
   		array_push($errors, "Wrong username/password combination");
