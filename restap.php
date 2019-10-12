@@ -79,6 +79,16 @@ if (isset($_GET['reg_customer'])) {
     }
   }
 
+	  
+  $user_check_query = "SELECT * FROM customers WHERE email='$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    if ($user['email'] === $email) {
+      array_push($errors, "請用另一個電郵");
+    }
+  }
   
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
