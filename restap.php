@@ -75,7 +75,7 @@ if (isset($_GET['reg_customer'])) {
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
-      array_push($errors, "請用另一個電郵");
+      //array_push($errors, "請用另一個電郵");
     }
   }
 
