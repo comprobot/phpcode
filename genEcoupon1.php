@@ -1,3 +1,4 @@
+<?php include('cserver.php') ?>
 <?php
 require('fpdf.php');
 include "phpqrcode.php";    
@@ -33,10 +34,32 @@ $pdf->SetFont('Arial','B',16);
 $pdf->Cell(40,30,'Redeem code='.$_GET['redeem_code']);
 
 
-$pdf->Image($target_file_1,0,0,200,300);
-	
-	
-	
+$pdf->Image($target_file_1,0,0,210,297);
+
+
+
+$target_file_text = $target_dir . "tempcodefont.png";
+
+
+
+$text = "YOUR  textttttttt";
+
+$my_img = imagecreate( 80, 20 );                             //width & height
+$background  = imagecolorallocate( $my_img, 0,   0,   255 );
+$text_colour = imagecolorallocate( $my_img, 255, 255, 0 );
+//$line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
+imagestring( $my_img, 4, 30, 25, $text, $text_colour );
+imagesetthickness ( $my_img, 5 );
+//imageline( $my_img, 30, 45, 165, 45, $line_colour );
+
+//header( "Content-type: image/png" );
+imagepng( $my_img,$target_file_text );
+
+
+$pdf->Image($target_file,142,118,52,52);
+
+$pdf->Image($target_file_text,15,60,80,20);
+
 
 /*
 $pdf->SetFont('Arial','B',16);
@@ -49,3 +72,4 @@ $pdf->Output();
 }
 
 ?>
+
