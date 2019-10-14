@@ -48,7 +48,7 @@ $font = "m.ttf";
 $text = iconv("GB2312", "UTF-8", "回忆经典");
 $text = "Chinese heart";
 
-$my_img = imagecreate( 80, 20 );                             //width & height
+$my_img = imagecreate( 320, 80 );                             //width & height
 $background  = imagecolorallocate( $my_img, 255,   255,   255 );
 $text_colour = imagecolorallocate( $my_img, 0, 0, 255 );
 
