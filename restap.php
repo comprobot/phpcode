@@ -595,6 +595,8 @@ if (isset($_GET['customer_login_app_phone_api'])) {
 if (isset($_GET['customer_login_app_telephone_api'])) {
   $username = mysqli_real_escape_string($db, $_GET['username']);
   $password = mysqli_real_escape_string($db, $_GET['password']);
+  $area = mysqli_real_escape_string($db, $_GET['area']);
+	
 
   if (empty($username)) {
   	array_push($errors, "電話是必須輸入的");
@@ -608,7 +610,7 @@ if (isset($_GET['customer_login_app_telephone_api'])) {
 	
 	
 	
-  	$query = "SELECT * FROM customers WHERE telephone='$username' AND password='$password'";
+  	$query = "SELECT * FROM customers WHERE telephone='$username' AND password='$password'  AND area_code='$area' ";
   	$results = mysqli_query($db, $query);
 	
 	  
