@@ -42,24 +42,38 @@ $target_file_text = $target_dir . "tempcodefont.png";
 
 
 
-$text = "YOUR  textttttttt";
+$text = "中國心明天心";
 
 $my_img = imagecreate( 80, 20 );                             //width & height
-$background  = imagecolorallocate( $my_img, 0,   0,   255 );
-$text_colour = imagecolorallocate( $my_img, 255, 255, 0 );
+$background  = imagecolorallocate( $my_img, 255,   255,   255 );
+$text_colour = imagecolorallocate( $my_img, 0, 0, 255 );
 //$line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
 imagestring( $my_img, 4, 30, 25, $text, $text_colour );
-imagesetthickness ( $my_img, 5 );
+imagesetthickness ( $my_img, 1 );
 //imageline( $my_img, 30, 45, 165, 45, $line_colour );
 
 //header( "Content-type: image/png" );
 imagepng( $my_img,$target_file_text );
 
 
+
+
+
 $pdf->Image($target_file,142,118,52,52);
 
 $pdf->Image($target_file_text,15,60,80,20);
 
+
+
+
+
+
+
+
+
+
+	
+	
 
 /*
 $pdf->SetFont('Arial','B',16);
