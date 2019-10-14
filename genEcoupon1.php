@@ -40,31 +40,26 @@ $pdf->Image($target_file_1,0,0,210,297);
 
 $target_file_text = $target_dir . "tempcodefont.png";
 
-$font = "s.otf";
+$font = "m.ttf";
 
-$text = "中國心明天心";
+
+//$text = "中國心明天心";
+
+$text = iconv("GB2312", "UTF-8", "回忆经典");
+$text = "Chinese heart";
 
 $my_img = imagecreate( 80, 20 );                             //width & height
 $background  = imagecolorallocate( $my_img, 255,   255,   255 );
 $text_colour = imagecolorallocate( $my_img, 0, 0, 255 );
 
 
-$white = imagecolorallocate($im, 255, 255, 255);
-$grey = imagecolorallocate($im, 128, 128, 128);
-$black = imagecolorallocate($im, 0, 0, 0);
+//$white = imagecolorallocate($my_img, 255, 255, 255);
+
+$black = imagecolorallocate($my_img, 0, 0, 0);
 
 
 imagettftext($im, 20, 0, 0, 0, $black, $font, $text);
-
-
-//imagestring( $my_img, 4, 30, 25, $text, $text_colour );
-//imagesetthickness ( $my_img, 1 );
-//imageline( $my_img, 30, 45, 165, 45, $line_colour );
-
-//header( "Content-type: image/png" );
 imagepng( $my_img,$target_file_text );
-
-
 
 
 
