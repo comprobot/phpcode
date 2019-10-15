@@ -462,6 +462,15 @@ if (item_name == '') {
 					<th>Item ID</th>
 					<th>Item Name</th>
 					<th>Item Description</th>
+					
+					<th>Item Shop Name</th>
+					<th>Item Shop address</th>
+					<th>Item Shop telephone</th>
+					<th>Item last redem </th>
+					<th>Item redem time</th>
+					
+					
+					
 					<th>Item Price</th>								
 					<th>Item status</th>					
 					<th>Item quantity</th>					
@@ -475,7 +484,14 @@ if (item_name == '') {
 				<tr>
 					<td><?php echo $row['item_id']; ?></td>					
 					<td><?php echo $row['item_name']; ?></td>					
-					<td><?php echo $row['item_description']; ?></td>					
+					<td><?php echo $row['item_description']; ?></td>		
+					
+					<td><?php echo $row['item_shop_name']; ?></td>
+					<td><?php echo $row['item_shop_address']; ?></td>
+					<td><?php echo $row['item_shop_phone']; ?></td>
+					<td><?php echo $row['item_last_redem']; ?></td>
+					<td><?php echo $row['item_redem_time']; ?></td>
+					
 					<td><?php echo $row['item_price']; ?></td>										
 					
 					<td><?php if ($row['item_status'] == 'N')
@@ -539,19 +555,10 @@ if (item_name == '') {
 			<div class="form-row">
               <div class="row row-space"><strong>Item Quantity:</strong> </div>
                 <div class="value">
-				
-				
                   <div class="input-group">
-				  
-				  
-				  
-	   			      <input class="input--style-5"   type="number" name="item_quantity"  id='item_quantity'  min="1" max="100" value="<?php echo $item_quantity; ?>" >    
-					  
-					  
+	   			      <input class="input--style-5" type="number" name="item_quantity"  id='item_quantity'  min="1" max="100" value="<?php echo $item_quantity; ?>" >    
                      <label for="item_quantity" class="error"></label>
                   </div>
-				  
-				  
 				  
                </div>
             </div>
