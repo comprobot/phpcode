@@ -49,8 +49,8 @@ $target_file_text = $target_dir . "tempcodefont.png";
 
 $font = "./m.ttf";
 
-
-$text = $user['item_shop_name'];
+$text = "中國心中國人";
+//$text = $user['item_shop_name'];
 $text1 = $user['item_name'];
 
 
