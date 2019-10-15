@@ -20,7 +20,11 @@ $serial_number="";
 $info="";
 $id="";
 $item_id="";
-
+$item_shop_name="";
+$item_shop_address="";
+$item_shop_phone="";
+$item_redem_time="";
+$item_last_redem="";
 $servername = 'localhost';
 $dbusername = 'ops';
 $dbpassword = '60503176';
