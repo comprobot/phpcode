@@ -12,6 +12,7 @@ if (isset($_GET['redeem_code'])) {
 $redeem_code = $_GET['redeem_code'];
 
 
+
 $target_dir = dirname(__FILE__) ."/pic/";
 $target_file = $target_dir . "tempcode.png";
 	
@@ -46,21 +47,58 @@ $pdf->Image($target_file_1,0,0,210,297);
 
 
 $target_file_text = $target_dir . "tempcodefont.png";
+$target_file_text_below = $target_dir . "tempcodebelow.png";
+$target_file_text_time = $target_dir . "tempcodetime.png";
+$target_file_photo_image = $target_dir . $user['item_photo_path'];
+
 
 $font = "./m.ttf";
 
-$text = "中國心中國人";
-//$text = $user['item_shop_name'];
+//$text = "中國心中國人";
+$text = $user['item_shop_name'];
 $text1 = $user['item_name'];
+
+$text_item_shop_name = $user['item_shop_name'];
+$text_item_shop_address = $user['item_shop_address'];
+$text_item_shop_phone = $user['item_shop_phone'];
+$text_item_redem_time = $user['item_redem_time'];
+$text_item_last_time = $user['item_last_time'];
+
 
 
 $my_img = imagecreate( 320, 80 );                             //width & height
 $background  = imagecolorallocate( $my_img, 255,   255,   255 );
 $text_colour = imagecolorallocate( $my_img, 0, 0, 255 );
 $black = imagecolorallocate($my_img, 0, 0, 0);
-imagettftext($im, 24, 0, 0, 30, $black, $font, $text);
-imagettftext($im, 24, 0, 0, 60, $black, $font, $text1);
+imagettftext($my_img, 24, 0, 0, 30, $black, $font, $text);
+imagettftext($my_img, 24, 0, 0, 70, $black, $font, $text1);
 imagepng( $my_img,$target_file_text );
+
+
+// 34 ,107 =>  85, 25
+
+$my_below = imagecreate( 360, 120 );                             //width & height
+$background  = imagecolorallocate( $my_below, 255,   255,   255 );
+$text_colour = imagecolorallocate( $my_below, 0, 0, 255 );
+$black = imagecolorallocate($my_below, 0, 0, 0);
+imagettftext($my_below, 12, 0, 0, 24, $black, $font, $text_item_shop_name);
+imagettftext($my_below, 12, 0, 0, 48, $black, $font, $text_item_shop_phone);
+imagettftext($my_below, 12, 0, 0, 72, $black, $font, $text_item_shop_address);
+imagettftext($my_below, 12, 0, 0, 96, $black, $font, $text_item_redem_time);
+imagepng( $my_below,$target_file_text_below);
+
+
+
+//time_tag
+$my_time = imagecreate( 120, 40 );                             //width & height
+$background  = imagecolorallocate( $my_time, 255,   255,   255 );
+$text_colour = imagecolorallocate( $my_time, 0, 0, 255 );
+$black = imagecolorallocate($my_time, 0, 0, 0);
+imagettftext($my_time, 24, 0, 0, 30, $black, $font, $text_item_last_time);
+imagepng( $my_time,$target_file_text_time );
+
+
+
 
 
 
@@ -70,11 +108,15 @@ imagepng( $my_img,$target_file_text );
 $pdf->Image($target_file,142,118,52,52);
 
 
-
+//above 
 $pdf->Image($target_file_text,15,60,80,20);
 
 
+$pdf->Image($target_file_text_below,34,107,85,30);
 
+$pdf->Image($target_file_text_time,24,86,28,8);
+
+$pdf->Image($target_file_photo_image,141,60,54,40);
 
 
 
