@@ -567,6 +567,57 @@ if (item_name == '') {
             </div>
 			
 			<div class="form-row">
+              <div class="row row-space"><strong>Item Shop Name:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_shop_name" id='item_shop_name' value="<?php echo $item_shop_name; ?>" > <label for="item_shop_name" class="error"></label>
+                  </div>
+               </div>
+            </div>
+
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Shop Address:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_shop_address" id='item_shop_address' value="<?php echo $item_shop_address; ?>" > <label for="item_shop_address" class="error"></label>
+                  </div>
+               </div>
+            </div>
+
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Redem Time:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_redem_time" id='item_redem_time' value="<?php echo $item_redem_time; ?>" > <label for="item_redem_time" class="error"></label>
+					 <br/>
+					 例子:"星期一至五 09:00-18:00；星期日及公眾假期休息"
+                  </div>
+               </div>
+            </div>
+
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Shop Phone:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_shop_phone" id='item_shop_phone' value="<?php echo $item_shop_phone; ?>" > <label for="item_shop_phone" class="error"></label>
+                  </div>
+               </div>
+            </div>
+			
+			<div class="form-row">
+              <div class="row row-space"><strong>Item Last redem:</strong> </div>
+                <div class="value">
+                  <div class="input-group">
+                     <input class="input--style-5" name="item_last_redem" id='item_last_redem' value="<?php echo $item_last_redem; ?>" > <label for="item_last_redem" class="error"></label>					 
+					 <br/>
+					 例子:"2019-12-31"
+                  </div>
+               </div>
+            </div>
+
+			
+			
+			<div class="form-row">
               <div class="row row-space"><strong>Item Price:</strong> </div>
                 <div class="value">
                   <div class="input-group">
