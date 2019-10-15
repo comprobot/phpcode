@@ -24,6 +24,11 @@ $item_name="";
 $item_price="";
 $item_description="";
 $item_quantity="1";
+$item_shop_name="";
+$item_shop_address="";
+$item_shop_phone="";
+$item_redem_time="";
+$item_last_redem="";
 $approval="";
 
 $servername = 'localhost';
@@ -262,6 +267,16 @@ if (isset($_POST['upload_item'])) {
 	$item_description = mysqli_real_escape_string($db, $_POST['item_description']);
 	$item_quantity = mysqli_real_escape_string($db, $_POST['item_quantity']);
 	
+	$item_shop_name = mysqli_real_escape_string($db, $_POST['item_shop_name']);
+	$item_shop_address = mysqli_real_escape_string($db, $_POST['item_shop_address']);
+	$item_shop_phone = mysqli_real_escape_string($db, $_POST['item_shop_phone']);
+	$item_redem_time = mysqli_real_escape_string($db, $_POST['item_redem_time']);
+	$item_last_redem = mysqli_real_escape_string($db, $_POST['item_last_redem']);
+	
+	
+	
+	
+	
 	$username = mysqli_real_escape_string($db, $_POST['username']);
 	
 	if (empty($username)) { array_push($errors, "Username is required"); }
@@ -269,6 +284,20 @@ if (isset($_POST['upload_item'])) {
 	if (empty($item_price)) { array_push($errors, "Item price is required"); }
 	if (empty($item_quantity)) { array_push($errors, "Item quantity is required"); }
 	if (empty($item_description)) { array_push($errors, "Item description is required"); }
+	
+	
+	if (empty($item_shop_name)) { array_push($errors, "Item shop name is required"); }
+	if (empty($item_shop_address)) { array_push($errors, "Item shop address is required"); }
+	if (empty($item_shop_phone)) { array_push($errors, "Item shop phone is required"); }
+	if (empty($item_redem_time)) { array_push($errors, "Item redem time is required"); }
+	if (empty($item_last_redem)) { array_push($errors, "Item last redem is required"); }
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	 $target_dir = dirname(__FILE__) ."/pic/";
@@ -303,7 +332,7 @@ if (isset($_POST['upload_item'])) {
 				
 			  
 			  
-			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,'$res','$username','P','$filename','$item_name')";
+			  $query = "INSERT INTO item_shop (customer_id, item_id, item_name,item_description, item_price,item_quantity, item_redeem_code,adv_id,item_status, item_photo_path, item_kind_id,item_shop_name,item_shop_address,item_shop_phone,item_redem_time,item_last_redem,item_detail)  VALUES('',NEXTVAL('itemSeq'),'$item_name','$item_description','$item_price',$item_quantity,'$res','$username','P','$filename','$item_name','$item_shop_name','$item_shop_address','$item_shop_phone','$item_redem_time','$item_last_redem','')";
 				
 				
 				
