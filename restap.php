@@ -20,6 +20,7 @@ $serial_number="";
 $info="";
 $id="";
 $age="";
+$parameter="";
 
 $servername = 'localhost';
 $dbusername = 'ops';
@@ -94,10 +95,11 @@ if (isset($_GET['reg_customer'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
+	echo "<p>SUCCESS</p>";
+	/*
   	$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age, first_reg) 
   			  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 25 ,'$email','$title','$age',NOW())";
-  	//mysqli_query($db, $query);
-	
+  	
 	if ($db->query($query) === TRUE) {
 		echo "<p>SUCCESS</p>";
  		        
@@ -108,6 +110,7 @@ if (isset($_GET['reg_customer'])) {
 		   
 		   
 	}
+	*/
 	
   }else{	  
 	  
@@ -203,12 +206,35 @@ if (isset($_GET['reg_phone'])) {
   $phone = mysqli_real_escape_string($db, $_GET['phone']);  
   $area_code = mysqli_real_escape_string($db, $_GET['area_phone']);  
   
+  $first_name = mysqli_real_escape_string($db, $_GET['given_name']);  	
+  $last_name = mysqli_real_escape_string($db, $_GET['family_name']);  	
+  $username = mysqli_real_escape_string($db, $_GET['username']);  
+  $password = mysqli_real_escape_string($db, $_GET['password']);
+  $cpassword = mysqli_real_escape_string($db, $_GET['password_retype']);      
+  $age = mysqli_real_escape_string($db, $_GET['registration_age']);   
+  $title = mysqli_real_escape_string($db, $_GET['salutation']);   
+  
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($last_name)) { array_push($errors, "姓氏是必須輸入的"); }
+  if (empty($first_name)) { array_push($errors, "名字是必須輸入的"); }
+  if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }
+  if (empty($age)) { array_push($errors, "年齡是必須輸入的"); }
+  if (empty($password)) { array_push($errors, "密碼是必須輸入的"); }  
+  if (empty($cpassword)) { array_push($errors, "再次輸入密碼是必須輸入的"); }  
+  if ($password != $cpassword) {
+	array_push($errors, "密碼與再次輸入密碼相同");
+  }  
+  
+  
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }  
   if (empty($phone)) { array_push($errors, "電話是必須輸入的"); }
   if (empty($area_code)) { array_push($errors, "區碼是必須輸入的"); }
+  
 
 	  
   $user_check_query = "SELECT * FROM customers WHERE telephone='$phone' LIMIT 1";
@@ -225,7 +251,13 @@ if (isset($_GET['reg_phone'])) {
   if (count($errors) == 0) {
   	//$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "UPDATE customers set telephone ='$phone' , area_code = '$area_code' WHERE username = '$username' ";
+  	//$query = "UPDATE customers set telephone ='$phone' , area_code = '$area_code' WHERE username = '$username' ";
+	
+	
+	$query = "INSERT INTO customers (username, lname, fname, password,area_code, telephone, point, email, title, age, first_reg) 
+  			  VALUES('$username','$last_name','$first_name','$password', '$area_code', '$phone', 25 ,'$email','$title','$age',NOW())";
+  	
+	
   	//mysqli_query($db, $query);
 	
 	if ($db->query($query) === TRUE) {
