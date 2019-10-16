@@ -255,7 +255,7 @@ if (isset($_GET['claim_item'])) {
 	}
 	
 		
-    $queryM = "SELECT * FROM  item_shop i , customer_item c, adv_users a   WHERE c.item_id = i.item_id and c.item_redeem_code='$redeem_code' and a.username = i.adv_id and a.password=$adv_user_password;";
+    $queryM = "SELECT * FROM  item_shop i , customer_item c, adv_users a   WHERE c.item_id = i.item_id and c.item_redeem_code='$redeem_code' and a.username = i.adv_id and a.password=$adv_user_password and c.item_status = 'B';";
 	
   	$results = mysqli_query($db, $queryM);
 	
@@ -272,7 +272,7 @@ if (isset($_GET['claim_item'])) {
 		}
 	}else{
 		
-		array_push($errors, "Please provide the correct password for adv user");
+		array_push($errors, "未能兌換或已經兌換。");
 	}
 		
 }
