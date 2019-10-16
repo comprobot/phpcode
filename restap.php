@@ -206,13 +206,13 @@ if (isset($_GET['reg_phone'])) {
   $phone = mysqli_real_escape_string($db, $_GET['phone']);  
   $area_code = mysqli_real_escape_string($db, $_GET['area_phone']);  
   
-  $first_name = mysqli_real_escape_string($db, $_GET['given_name']);  	
-  $last_name = mysqli_real_escape_string($db, $_GET['family_name']);  	
-  $username = mysqli_real_escape_string($db, $_GET['username']);  
+  $first_name = mysqli_real_escape_string($db, $_GET['first_name']);  	
+  $last_name = mysqli_real_escape_string($db, $_GET['last_name']);  	
+  
   $password = mysqli_real_escape_string($db, $_GET['password']);
-  $cpassword = mysqli_real_escape_string($db, $_GET['password_retype']);      
-  $age = mysqli_real_escape_string($db, $_GET['registration_age']);   
-  $title = mysqli_real_escape_string($db, $_GET['salutation']);   
+  $cpassword = mysqli_real_escape_string($db, $_GET['cpassword']);      
+  $age = mysqli_real_escape_string($db, $_GET['age']);   
+  $title = mysqli_real_escape_string($db, $_GET['title']);   
   
 
   // form validation: ensure that the form is correctly filled ...
