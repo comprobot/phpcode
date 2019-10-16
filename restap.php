@@ -202,6 +202,7 @@ if (isset($_GET['update_customer'])) {
 
 if (isset($_GET['reg_phone'])) {
   // receive all input values from the form
+  $email = mysqli_real_escape_string($db, $_GET['username']);    
   $username = mysqli_real_escape_string($db, $_GET['username']);    
   $phone = mysqli_real_escape_string($db, $_GET['phone']);  
   $area_code = mysqli_real_escape_string($db, $_GET['area_phone']);  
@@ -213,6 +214,8 @@ if (isset($_GET['reg_phone'])) {
   $cpassword = mysqli_real_escape_string($db, $_GET['cpassword']);      
   $age = mysqli_real_escape_string($db, $_GET['age']);   
   $title = mysqli_real_escape_string($db, $_GET['title']);   
+  
+  
   
 
   // form validation: ensure that the form is correctly filled ...
