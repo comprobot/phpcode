@@ -227,7 +227,7 @@ if (isset($_GET['reg_phone'])) {
   if (empty($password)) { array_push($errors, "密碼是必須輸入的"); }  
   if (empty($cpassword)) { array_push($errors, "再次輸入密碼是必須輸入的"); }  
   if ($password != $cpassword) {
-	array_push($errors, "密碼與再次輸入密碼相同");
+	array_push($errors, "密碼與再次輸入的密碼必須相同");
   }  
   
   
@@ -277,7 +277,7 @@ if (isset($_GET['reg_phone'])) {
   }else{	  
 	  
 	  foreach ($errors as $error) {
-		echo "<p>".$error ."</p>";  
+		echo "".$error ."";  
 	  } 
   	    
   }
