@@ -261,18 +261,34 @@ if (isset($_GET['claim_item'])) {
 	
   	if (mysqli_num_rows($results) == 1) {
 		
-		$query2 = "UPDATE customer_item SET item_status = 'C'  WHERE item_redeem_code='$redeem_code'";		
-		if ($db->query($query2) === TRUE) {
+		  $user = mysqli_fetch_assoc($result);
+  
+		if ($user) { // if user exists
+			if ($user['item_status'] === 'C') {				
+				array_push($errors, "你的產品之前已經兌換了。");
+				
+			}
+
+			if ($user['item_status'] === 'B') {				
+				$query2 = "UPDATE customer_item SET item_status = 'C'  WHERE item_redeem_code='$redeem_code'";		
+				
+				if ($db->query($query2) === TRUE) {
 		
-			header('location: redemption_complete.php');	
+					header('location: redemption_complete.php');	
 		
-		}else{
+				}else{
 			
-		   array_push($errors, "Cannot update record");	
+				array_push($errors, "Cannot update record");	
+				}	
+				
+				
+			}
 		}
+
+		
 	}else{
 		
-		array_push($errors, "未能兌換或已經兌換。");
+		array_push($errors, "你兌換的物品不存在。");
 	}
 		
 }
