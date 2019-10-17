@@ -53,7 +53,8 @@ if (isset($_GET['reg_customer'])) {
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($last_name)) { array_push($errors, "姓氏是必須輸入的"); }
   if (empty($first_name)) { array_push($errors, "名字是必須輸入的"); }
-  if (empty($username)) { array_push($errors, "電郵是必須輸入的"); }
+  if (empty($username)) { //array_push($errors, "電郵是必須輸入的"); 
+  }
   if (empty($age)) { array_push($errors, "年齡是必須輸入的"); }
   if (empty($email)) { array_push($errors, "電郵是必須輸入的"); }
   
@@ -227,7 +228,7 @@ if (isset($_GET['reg_phone'])) {
   if (empty($password)) { array_push($errors, "密碼是必須輸入的"); }  
   if (empty($cpassword)) { array_push($errors, "再次輸入密碼是必須輸入的"); }  
   if ($password != $cpassword) {
-	array_push($errors, "密碼與再次輸入的密碼必須相同");
+	array_push($errors, "密碼與再次輸入密碼相同");
   }  
   
   
@@ -277,7 +278,7 @@ if (isset($_GET['reg_phone'])) {
   }else{	  
 	  
 	  foreach ($errors as $error) {
-		echo "".$error ."";  
+		echo "<p>".$error ."</p>";  
 	  } 
   	    
   }
