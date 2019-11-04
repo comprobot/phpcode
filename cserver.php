@@ -506,7 +506,7 @@ if (isset($_GET['buyitem'])) {
 			$rowc = mysqli_fetch_assoc($results);
 		    $item_point=$rowc['item_price'];
 			
-			if ($item_point < $user_points['point']) {
+			if ($item_point <= $user_points['point']) {
 			
 				if ($db->query($query2) === TRUE) {
 			
