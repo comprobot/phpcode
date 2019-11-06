@@ -40,7 +40,19 @@
             confirmBox.find(".yes,.no,.cancel").unbind().click(function() {
                confirmBox.hide();
             });
-            confirmBox.find(".yes").click(yeschoice(p));
+			
+            
+			confirmBox.find(".yes").click(function(){				
+				alert("yes");
+				location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";
+				
+			});
+			
+			
+			//confirmBox.find(".yes").click(yeschoice(p));
+			
+			
+			
             confirmBox.find(".no").click(cancelchoice);            
             confirmBox.show();
          }		 
@@ -91,7 +103,7 @@
         <div id="confirm">
          <div class="message"></div>
 		 <br/>
-         <button class="yes">OK</button>
+         <button class="yes" >OK</button>
          <button class="no">Cancel</button>
          <!--<button class="cancel">Cancel</button>-->
         </div>
