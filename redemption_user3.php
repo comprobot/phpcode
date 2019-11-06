@@ -20,9 +20,59 @@
         <link rel="stylesheet" href="style.css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
-<script>
-    
-</script>
+        
+        <script>
+            
+        function yeschoice(p){
+ 		    alert("yes");
+            location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";
+		 }
+	  
+		 function cancelchoice(){
+		   alert("cancel");
+		 }
+
+
+		function functionConfirm1(p,msg) {
+		 
+            var confirmBox = $("#confirm");
+            confirmBox.find(".message").text("確定兌換物品: "+msg+"?");
+            confirmBox.find(".yes,.no,.cancel").unbind().click(function() {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(yeschoice(p));
+            confirmBox.find(".no").click(cancelchoice);            
+            confirmBox.show();
+         }		 
+      </script>
+      <style>
+         #confirm {
+            display: none;
+            background-color: #FFFFFF;
+            border: 1px solid #aaa;
+            position: fixed;
+            width: 250px;
+            left: 50%;
+            margin-left: -100px;
+            padding: 6px 8px 8px;
+            box-sizing: border-box;
+            text-align: center;
+         }
+         #confirm button {
+            background-color: #48E5DA;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+         }
+         #confirm .message {
+            text-align: left;
+         }
+      </style>    
+
     </head>
     <body>
         <div id="header">
@@ -38,6 +88,14 @@
             </div>
             <div class="sperator"></div>
         </div>
+        <div id="confirm">
+         <div class="message"></div>
+		 <br/>
+         <button class="yes">OK</button>
+         <button class="no">Cancel</button>
+         <!--<button class="cancel">Cancel</button>-->
+        </div>
+              
         <div id="page">
             <div id="tab_header">
                 <ul>
@@ -110,13 +168,15 @@ alert("<?php echo $error ?>");
                     <div id="avaiable-list">
 
 <script>
+    
 function confirmFunction(p,d)
 {
     //alert(p);
     //alert(d);
     //var passArray = p.split(",");
     //var answer = window.confirm("確定兌換物品 ");
-    
+    functionConfirm1(p,d);
+    /*
     
    var answer = window.confirm("確定兌換物品: "+d+"?");
     if (answer) {
@@ -131,7 +191,7 @@ function confirmFunction(p,d)
         //some code
         
     }
-    
+    */
     
 }
 
@@ -150,7 +210,8 @@ function confirmFunction(p,d)
 
 
 <div class="avaiable-list-row" onclick="confirmFunction('<?php echo $row['item_id']; ?>','<?php echo $row['item_name']; ?>')" >
-
+    
+    
 <div class="avaiable-list-row-image"><img src="http://157.230.145.40/ops/pic/<?php echo $row['item_photo_path']; ?>"   /></div>
 <div class="avaiable-list-row-name"><?php echo $row['item_name']; ?></div>
 <!--
