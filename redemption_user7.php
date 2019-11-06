@@ -65,7 +65,7 @@
             position: fixed;
             width: 250px;
             left: 50%;
-            margin-left: 0px;
+            margin-left: -125px;
             padding: 6px 8px 8px;
             box-sizing: border-box;
             text-align: center;
