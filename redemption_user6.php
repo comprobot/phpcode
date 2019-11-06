@@ -24,12 +24,12 @@
         <script>
             
         function yeschoice(p){
- 		    alert("yes");
+ 		   
             location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";
 		 }
 	  
 		 function cancelchoice(){
-		   alert("cancel");
+		   
 		 }
 
 
@@ -43,7 +43,7 @@
 			
             
 			confirmBox.find(".yes").click(function(){				
-				alert("yes");
+				
 				location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";
 				
 			});
@@ -65,7 +65,7 @@
             position: fixed;
             width: 250px;
             left: 50%;
-            margin-left: -100px;
+            margin-left: 0px;
             padding: 6px 8px 8px;
             box-sizing: border-box;
             text-align: center;
