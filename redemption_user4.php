@@ -100,13 +100,7 @@
             </div>
             <div class="sperator"></div>
         </div>
-        <div id="confirm">
-         <div class="message"></div>
-		 <br/>
-         <button class="yes" >OK</button>
-         <button class="no">Cancel</button>
-         <!--<button class="cancel">Cancel</button>-->
-        </div>
+        
               
         <div id="page">
             <div id="tab_header">
@@ -120,6 +114,13 @@
                 </ul>
                 <div class="tab_header_shadow"></div>
             </div>
+	<div id="confirm">
+         <div class="message"></div>
+		 <br/>
+         <button class="yes" >OK</button>
+         <button class="no">Cancel</button>
+         <!--<button class="cancel">Cancel</button>-->
+        </div>		
 
 <?php  if (isset($_SESSION['username'])) : ?>
 <?php
