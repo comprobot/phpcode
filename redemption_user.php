@@ -21,6 +21,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
 <script>
+    <!--
 var wAlert = window.alert;
 window.alert = function (message) {
     try {
@@ -60,6 +61,7 @@ window.confirm = function (message) {
         return wConfirm(message);
     }
 } 
+    -->
 </script>
     </head>
     <body>
