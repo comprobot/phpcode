@@ -117,18 +117,7 @@ function confirmFunction(p,d)
     //var passArray = p.split(",");
     //var answer = window.confirm("確定兌換物品 ");
     
-    var iframe = document.createElement("IFRAME");
-    iframe.setAttribute("src", 'data:text/plain,');
-    document.documentElement.appendChild(iframe);
-    if(window.frames[0].window.confirm("確定兌換物品: "+d+"?")){
-        // what to do if answer "YES"
-           location.href="http://157.230.145.40/ops/redemption_user.php?buyitem=buyitem&item_id="+p+"&userid=<?php echo $_SESSION['username']; ?>";
-    }else{
-        // what to do if answer "NO"
-    }
     
-
-    /*
    var answer = window.confirm("確定兌換物品: "+d+"?");
     if (answer) {
         //some code
@@ -142,7 +131,7 @@ function confirmFunction(p,d)
         //some code
         
     }
-    */
+    
     
 }
 
